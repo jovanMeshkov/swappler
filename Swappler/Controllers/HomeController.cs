@@ -16,7 +16,7 @@ namespace Swappler.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            // da vijme dali rabote 
             return View();
         }
 
