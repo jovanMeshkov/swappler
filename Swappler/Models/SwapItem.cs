@@ -7,12 +7,16 @@ namespace Swappler.Models
 {
     public class SwapItem
     {
-        private String name { get; set; }
-        private String description { get; set; }
-        private DateTime date { get; set; }
-        private Boolean flag_swapped { get; set; }
-        private User userId { get; set; }
-        private Address address { get; set; }
-        private String photoURL { get; set; }
+        private String Name { get; set; }
+        private String Description { get; set; }
+        private DateTime Date { get; set; }
+        private Boolean Flag_swapped { get; set; }
+        private User UserId { get; set; }
+        private Address Address { get; set; }
+        private String PhotoUrl { get; set; }
+
+        public SwapItem(String name, DateTime date, User userId)
+        {
+        }
     }
 }
