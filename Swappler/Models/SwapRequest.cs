@@ -7,6 +7,7 @@ namespace Swappler.Models
 {
     public class SwapRequest
     {
+
         private SwapItem swapItem { get; set; }
         private SwapItem offerItem { get; set; }
         private DateTime date;
