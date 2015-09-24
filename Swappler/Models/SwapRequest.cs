@@ -11,6 +11,7 @@ namespace Swappler.Models
      * */
     public class SwapRequest
     {
+
         private SwapItem SwapItem { get; set; }
 
         private SwapItem OfferItem { get; set; }
@@ -33,5 +34,6 @@ namespace Swappler.Models
             this.Money = money;
             this.FlagActive = true;
         }
+
     }
 }
