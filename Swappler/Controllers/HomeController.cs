@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
+using System.IO;
+using System.Text;
 
 namespace Swappler.Controllers
 {
@@ -10,20 +13,6 @@ namespace Swappler.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-        //pozz :D
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            // da vijme dali rabote 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
