@@ -39,12 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -177,18 +175,37 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Content Include="Content\Site.css" />
     <Content Include="Public\Css\bootstrap.css" />
     <Content Include="Public\Css\bootstrap.min.css" />
+=======
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Public\Css\bootstrap.css" />
+    <Content Include="Public\Css\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Public\Css\font-awesome.css" />
+    <Content Include="Public\Css\font-awesome.min.css" />
+>>>>>>> 1092a11f78d5d19cc77fd2313e3c3a28f259d8d3
     <Content Include="Public\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Public\Css\Site.css" />
     <Content Include="Public\Scripts\bootstrap.js" />
     <Content Include="Public\Scripts\bootstrap.min.js" />
+<<<<<<< HEAD
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+=======
+    <Content Include="Public\Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Public\Fonts\fontawesome-webfont.woff" />
+    <Content Include="Public\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Public\Fonts\fontawesome-webfont.svg" />
+    <Content Include="Public\Fonts\fontawesome-webfont.eot" />
+    <Content Include="Public\Fonts\FontAwesome.otf" />
+>>>>>>> 1092a11f78d5d19cc77fd2313e3c3a28f259d8d3
     <None Include="Public\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Public\Scripts\jquery-1.10.2.js" />
     <Content Include="Public\Scripts\jquery-1.10.2.min.js" />
@@ -212,8 +229,14 @@
     <Content Include="Views\Shared\MasterLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Public\Scripts\jquery-1.10.2.min.map" />
+<<<<<<< HEAD
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
+=======
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
+>>>>>>> 1092a11f78d5d19cc77fd2313e3c3a28f259d8d3
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -222,7 +245,9 @@
     <Content Include="Public\Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Public\Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Public\Fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

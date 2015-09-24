@@ -24,8 +24,11 @@ namespace Swappler
                       "~/Public/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
+                      "~/Public/Css/font-awesome.css",
                       "~/Public/Css/bootstrap.css",
                       "~/Public/Css/site.css"));
+
+            
         }
     }
 }
