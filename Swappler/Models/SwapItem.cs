@@ -5,18 +5,35 @@ using System.Web;
 
 namespace Swappler.Models
 {
+    /*
+     * Model for swap item.
+     * 
+     * */
     public class SwapItem
     {
         private String Name { get; set; }
+
         private String Description { get; set; }
+
         private DateTime Date { get; set; }
-        private Boolean Flag_swapped { get; set; }
+                
         private User UserId { get; set; }
-        private Address Address { get; set; }
+        
         private String PhotoUrl { get; set; }
 
-        public SwapItem(String name, DateTime date, User userId)
+        private Boolean Flag_swapped { get; set; }
+
+        /*
+         * Constructor
+         * 
+         * */
+        public SwapItem(String name, String description, DateTime date, User userId)
         {
+            this.Name = name;
+            this.Description = description;
+            this.Date = date;
+            this.UserId = userId;
+            this.Flag_swapped = false;
         }
     }
 }
