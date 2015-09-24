@@ -12,11 +12,8 @@ namespace Swappler.Controllers
         {
             return View();
         }
-        //pozz :D
-        public ActionResult About()
+        public ActionResult EditProfile()
         {
-            ViewBag.Message = "Your application description page.";
-            // da vijme dali rabote 
             return View();
         }
 

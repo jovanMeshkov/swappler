@@ -166,14 +166,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Public\Css\bootstrap.css" />
     <Content Include="Public\Css\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Public\Css\font-awesome.css" />
+    <Content Include="Public\Css\font-awesome.min.css" />
     <Content Include="Public\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Public\Css\Site.css" />
     <Content Include="Public\Scripts\bootstrap.js" />
     <Content Include="Public\Scripts\bootstrap.min.js" />
+    <Content Include="Public\Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Public\Fonts\fontawesome-webfont.woff" />
+    <Content Include="Public\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Public\Fonts\fontawesome-webfont.svg" />
+    <Content Include="Public\Fonts\fontawesome-webfont.eot" />
+    <Content Include="Public\Fonts\FontAwesome.otf" />
     <None Include="Public\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Public\Scripts\jquery-1.10.2.js" />
     <Content Include="Public\Scripts\jquery-1.10.2.min.js" />
@@ -199,6 +209,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Public\Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
