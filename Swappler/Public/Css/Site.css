@@ -12,7 +12,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
 }
 #login_body{
     padding-top: 60px;
@@ -104,11 +104,9 @@ label {
   background: #fcac45;
   /*border-radius: 5px;*/
 }
-.bela{
-    color:white;
-}
-.pozadina{  
-    background-color:#1E90FF;
+
+.orange{
+    background:#fcac45 ;
 }
 
 .btn{

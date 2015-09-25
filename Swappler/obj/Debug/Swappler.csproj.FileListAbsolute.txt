@@ -161,3 +161,4 @@ C:\Users\OLIVER\Documents\swappler\Swappler\bin\Microsoft.Owin.Security.Twitter.
 C:\Users\OLIVER\Documents\swappler\Swappler\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\OLIVER\Documents\swappler\Swappler\obj\Debug\Swappler.dll
 C:\Users\OLIVER\Documents\swappler\Swappler\obj\Debug\Swappler.pdb
+C:\Users\OLIVER\Documents\swappler\Swappler\obj\Debug\Swappler.csprojResolveAssemblyReference.cache

@@ -178,6 +178,7 @@
     <Content Include="Public\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Public\Css\Site.css" />
+    <Content Include="Public\Images\12.png" />
     <Content Include="Public\Scripts\bootstrap.js" />
     <Content Include="Public\Scripts\bootstrap.min.js" />
     <Content Include="Public\Fonts\fontawesome-webfont.woff2" />
@@ -214,6 +215,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\LoginLayout.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
