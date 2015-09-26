@@ -60,3 +60,31 @@ C:\Users\OLIVER\Documents\swappler\Swappler.Tests\bin\Debug\Microsoft.Owin.xml
 C:\Users\OLIVER\Documents\swappler\Swappler.Tests\obj\Debug\Swappler.Tests.csprojResolveAssemblyReference.cache
 C:\Users\OLIVER\Documents\swappler\Swappler.Tests\obj\Debug\Swappler.Tests.dll
 C:\Users\OLIVER\Documents\swappler\Swappler.Tests\obj\Debug\Swappler.Tests.pdb
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Swappler.Tests.dll.config
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Swappler.Tests.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Swappler.Tests.pdb
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Swappler.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Owin.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Microsoft.Owin.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Swappler.pdb
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\bin\Debug\Microsoft.Owin.xml
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\obj\Debug\Swappler.Tests.csprojResolveAssemblyReference.cache
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\obj\Debug\Swappler.Tests.dll
+C:\Users\StaticStupid\Desktop\Pictures\aWorkOut\VisualStudio\C# WebSites\Swappler\Swappler.Tests\obj\Debug\Swappler.Tests.pdb

@@ -34,6 +34,5 @@ namespace Swappler.Models
             this.Money = money;
             this.FlagActive = true;
         }
-
     }
 }
