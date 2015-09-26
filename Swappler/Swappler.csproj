@@ -175,6 +175,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Public\Css\bootstrap.css" />
@@ -182,13 +183,17 @@
     <Content Include="favicon.ico" />
     <Content Include="Public\Css\font-awesome.css" />
     <Content Include="Public\Css\font-awesome.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="Public\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Public\Css\Site.css" />
     <Content Include="Public\Images\12.png" />
     <Content Include="Public\Scripts\bootstrap.js" />
     <Content Include="Public\Scripts\bootstrap.min.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+
     <Content Include="Public\Fonts\fontawesome-webfont.woff2" />
     <Content Include="Public\Fonts\fontawesome-webfont.woff" />
     <Content Include="Public\Fonts\fontawesome-webfont.ttf" />
@@ -222,17 +227,14 @@
     <Content Include="Views\Shared\MasterLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Public\Scripts\jquery-1.10.2.min.map" />
-<<<<<<< HEAD
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\LoginLayout.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
-=======
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
->>>>>>> 233b91c5a32fcbdb5922f39ba384ce6586de37b6
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
