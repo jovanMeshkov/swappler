@@ -2,28 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.Mvc;
-using System.IO;
-using System.Text;
+using System.Web.Security;
+using Swappler.Attributes;
 
 namespace Swappler.Controllers
 {
-    public class HomeController : Controller
+    public class AuthController : Controller
     {
-        public ActionResult Index()
+        [Authenticate]
+        public ActionResult Login()
         {
-            return View();
-        }
-        public ActionResult EditProfile()
-        {
+           
             return View();
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
         public ActionResult Register()
         {
             return View();
