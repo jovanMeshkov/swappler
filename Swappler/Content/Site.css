@@ -16,3 +16,9 @@ textarea {
     max-width: 280px;
 }
 
+#whitefeed{
+    background-color: white;
+}
+#containerfeed{
+    border:2px solid black;
+}

@@ -116,12 +116,35 @@ label {
 }
 
 #ep-change-image{
-    
-    border-left: 5px solid #fcac45;
-    
-
+    border-left: 5px solid #fcac45
 }
 
 #search-form{
     margin-left: 35%;
+}
+#whitefeed{
+    background-color: white;
+}
+#logoImg{
+    width : 60px;
+    height: 80px;
+}
+#pictureFeed{
+    width:180px;
+    height:180px;
+}
+
+#search-form{
+    margin-left: 35%;
+}
+
+.item-news-feed
+{
+    margin-left:3%;
+    margin-top:2%;
+}
+#slika-desno-item{
+    float:right;
+    margin-right:5%;
+    margin-bottom:5%;
 }
