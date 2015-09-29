@@ -1,0 +1,205 @@
+#to-top{
+	padding-top: 60px;
+}
+.navbar-custom {
+    background-color:white;
+    color:#ffffff;
+    border-radius:0;
+}
+.navbar-custom .navbar-nav > li > a {
+    color: black;
+}
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+ text-decoration: none; 
+/*za hover ako sakas da smenis pozadinska boja u navbar*/
+ background-color: white; }
+.navbar-custom .navbar-brand {
+    color:black;
+}
+#center, #center1 {
+	text-align: center;
+}
+.ourFeatures {
+    background: #fcac45;
+    text-align: left;
+    padding: 100px 0 0;
+}
+.ourFeatures  h2, .ourFeatures h3, .ourFeatures p{
+    color:#fff;
+}
+.ourFeatures p{
+    color:#E2FFCF;
+}
+.ourFeatures .row.row-padding {
+    padding-top: 40px;
+}
+.ourFeatures .img-iPhone {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+}
+.ourFeatures .btn-prime-border {
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #dc554f;
+    color: #dc554f;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+.side-nav {
+    position: fixed;
+    top: 45%;
+    right: 20px;
+    z-index: 1030;
+}
+.side-nav ul.nav-side-nav {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+.side-nav ul.nav-side-nav > li {
+    display: block;
+    line-height: 1.42857;
+    margin: 0;
+    padding: 8px 0;
+}
+.side-nav ul.nav-side-nav > li > a {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #FFFFFF;
+    border-radius: 78%;
+    padding: 7px;
+    border: 1px solid #fcac45;
+}
+#about {
+	color: white;
+}
+.jajceglavi{
+	width: 200px;
+	height: 200px;
+}
+button.btn.tf-btn.btn-default {
+	float: right;
+	background: #fcac45;
+	border: 0;
+	border-radius: 0;
+	padding: 10px 40px;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+#tf-contact{
+	padding: 80px 0;
+}
+
+label {
+	float: left;
+	font-size: 12px;
+	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
+}
+#tf-contact .form-control {
+	display: block;
+	width: 100%;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+#tf-contact .form-control:focus {
+	border-color: inherit;
+	outline: 0;
+	-webkit-box-shadow: transparent;
+	box-shadow: transparent;
+}
+.section-title.center .line{
+	border-top: 4px solid #fcac45;
+	height: 10px;
+	width: 60px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.section-title.center hr {
+	border-top: 4px solid DodgerBlue;
+	width: 40px;
+	text-align: center;
+	margin-top: 10px;
+	position: relative;
+	left: 17%;
+}
+.team-img {
+    width: 120px;
+    height: 120px;
+    border: 4px solid transparent;
+}
+.team-img:hover {
+    border:4px solid green;
+}
+.footer-section {
+    background: white;
+    text-align: left;
+    padding: 60px 0;
+}
+.colorgraph {
+  height: 5px;
+  border-top: 0;
+  background: #fcac45;
+  /*border-radius: 5px;*/
+}
+.bela{
+    color:white;
+}
+.pozadina{  
+    background-color:#1E90FF;
+}
+
+.btn{
+    border-radius: 0px;
+}
+.input-lg{
+    border-radius: 0px;
+}
+
+
+body{
+    background: #eee;
+}
+
+#ep-change-image{
+    
+    border-left: 5px solid #fcac45;
+    
+
+}
+
+
+
+#search-form{
+    margin-left: 35%;
+}
+
+.item-news-feed
+{
+    margin-left:3%;
+    margin-top:2%;
+}
+#slika-desno-item{
+    float:right;
+    margin-right:5%;
+    margin-bottom:5%;
+}

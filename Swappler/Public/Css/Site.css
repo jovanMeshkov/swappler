@@ -4,8 +4,12 @@
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
+
 .dl-horizontal dt {
     white-space: normal;
+}
+#beltext {
+       color:white;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -106,6 +110,24 @@ label {
 
 .orange{
     background:#fcac45 ;
+}
+.orange1{
+    background:#fcac45 ;
+}
+.orange:hover,
+.orange:focus,
+.orange:active,
+.orange.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fcac45;
+  background-color: #f88017;
+  border-color: #fcac45;
+}
+
+.orange:active,
+.orange.active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
 }
 
 .btn{
