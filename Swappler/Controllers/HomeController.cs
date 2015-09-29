@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Swappler.Database;
 
 namespace Swappler.Controllers
 {
@@ -10,6 +11,7 @@ namespace Swappler.Controllers
     {
         public ActionResult Index()
         {
+            SwapplerDAO.getAllUsers();
             return View();
         }
         public ActionResult EditProfile()
@@ -21,9 +23,11 @@ namespace Swappler.Controllers
         {
             return View();
         }
+        
         public ActionResult Register()
         {
             return View();
         }
+
     }
 }
