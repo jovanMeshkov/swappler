@@ -17,15 +17,14 @@ namespace Swappler
                 name: "Auth",
                 url: "{action}",
                 defaults: new { controller = "Auth" },
-                constraints: new { action = "Login|Register" }
+                constraints: new { action = "^(Login|Register)$" }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Auth", action = "Login", id = UrlParameter.Optional }
             );
-
             
         }
     }
