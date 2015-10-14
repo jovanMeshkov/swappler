@@ -8,7 +8,8 @@ namespace Swappler.Models
     /*
      * Model for swap item.
      * 
-     * */
+     * 
+     */
     public class SwapItem
     {
         private String Name { get; set; }
