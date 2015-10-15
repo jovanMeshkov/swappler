@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Swappler.Models;
 using Swappler.Repositories;
+using System.Diagnostics;
 
 namespace Swappler.Services
 {
@@ -23,7 +24,7 @@ namespace Swappler.Services
         public ManageUsersService()
         {
             userRepository = new UserRepository();
-            userRepositoryInterface = (IUserRepository)userRepository;
+            userRepositoryInterface = (IUserRepository) userRepository;
         }
 
         /*
@@ -41,8 +42,7 @@ namespace Swappler.Services
          */
         public List<User> getUserByName(String name)
         {
-            // TODO: Method stub - getUserByName
-            return null;
+            return userRepositoryInterface.query(new UserSpecificationByName(name));
         }
 
         /*
@@ -51,27 +51,35 @@ namespace Swappler.Services
          */
         public User getUserByUsername(String username)
         {
-            // TODO: Method stub - getUserByUsername
-            return null;
+            List<User> listUsers = userRepositoryInterface.query(new UserSpecificationByUsername(username));
+            if (listUsers.Count == 1)
+            {
+                return listUsers.ElementAt(0);
+            }
+            else
+            {
+                // throw new Exception(); //TODO: Handle it!
+                return null;
+            }
         }
 
         /*
          * Add and register new user.
          * 
          */
-        public void addNewUser(String name, String lastName, String email, String password, String username, String phone, String address)
+        public Boolean addNewUser(String name, String lastName, String email, String password, String username, String phone, String address)
         {
             User newUser = new User(name, lastName, email, password, username, phone, address);
-            userRepositoryInterface.addUser(newUser);
+            return userRepositoryInterface.addUser(newUser);
         }
 
         /*
          * Remove user with given username.
          * 
          */
-        public void removeUser(String username)
+        public Boolean removeUser(String username)
         {
-            userRepositoryInterface.removeUser(username);
+            return userRepositoryInterface.removeUser(username);
         }
 
     }

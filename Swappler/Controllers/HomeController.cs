@@ -18,8 +18,26 @@ namespace Swappler.Controllers
         {
             //TODO: Test method.Delete it.
             manageUsersService = new ManageUsersService();
-            UsersDAO dao = new UsersDAO();
-            Debug.WriteLine("Broj na korisnici registrirani:  " + dao.queryUsers("select * from User").Capacity);
+
+            // Search by username
+            User searchedUser = manageUsersService.getUserByUsername("schenock");
+
+            // Search by name or last name
+            List<User> searchedUsers = manageUsersService.getUserByName("Dan");
+
+            // Add new user
+            manageUsersService.addNewUser("Dane", "Mitrev", "dane@swappler.com", "76476", "Schenock5", "02331", "51Ave");
+
+            // Delete user with username
+            //manageUsersService.removeUser("daneto");
+
+            // Get all users
+            List<User> allUsers = manageUsersService.getAllUsers();
+            foreach (User user in allUsers)
+            {
+                Debug.WriteLine("Username: " + user.Username + "| Name: " + user.Name + ", Last name: " + user.LastName); 
+            }
+
             return View();
         }
         public ActionResult EditProfile()

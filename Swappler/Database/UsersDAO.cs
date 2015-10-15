@@ -42,7 +42,6 @@ using System.Diagnostics;
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Debug.WriteLine(reader["Name"].ToString());
                     User user = new User(
                         reader["Name"].ToString(),
                         reader["LastName"].ToString(),
@@ -73,7 +72,7 @@ using System.Diagnostics;
         {
             //TODO: Change to parametrized SQL Queries (Sql injection security) :P 
 
-            String DELETE_USER_QUERY = "DELETE FROM User u WHERE u.Username = '" + username + "'";
+            String DELETE_USER_QUERY = "DELETE FROM User WHERE Username = '" + username + "'";
             MySqlCommand command = new MySqlCommand();
             command.Connection = connection;
             command.CommandText = DELETE_USER_QUERY;
@@ -100,17 +99,38 @@ using System.Diagnostics;
             //TODO: Change AddressID long to Address String in Database.Reflect changes in sql queries.
 
             int result = 0;
+            String GET_USER_QUERY = "select * from User u where u.Username='" + user.Username + "'";
+
             String INSERT_USER_QUERY = "INSERT INTO User (Name, LastName, Email, Password, Username, Phone) " +
                    "VALUES ('" + user.Name + "','" + user.LastName + "','" + user.Email + "','" + user.Password + "','" + user.Username + "','" + user.Phone + "')";
 
             MySqlCommand command = new MySqlCommand();
             command.Connection = connection;
-            command.CommandText = INSERT_USER_QUERY;
+            command.CommandText = GET_USER_QUERY;
+
+            MySqlCommand insertCommand = new MySqlCommand();
+            insertCommand.Connection = connection;
+            insertCommand.CommandText = INSERT_USER_QUERY;
 
             try
             {
                 connection.Open();
-                result = command.ExecuteNonQuery();
+
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    Debug.WriteLine("User already exists. Returning false. Cannot add !");
+                    return false;
+                }
+
+                connection.Close();
+                //TODO: Check multiple queries within one connection.
+                connection.Open();
+
+                Debug.WriteLine(INSERT_USER_QUERY);         
+                result = insertCommand.ExecuteNonQuery();
+
+                connection.Close();
             }
             catch (Exception e)
             {
