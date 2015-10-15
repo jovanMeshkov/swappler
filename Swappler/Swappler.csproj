@@ -163,12 +163,16 @@
     <Compile Include="Attributes\Authenticate.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Database\SwapItemsDAO.cs" />
     <Compile Include="Database\UsersDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\ISwapItemSpecification.cs" />
     <Compile Include="Models\SwapItem.cs" />
+    <Compile Include="Models\SwapItemSpecificationByAge.cs" />
+    <Compile Include="Models\SwapItemSpecificationByName.cs" />
     <Compile Include="Models\SwapRequest.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserSpecificationByUsername.cs" />

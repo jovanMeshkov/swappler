@@ -8,10 +8,12 @@ namespace Swappler.Models
     /*
      * Model for swap item.
      * 
-     * 
      */
     public class SwapItem
     {
+
+        private Guid SwapItemGuid { get; set; }
+
         private String Name { get; set; }
 
         private String Description { get; set; }
@@ -24,10 +26,13 @@ namespace Swappler.Models
 
         private Boolean Flag_swapped { get; set; }
 
+        private int Popularity { get; set; }
+
         /*
          * Constructor
          * 
-         * */
+         * 
+         */
         public SwapItem(String name, String description, DateTime date, User userId)
         {
             this.Name = name;
@@ -35,6 +40,7 @@ namespace Swappler.Models
             this.Date = date;
             this.UserId = userId;
             this.Flag_swapped = false;
+            this.Popularity = 0;
         }
     }
 }

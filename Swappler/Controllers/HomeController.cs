@@ -13,11 +13,14 @@ namespace Swappler.Controllers
     public class HomeController : Controller
     {
         ManageUsersService manageUsersService;
+        SwapItemService swapItemService;
+
 
         public ActionResult Index()
         {
             //TODO: Test method.Delete it.
             manageUsersService = new ManageUsersService();
+            swapItemService = new SwapItemService();
 
             // Search by username
             User searchedUser = manageUsersService.getUserByUsername("schenock");
@@ -37,6 +40,8 @@ namespace Swappler.Controllers
             {
                 Debug.WriteLine("Username: " + user.Username + "| Name: " + user.Name + ", Last name: " + user.LastName); 
             }
+
+            List<SwapItem> swapItems = swapItemService.getSwapItemByName("Motorka");
 
             return View();
         }
