@@ -34,10 +34,6 @@ namespace Swappler.Repositories
         {
             return swapItemsDAO.query(specification.toSqlClause());
         }
-
-        public List<SwapItem> getAll()
-        {
-            throw new NotImplementedException();
-        }
+   
     }
 }
