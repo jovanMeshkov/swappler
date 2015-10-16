@@ -75,6 +75,34 @@ namespace Swappler.Database
             return result == 1 ? true : false;
         }
 
+
+        public Boolean removeSwapItem(String swapItemGuid)
+        {
+            //TODO: Change to parametrized SQL Queries (Sql injection security) :P 
+
+            String DELETE_ITEM_QUERY = "DELETE FROM SwapItem WHERE Guid = '" + swapItemGuid + "'";
+            MySqlCommand command = new MySqlCommand();
+            command.Connection = connection;
+            command.CommandText = DELETE_ITEM_QUERY;
+            int result = 0;
+
+            try
+            {
+                connection.Open();
+                result = command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result == 1 ? true : false;
+        }
+
+
         public List<SwapItem> query(String sqlQuery)
         {
             List<SwapItem> resultList = new List<SwapItem>();

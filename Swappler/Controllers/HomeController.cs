@@ -45,8 +45,11 @@ namespace Swappler.Controllers
             List<SwapItem> swapItems = swapItemService.getSwapItemByName("Motorka");
 
             // Add swap item
-            SwapItemsDAO swDAO = new SwapItemsDAO();
-            swDAO.addSwapItem(new SwapItem(Guid.NewGuid().ToString(), "Muljac", "Zacuvan muljac za groizje.", new DateTime(), searchedUser));
+             SwapItemsDAO swDAO = new SwapItemsDAO();
+            // swDAO.addSwapItem(new SwapItem(Guid.NewGuid().ToString(), "Muljac", "Zacuvan muljac za groizje.", new DateTime(), searchedUser));
+
+            // Remove swap item.
+             swDAO.removeSwapItem("b39db431-1d1a-47c2-a92f-042cfc7fc8a2");
 
             // Get swap items
             List<SwapItem> listAllItems = swDAO.query("select * from SwapItem");
