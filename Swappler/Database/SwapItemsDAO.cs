@@ -109,12 +109,12 @@ namespace Swappler.Database
             MySqlCommand command = new MySqlCommand();
             command.Connection = connection;
             command.CommandText = sqlQuery;
-
+            Debug.WriteLine("Quering: " + " - " + sqlQuery);
             try 
             {      
                 connection.Open();
-                MySqlDataReader reader = command.ExecuteReader();    
-
+                MySqlDataReader reader = command.ExecuteReader();
+                Debug.WriteLine("Reader: " + reader.HasRows);
                 if (!reader.HasRows)
                 {
                     return resultList;

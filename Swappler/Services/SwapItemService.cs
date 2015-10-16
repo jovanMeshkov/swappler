@@ -34,7 +34,7 @@ namespace Swappler.Services
          */
         public List<SwapItem> getMostPopularSwapItems() 
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //TODO: Implement popularity search.
         }
 
         /*
@@ -61,16 +61,17 @@ namespace Swappler.Services
          */
         public Boolean addNewSwapItem(String name, String description, DateTime date, User user)  
         {
-            return false;
+            SwapItem newSwapItem = new SwapItem(Guid.NewGuid().ToString(), name, description, date, user);
+            return swapItemRepository.addSwapItem(newSwapItem);
         }
 
         /*
          * Remove swap item from database.
          * 
          */
-        public Boolean removeSwapItem(Guid swapItemGuid) 
+        public Boolean removeSwapItem(String swapItemGuid) 
         {
-            return false;    
+            return swapItemRepositoryInterface.removeSwapItem(swapItemGuid);
         }
 
     }

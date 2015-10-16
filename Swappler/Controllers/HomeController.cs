@@ -22,6 +22,7 @@ namespace Swappler.Controllers
             //TODO: Test method.Delete it.
             manageUsersService = new ManageUsersService();
             swapItemService = new SwapItemService();
+            SwapItemsDAO swDAO = new SwapItemsDAO();
 
             // Search by username
             User searchedUser = manageUsersService.getUserByUsername("Schenock5");
@@ -45,15 +46,25 @@ namespace Swappler.Controllers
             List<SwapItem> swapItems = swapItemService.getSwapItemByName("Motorka");
 
             // Add swap item
-             SwapItemsDAO swDAO = new SwapItemsDAO();
-            // swDAO.addSwapItem(new SwapItem(Guid.NewGuid().ToString(), "Muljac", "Zacuvan muljac za groizje.", new DateTime(), searchedUser));
 
             // Remove swap item.
-             swDAO.removeSwapItem("b39db431-1d1a-47c2-a92f-042cfc7fc8a2");
+            swapItemService.removeSwapItem("8e11970d-05fd-430e-afd9-af5cf2c766be");
 
-            // Get swap items
+            // Search swap items.
+            List<SwapItem> searchResults = swapItemService.getSwapItemByName("Mulj");
+            Debug.WriteLine("Found: " + searchResults.ElementAt(0).Name);
+
+            // Generate newest items feed.
+            List<SwapItem> feedList = swapItemService.getNewestSwapItems();
+            Debug.WriteLine("Latest swap items: ");
+            foreach (SwapItem itemInFeed in feedList)
+            {
+                Debug.WriteLine("Item : Name: " + itemInFeed.Name + " Owner: " + itemInFeed.UserId.Name);
+            }
+
+            // Get all swap items
             List<SwapItem> listAllItems = swDAO.query("select * from SwapItem");
-            Debug.WriteLine("size: " + listAllItems.Count);
+            Debug.WriteLine("Swap items total: " + listAllItems.Count);
             foreach (SwapItem swapItem in listAllItems)
             {
                 Debug.WriteLine("Item : " + swapItem.SwapItemGuid + " |  Name: " + swapItem.Name + " Owner: " + swapItem.UserId.Name);

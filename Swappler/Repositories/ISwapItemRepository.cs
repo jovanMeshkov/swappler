@@ -10,7 +10,7 @@ namespace Swappler.Repositories
     interface ISwapItemRepository
     {
         Boolean addSwapItem(SwapItem swapItem);
-        Boolean removeSwapItem(Guid swapItemGuid);
+        Boolean removeSwapItem(String swapItemGuid);
         Boolean updateSwapItem(SwapItem swapItem);
         List<SwapItem> query(ISwapItemSpecification specification);
     }

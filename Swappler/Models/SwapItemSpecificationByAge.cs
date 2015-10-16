@@ -18,6 +18,7 @@ namespace Swappler.Models
 
         public SwapItemSpecificationByAge(DateTime from, DateTime to)
         {
+            this.numberOfSwapItems = -1;
             this.from = from;
             this.to = to;
         }
@@ -31,9 +32,10 @@ namespace Swappler.Models
 
         public String toSqlClause()
         {
-            if (from == null || to == null)
+            if (numberOfSwapItems != -1)
             {
-                return "select top(" + numberOfSwapItems + ") * from SwapItem s order by s.Date desc";
+                return "select * from SwapItem s order by s.Date desc limit " + numberOfSwapItems;
+                //return "select top(" + numberOfSwapItems + ") * from SwapItem s order by s.Date desc";
             }
             else
             {
