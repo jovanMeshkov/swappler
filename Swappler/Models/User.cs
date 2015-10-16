@@ -11,6 +11,20 @@ namespace Swappler.Models
      */
     public class User
     {
+        //TODO: Modify user add/remove with guid. Guid not implemented(DAO,Repo,Service..) !
+        private Guid userGuid;
+        public Guid UserGuid
+        {
+            get
+            {
+                return userGuid;
+            }
+            set
+            {
+                userGuid = value;
+            }
+        }
+
         private String name;
         public String Name
         {
@@ -20,7 +34,7 @@ namespace Swappler.Models
             }
             set
             {
-
+                name = value;
             }
         }
 
@@ -33,7 +47,7 @@ namespace Swappler.Models
             }
             set
             {
-
+                lastName = value;
             }
         }
 
@@ -46,7 +60,7 @@ namespace Swappler.Models
             }
             set
             {
-
+                email = value;
             }
         }
 
@@ -59,7 +73,7 @@ namespace Swappler.Models
             }
             set
             {
-
+                password = value;
             }
         }
 
@@ -72,7 +86,7 @@ namespace Swappler.Models
             }
             set
             {
-
+                username = value;
             }
         }
 
@@ -85,7 +99,7 @@ namespace Swappler.Models
             }
             set
             {
-
+                phone = value;
             }
         }
 
@@ -98,7 +112,7 @@ namespace Swappler.Models
             }
             set
             {
-
+                photoURL = value;
             }
         }
 
@@ -111,17 +125,26 @@ namespace Swappler.Models
             }
             set
             {
-
+                address = value;
             }
 
         }
 
         /*
+         * Empty constructor
+         * 
+         */
+        public User()
+        {
+        }
+
+        /*
          * Constructor.
          * 
-         * */
+         */
         public User(String name, String lastName, String email, String password, String username, String phone, String address)
         {
+            this.userGuid = Guid.NewGuid();
             this.name = name;
             this.lastName = lastName;
             this.email = email;

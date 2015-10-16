@@ -7,6 +7,7 @@ using Swappler.Models;
 using Swappler.Services;
 using System.Diagnostics;
 using Swappler.Repositories;
+using Swappler.Database;
 
 namespace Swappler.Controllers
 {
@@ -23,7 +24,7 @@ namespace Swappler.Controllers
             swapItemService = new SwapItemService();
 
             // Search by username
-            User searchedUser = manageUsersService.getUserByUsername("schenock");
+            User searchedUser = manageUsersService.getUserByUsername("Schenock5");
 
             // Search by name or last name
             List<User> searchedUsers = manageUsersService.getUserByName("Dan");
@@ -42,6 +43,18 @@ namespace Swappler.Controllers
             }
 
             List<SwapItem> swapItems = swapItemService.getSwapItemByName("Motorka");
+
+            // Add swap item
+            SwapItemsDAO swDAO = new SwapItemsDAO();
+            swDAO.addSwapItem(new SwapItem(Guid.NewGuid().ToString(), "Muljac", "Zacuvan muljac za groizje.", new DateTime(), searchedUser));
+
+            // Get swap items
+            List<SwapItem> listAllItems = swDAO.query("select * from SwapItem");
+            Debug.WriteLine("size: " + listAllItems.Count);
+            foreach (SwapItem swapItem in listAllItems)
+            {
+                Debug.WriteLine("Item : " + swapItem.SwapItemGuid + " |  Name: " + swapItem.Name + " Owner: " + swapItem.UserId.Name);
+            }
 
             return View();
         }

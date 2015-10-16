@@ -85,7 +85,7 @@ using System.Diagnostics;
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.StackTrace);
+                Debug.WriteLine(e.Message);
             }
             finally
             {
