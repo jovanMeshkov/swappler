@@ -164,6 +164,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Database\SwapItemsDAO.cs" />
+    <Compile Include="Database\SwapRequestDAO.cs" />
     <Compile Include="Database\UsersDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,6 +191,7 @@
     <Compile Include="Models\UserSpecificationByName.cs" />
     <Compile Include="Services\ManageUsersService.cs" />
     <Compile Include="Services\SwapItemService.cs" />
+    <Compile Include="Services\SwapRequestManagementService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

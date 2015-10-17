@@ -70,7 +70,16 @@ namespace Swappler.Controllers
                 Debug.WriteLine("Item : " + swapItem.SwapItemGuid + " |  Name: " + swapItem.Name + " Owner: " + swapItem.UserId.Name);
             }
 
-            return View();
+            // Add swap request.
+            SwapItem testItem = listAllItems.ElementAt(4);
+            SwapRequestDAO requestDAO = new SwapRequestDAO();
+            requestDAO.addSwapRequest(new SwapRequest(Guid.NewGuid().ToString(), testItem, testItem, new DateTime(), 155));
+
+            // Get all swap requests
+            Debug.WriteLine("GETTING REQUESTS...");
+            List<SwapRequest> allRequests = requestDAO.query("select * from SwapRequest");
+
+            return View(listAllItems);
         }
         public ActionResult EditProfile()
         {

@@ -117,6 +117,11 @@ namespace Swappler.Models
         }
 
         /*
+         * Empty constructor. 
+         */
+        public SwapItem() {}
+
+        /*
          * Constructor
          * 
          * 
