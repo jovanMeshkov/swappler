@@ -67,10 +67,11 @@ namespace Swappler.Services
          * Add and register new user.
          * 
          */
-        public Boolean addNewUser(String name, String lastName, String email, String password, String username, String phone, String address)
+        public User addNewUser(String name, String lastName, String email, String password, String username, String phone, String address)
         {
             User newUser = new User(name, lastName, email, password, username, phone, address);
-            return userRepositoryInterface.addUser(newUser);
+            userRepositoryInterface.addUser(newUser);
+            return newUser;
         }
 
         /*
