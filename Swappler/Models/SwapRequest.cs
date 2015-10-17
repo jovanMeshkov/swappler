@@ -8,7 +8,8 @@ namespace Swappler.Models
     /*
      * Model for user-to-user swap request.
      *
-     * */
+     * 
+     */
     public class SwapRequest
     {
 
