@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient; //download MySqlConnector .net and add this library from references
 using System;
 using System.Collections.Generic;
 using System.Configuration;
