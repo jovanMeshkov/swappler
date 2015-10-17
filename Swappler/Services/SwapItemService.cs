@@ -13,6 +13,7 @@ namespace Swappler.Services
      */
     public class SwapItemService
     {
+        /* Specifies number of items included in newest items feed. */
         private const int LATEST_SWAP_ITEMS_NUMBER = 15;
 
         private SwapItemRepository swapItemRepository;
@@ -22,7 +23,7 @@ namespace Swappler.Services
          * Constructor.
          * 
          */
-        public SwapItemService()
+        public SwapItemService() 
         {
             swapItemRepository = new SwapItemRepository();
             swapItemRepositoryInterface = (ISwapItemRepository) swapItemRepository;
@@ -59,10 +60,11 @@ namespace Swappler.Services
          * Add new swap item to database.
          * 
          */
-        public Boolean addNewSwapItem(String name, String description, DateTime date, User user)  
+        public SwapItem addNewSwapItem(String name, String description, DateTime date, User user)  
         {
             SwapItem newSwapItem = new SwapItem(Guid.NewGuid().ToString(), name, description, date, user);
-            return swapItemRepository.addSwapItem(newSwapItem);
+            swapItemRepository.addSwapItem(newSwapItem);
+            return newSwapItem;
         }
 
         /*
