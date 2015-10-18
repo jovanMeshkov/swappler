@@ -13,22 +13,93 @@ namespace Swappler.Models
     public class SwapRequest
     {
 
-        private SwapItem SwapItem { get; set; }
+        private String swapRequestGuid;
+        public String SwapRequestGuid
+        {
+            get
+            {
+                return swapRequestGuid;
+            }
+            set
+            {
+                swapRequestGuid = value;
+            }
+        }
 
-        private SwapItem OfferItem { get; set; }
+        private DateTime date;
+        public DateTime Date
+        {
+            get
+            {
+                return date;
+            }
+            set
+            {
+                date = value;
+            }
+        }
+
+        private int money;
+        public int Money
+        {
+            get
+            {
+                return money;
+            }
+            set
+            {
+                money = value;
+            }
+        }
+
+        private Boolean flagActive;
+        public Boolean FlagActive
+        {
+            get
+            {
+                return flagActive;
+            }
+            set
+            {
+                flagActive = value;
+            }
+        }
+
+        private SwapItem swapItem;
+        public SwapItem SwapItem
+        {
+            get
+            {
+                return swapItem;
+            }
+            set
+            {
+                swapItem = value;
+            }
+        }
+
+        private SwapItem offerItem;
+        public SwapItem OfferItem
+        {
+            get
+            {
+                return offerItem;
+            }
+            set
+            {
+                offerItem = value;
+            }
+        }
         
-        private DateTime Date;
         
-        private int Money { get; set; }
-        
-        private Boolean FlagActive;
 
         /*
          * Constructor.
-         * 
-         * */
-        public SwapRequest(SwapItem swapItem, SwapItem offerItem, DateTime date, int money)
+         *  
+         */
+        public SwapRequest(String swapRequestGuid, SwapItem swapItem, SwapItem offerItem, DateTime date, int money)
         {
+            this.swapRequestGuid = swapRequestGuid;
             this.SwapItem = swapItem;
             this.OfferItem = offerItem;
             this.Date = date;

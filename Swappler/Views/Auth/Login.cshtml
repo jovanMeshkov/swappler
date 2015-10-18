@@ -1,17 +1,50 @@
-﻿@{
-    Layout = null;
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/LoginLayout.cshtml"; 
 }
 
-<!DOCTYPE html>
+<div class="container-fluid">
+    <div class="row" id="section-1">
+        <div class="col-lg-6" style="margin-top:80px">
+            <h2 id="center">
+                <a href="#">Swappler</a>
+            </h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <form>
-        @Html.AntiForgeryToken();
-    </form>
-</body>
-</html>
+            <p id="center1" class="lead">
+                Sign in to get started
+            </p>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-3">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-3">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row" style="margin:0px">
+                        <div class="col-md-3 col-md-offset-3">
+                            <a class="btn btn-primary btn-block" href="#" role="button">Sign in</a>
+                        </div>
+                        <div class="col-md-3 col-md-offset-0">
+                            <a class="btn btn-success btn-block" href="Register" role="button">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- end first col-lg-6 -->
+        <div class="col-lg-6" style="margin-top:50px;">
+            <img src="~/Public/Images/12.png" class=" img-responsive" />
+        </div>
+        <!-- end second col-lg-6 -->
+    </div>
+    <!-- end row -->
+</div>
+<!-- end container-fluid -->
+

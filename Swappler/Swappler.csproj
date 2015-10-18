@@ -46,12 +46,17 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+<<<<<<< HEAD
     <Reference Include="mysql.data">
       <HintPath>..\..\..\Desktop\mysql.data.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data.Entity, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\..\..\Desktop\MySql.Data.Entity.dll</HintPath>
     </Reference>
+=======
+    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+>>>>>>> 3876f4a43797e5f11508669561307ff958d4f31c
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -166,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Database\SwapItemsDAO.cs" />
+    <Compile Include="Database\SwapRequestDAO.cs" />
     <Compile Include="Database\UsersDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,6 +198,7 @@
     <Compile Include="Models\UserSpecificationByName.cs" />
     <Compile Include="Services\ManageUsersService.cs" />
     <Compile Include="Services\SwapItemService.cs" />
+    <Compile Include="Services\SwapRequestManagementService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -231,7 +238,9 @@
     <Content Include="Public\Scripts\respond.js" />
     <Content Include="Public\Scripts\respond.min.js" />
     <Content Include="Public\Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -243,14 +252,16 @@
     <Content Include="Views\Shared\MasterLayout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\EditProfile.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Shared\LoginLayout.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\AddItem.cshtml" />
+=======
+    <Content Include="Views\Auth\Register.cshtml" />
+>>>>>>> 3876f4a43797e5f11508669561307ff958d4f31c
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

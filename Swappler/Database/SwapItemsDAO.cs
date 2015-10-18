@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient; //download MySqlConnector .net and add this library from references
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -138,25 +138,14 @@ namespace Swappler.Database
 
                 foreach (SwapItem swapItem in resultList)
                 {
-                    connection.Open();
-                    command.CommandText = "select * from User u where u.Username='" + swapItem.UserId.Username + "'";
-                    MySqlDataReader readerUser = command.ExecuteReader();
+                    String GET_USER_QUERY = "select * from User u where u.Username='" + swapItem.UserId.Username + "'";
+                    UsersDAO usersDAO = new UsersDAO();
+                    List<User> users = usersDAO.queryUsers(GET_USER_QUERY);
 
-                    User itemUser = null;
-                    if (readerUser.Read())
+                    if (users.Count > 0)
                     {
-                        itemUser = new User(
-                        readerUser["Name"].ToString(),
-                        readerUser["LastName"].ToString(),
-                        readerUser["Email"].ToString(),
-                        readerUser["Password"].ToString(),
-                        readerUser["Username"].ToString(),
-                        readerUser["Phone"].ToString(),
-                        readerUser["AddressID"].ToString()
-                    );
+                        swapItem.UserId = users.ElementAt(0);
                     }
-                    swapItem.UserId = itemUser;
-                    connection.Close();
                 }
             }
             catch (Exception e)
