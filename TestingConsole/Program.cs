@@ -15,12 +15,13 @@ namespace TestingConsole
 {
     class Program
     {
-        
 
-        private static void Testing() {
+
+        private static void Testing()
+        {
             ManageUsersService manageUsersService;
-        SwapItemService swapItemService;
-        //TODO: Test method.Delete it.
+            SwapItemService swapItemService;
+            //TODO: Test method.Delete it.
             manageUsersService = new ManageUsersService();
             swapItemService = new SwapItemService();
             SwapItemsDAO swDAO = new SwapItemsDAO();
@@ -41,7 +42,7 @@ namespace TestingConsole
             List<User> allUsers = manageUsersService.getAllUsers();
             foreach (User user in allUsers)
             {
-                Debug.WriteLine("Username: " + user.Username + "| Name: " + user.Name + ", Last name: " + user.LastName); 
+                Debug.WriteLine("Username: " + user.Username + "| Name: " + user.Name + ", Last name: " + user.LastName);
             }
 
             List<SwapItem> swapItems = swapItemService.getSwapItemByName("Motorka");
@@ -76,13 +77,13 @@ namespace TestingConsole
             SwapRequestDAO requestDAO = new SwapRequestDAO();
             requestDAO.addSwapRequest(new SwapRequest(Guid.NewGuid().ToString(), testItem, testItem, new DateTime(), 155));
 
-           
+
 
 
             // TEST ALL
             User user1 = manageUsersService.addNewUser("Ant", "Roryy", "em@ail.com", "passw", "R5", "075666773", "address");
             User user2 = manageUsersService.addNewUser("Pep", "Haua", "ja@ail.com", "passw", "Hauuu", "872010111", "52 St.");
-           
+
             SwapItem item1 = swapItemService.addNewSwapItem("Motorka", "aparat", new DateTime(), user1);
             SwapItem item2 = swapItemService.addNewSwapItem("Muljac", "grozje", new DateTime(), user2);
             SwapRequest HoolJohnSwap = new SwapRequest(Guid.NewGuid().ToString(), item1, item2, new DateTime(), 257);
