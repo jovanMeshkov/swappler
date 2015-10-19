@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swappler", "Swappler\Swappler.csproj", "{49A8F373-7D9E-4EE0-AD62-DCEF7B3C4066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingConsole", "TestingConsole\TestingConsole.csproj", "{9EB887DC-A02C-4032-8448-CE292D128009}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{49A8F373-7D9E-4EE0-AD62-DCEF7B3C4066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49A8F373-7D9E-4EE0-AD62-DCEF7B3C4066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49A8F373-7D9E-4EE0-AD62-DCEF7B3C4066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EB887DC-A02C-4032-8448-CE292D128009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EB887DC-A02C-4032-8448-CE292D128009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EB887DC-A02C-4032-8448-CE292D128009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EB887DC-A02C-4032-8448-CE292D128009}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
