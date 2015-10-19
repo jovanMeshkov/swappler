@@ -171,6 +171,8 @@
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\ISwapItemSpecification.cs" />
+    <Compile Include="Models\ISwapRequestSpecification.cs" />
+    <Compile Include="Models\RequestSpecificationByUser.cs" />
     <Compile Include="Models\SwapItem.cs" />
     <Compile Include="Models\SwapItemSpecificationByAge.cs" />
     <Compile Include="Models\SwapItemSpecificationByName.cs" />
@@ -184,8 +186,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repositories\ISwapItemRepository.cs" />
+    <Compile Include="Repositories\ISwapRequestRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\SwapItemRepository.cs" />
+    <Compile Include="Repositories\SwapRequestRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Models\IUserSpecification.cs" />
     <Compile Include="Models\UserSpecificationByName.cs" />

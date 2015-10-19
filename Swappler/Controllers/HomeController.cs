@@ -15,6 +15,7 @@ namespace Swappler.Controllers
     {
         ManageUsersService manageUsersService;
         SwapItemService swapItemService;
+        SwapRequestManagementService swapRequestManagementService;
 
 
         public ActionResult Index()
@@ -40,7 +41,7 @@ namespace Swappler.Controllers
             List<User> allUsers = manageUsersService.getAllUsers();
             foreach (User user in allUsers)
             {
-                Debug.WriteLine("Username: " + user.Username + "| Name: " + user.Name + ", Last name: " + user.LastName); 
+                Debug.WriteLine("Username: " + user.Username + "| Name: " + user.Name + ", Last name: " + user.LastName);
             }
 
             List<SwapItem> swapItems = swapItemService.getSwapItemByName("Motorka");
@@ -75,13 +76,10 @@ namespace Swappler.Controllers
             SwapRequestDAO requestDAO = new SwapRequestDAO();
             requestDAO.addSwapRequest(new SwapRequest(Guid.NewGuid().ToString(), testItem, testItem, new DateTime(), 155));
 
-           
-
-
             // TEST ALL
             User user1 = manageUsersService.addNewUser("Ant", "Roryy", "em@ail.com", "passw", "R5", "075666773", "address");
             User user2 = manageUsersService.addNewUser("Pep", "Haua", "ja@ail.com", "passw", "Hauuu", "872010111", "52 St.");
-           
+
             SwapItem item1 = swapItemService.addNewSwapItem("Motorka", "aparat", new DateTime(), user1);
             SwapItem item2 = swapItemService.addNewSwapItem("Muljac", "grozje", new DateTime(), user2);
             SwapRequest HoolJohnSwap = new SwapRequest(Guid.NewGuid().ToString(), item1, item2, new DateTime(), 257);
@@ -98,7 +96,13 @@ namespace Swappler.Controllers
                 }
             }
 
-            return View(listAllItems);
+            swapRequestManagementService = new SwapRequestManagementService();
+            List<SwapRequest> resultRequests = swapRequestManagementService.getRequestsByUser("R5");
+            foreach (SwapRequest req in resultRequests) 
+            {
+                Debug.WriteLine(req.Money + " $, " + req.SwapItem.Name + "  < - >  " + req.OfferItem.Name);
+            }
+            return View();
         }
         public ActionResult EditProfile()
         {
