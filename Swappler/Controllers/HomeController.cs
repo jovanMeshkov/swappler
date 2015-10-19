@@ -14,8 +14,8 @@ namespace Swappler.Controllers
     public class HomeController : Controller
     {
 
-        ManageUsersService manageUsersService;
-        SwapItemService swapItemService;
+        UserManagementService manageUsersService;
+        SwapItemManagementService swapItemService;
         SwapRequestManagementService swapRequestManagementService;
 
         public ActionResult Index()

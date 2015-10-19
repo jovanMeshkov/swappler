@@ -13,17 +13,17 @@ namespace Swappler.Repositories
 
         public bool addSwapRequest(SwapRequest swapRequest)
         {
-            throw new NotImplementedException();
+            return swapRequestDAO.addSwapRequest(swapRequest);
         }
 
-        public bool removeSwapItem(String swapRequestGuid)
+        public bool removeSwapRequest(String swapRequestGuid)
         {
-            throw new NotImplementedException();
+            return swapRequestDAO.removeSwapRequest(swapRequestGuid);
         }
 
-        public bool updateSwapItem(SwapRequest swapItem)
+        public bool updateSwapRequest(SwapRequest swapRequest)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //TODO: Implement edit swap request.
         }
 
         public List<SwapRequest> query(ISwapRequestSpecification specification)

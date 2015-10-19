@@ -19,11 +19,11 @@ namespace TestingConsole
 
         private static void Testing()
         {
-            ManageUsersService manageUsersService;
-            SwapItemService swapItemService;
+            UserManagementService manageUsersService;
+            SwapItemManagementService swapItemService;
             //TODO: Test method.Delete it.
-            manageUsersService = new ManageUsersService();
-            swapItemService = new SwapItemService();
+            manageUsersService = new UserManagementService();
+            swapItemService = new SwapItemManagementService();
             SwapItemsDAO swDAO = new SwapItemsDAO();
 
             // Search by username

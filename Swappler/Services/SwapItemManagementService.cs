@@ -11,7 +11,7 @@ namespace Swappler.Services
      * Swap item service.
      * 
      */
-    public class SwapItemService
+    public class SwapItemManagementService
     {
         /* Specifies number of items included in newest items feed. */
         private const int LATEST_SWAP_ITEMS_NUMBER = 15;
@@ -23,7 +23,7 @@ namespace Swappler.Services
          * Constructor.
          * 
          */
-        public SwapItemService() 
+        public SwapItemManagementService() 
         {
             swapItemRepository = new SwapItemRepository();
             swapItemRepositoryInterface = (ISwapItemRepository) swapItemRepository;
