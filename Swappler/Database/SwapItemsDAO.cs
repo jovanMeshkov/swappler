@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient; //download MySqlConnector .net and add this library from references
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -29,7 +29,7 @@ namespace Swappler.Database
             String GET_ITEM_QUERY = "select * from SwapItem s where s.Guid='" + swapItem.SwapItemGuid + "'"; //TODO: Check this
 
             String INSERT_ITEM_QUERY = "INSERT INTO SwapItem (Guid, Name, Description, Date, PhotoURL, FlagSwapped, UserId) " + // UserId is Username from User;
-                "VALUES ('" + swapItem.SwapItemGuid + "','" + swapItem.Name + "','" + swapItem.Description + "','" + swapItem.Date + "','" + swapItem.PhotoUrl + "','" + (swapItem.Flag_swapped ? 1 : 0) + "','" + swapItem.UserId.Username + "')";
+                "VALUES ('" + swapItem.SwapItemGuid + "','" + swapItem.Name + "','" + swapItem.Description + "','" + swapItem.Date + "','" + swapItem.PhotoUrl + "','" + (swapItem.Swapped ? 1 : 0) + "','" + swapItem.UserId.Username + "')";
 
             Debug.WriteLine(GET_ITEM_QUERY);
             Debug.WriteLine(INSERT_ITEM_QUERY);

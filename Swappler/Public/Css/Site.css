@@ -12,6 +12,18 @@
        color:white;
 }
 
+#image {
+    margin-top:65px;
+}
+#image:hover {
+        cursor: pointer;
+}
+textarea {
+    resize:none;
+    text-wrap:normal;
+   
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -146,6 +158,7 @@ label {
 }
 #whitefeed{
     background-color: white;
+
 }
 #logoImg{
     width : 60px;
