@@ -31,6 +31,10 @@ namespace Swappler.Controllers
         {
             return View();
         }
+        public ActionResult AddItem()
+        {
+            return View();
+        }
 
     }
 }
