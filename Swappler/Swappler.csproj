@@ -247,8 +247,8 @@
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Shared\LoginLayout.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\AddItem.cshtml" />
+    <Content Include="Views\Auth\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
