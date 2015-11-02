@@ -9,8 +9,7 @@ using Swappler.Models;
 using Swappler.Services;
 using Swappler.Repositories;
 using Swappler.Database;
-using MySql.Data.MySqlClient;
-using MySql.Data.Types;
+
 
 namespace TestingConsole
 {
@@ -20,12 +19,11 @@ namespace TestingConsole
 
         private static void Testing()
         {
-
-            ManageUsersService manageUsersService;
-            SwapItemService swapItemService;
+            UserManagementService manageUsersService;
+            SwapItemManagementService swapItemService;
             //TODO: Test method.Delete it.
-            manageUsersService = new ManageUsersService();
-            swapItemService = new SwapItemService();
+            manageUsersService = new UserManagementService();
+            swapItemService = new SwapItemManagementService();
             SwapItemsDAO swDAO = new SwapItemsDAO();
 
             // Search by username
@@ -67,7 +65,7 @@ namespace TestingConsole
             }
 
             // Get all swap items
-            List<SwapItem> listAllItems = swDAO.Query("select * from SwapItem");
+            List<SwapItem> listAllItems = swDAO.query("select * from SwapItem");
             Debug.WriteLine("Swap items total: " + listAllItems.Count);
             foreach (SwapItem swapItem in listAllItems)
             {
@@ -77,7 +75,7 @@ namespace TestingConsole
             // Add swap request.
             SwapItem testItem = listAllItems.ElementAt(4);
             SwapRequestDAO requestDAO = new SwapRequestDAO();
-            requestDAO.AddSwapRequest(new SwapRequest(Guid.NewGuid().ToString(), testItem, testItem, new DateTime(), 155));
+            requestDAO.addSwapRequest(new SwapRequest(Guid.NewGuid().ToString(), testItem, testItem, new DateTime(), 155));
 
 
 
@@ -89,11 +87,11 @@ namespace TestingConsole
             SwapItem item1 = swapItemService.addNewSwapItem("Motorka", "aparat", new DateTime(), user1);
             SwapItem item2 = swapItemService.addNewSwapItem("Muljac", "grozje", new DateTime(), user2);
             SwapRequest HoolJohnSwap = new SwapRequest(Guid.NewGuid().ToString(), item1, item2, new DateTime(), 257);
-            requestDAO.AddSwapRequest(HoolJohnSwap);
+            requestDAO.addSwapRequest(HoolJohnSwap);
 
             // Get all swap requests
             Debug.WriteLine("GETTING REQUESTS...");
-            List<SwapRequest> allRequests = requestDAO.Query("select * from SwapRequest");
+            List<SwapRequest> allRequests = requestDAO.query("select * from SwapRequest");
             foreach (SwapRequest req in allRequests)
             {
                 if (req.SwapItem.UserId != null && req.OfferItem.UserId != null)
@@ -104,7 +102,6 @@ namespace TestingConsole
         }
         static void Main(string[] args)
         {
-
         }
     }
 }

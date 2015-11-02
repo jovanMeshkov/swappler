@@ -13,7 +13,7 @@ namespace Swappler.Services
      *  
      * 
      */
-    public class ManageUsersService
+    public class UserManagementService
     {
         private UserRepository userRepository;
         private IUserRepository userRepositoryInterface;
@@ -21,7 +21,7 @@ namespace Swappler.Services
         /**
          *  Constructor.
          */
-        public ManageUsersService()
+        public UserManagementService()
         {
             userRepository = new UserRepository();
             userRepositoryInterface = (IUserRepository) userRepository;

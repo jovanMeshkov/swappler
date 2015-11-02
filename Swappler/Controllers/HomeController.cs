@@ -13,6 +13,11 @@ namespace Swappler.Controllers
 {
     public class HomeController : Controller
     {
+
+        UserManagementService manageUsersService;
+        SwapItemManagementService swapItemService;
+        SwapRequestManagementService swapRequestManagementService;
+
         public ActionResult Index()
         {
             return View();
@@ -22,7 +27,12 @@ namespace Swappler.Controllers
             return View();
         }
 
-        public ActionResult AddItem()
+        public ActionResult Login()
+        {
+            return View();
+        }
+        
+        public ActionResult Register()
         {
             return View();
         }

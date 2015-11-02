@@ -11,9 +11,9 @@ using Swappler.Utilities;
 namespace Swappler.Database
 {
     /*
-     * Swap request data access object.
-     * 
-     */
+     * Swap request data access object. 
+     *  
+     */ 
     public class SwapRequestDAO
     {
         private MySqlConnection connection;
