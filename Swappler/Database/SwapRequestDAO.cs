@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using Swappler.Utilities;
 
 namespace Swappler.Database
 {
@@ -15,19 +16,14 @@ namespace Swappler.Database
      */
     public class SwapRequestDAO
     {
-        private String SwapplerConnectionString;
         private MySqlConnection connection;
 
         public SwapRequestDAO()
         {
-            SwapplerConnectionString = ConfigurationManager.ConnectionStrings["SwapplerMySqlConnection"].ConnectionString;
-            Console.WriteLine(SwapplerConnectionString);
-            connection = new MySqlConnection();
-            connection.ConnectionString = "server=box1021.bluehost.com;user id=kvantumo_adijo;password=adijoIT-Proekt2015;database=kvantumo_swappler;";
-            // TODO: Change hardcoded connection string :D :P
+            connection = connection = ConnectionProvider.MySqlConnection();
         }
 
-        public Boolean addSwapRequest(SwapRequest swapRequest)
+        public Boolean AddSwapRequest(SwapRequest swapRequest)
         {
             int result = 0;
             String INSERT_REQUEST_QUERY = "INSERT INTO SwapRequest (Guid, Date, Money, FlagActive, SwapItemId, OfferItemId) " + // UserId is Username from User;
@@ -56,7 +52,7 @@ namespace Swappler.Database
             return result == 1 ? true : false;
         }
 
-        public Boolean removeSwapRequest(String swapRequestGuid)
+        public Boolean RemoveSwapRequest(String swapRequestGuid)
         {
             //TODO: Change to parametrized SQL Queries (Sql injection security) :P 
 
@@ -82,7 +78,7 @@ namespace Swappler.Database
             return result == 1 ? true : false;
         }
 
-        public List<SwapRequest> query(String sqlQuery)
+        public List<SwapRequest> Query(String sqlQuery)
         {
             List<SwapRequest> resultList = new List<SwapRequest>();
             MySqlCommand command = new MySqlCommand();
@@ -126,8 +122,8 @@ namespace Swappler.Database
                     String GET_OFFER_ITEM = "select * from SwapItem i where i.Guid='" + swapRequest.OfferItem.SwapItemGuid + "'";        
 
                     SwapItemsDAO swapItemsDAO = new SwapItemsDAO();
-                    List<SwapItem> swapItems = swapItemsDAO.query(GET_SWAP_ITEM);
-                    List<SwapItem> offerItems = swapItemsDAO.query(GET_OFFER_ITEM);
+                    List<SwapItem> swapItems = swapItemsDAO.Query(GET_SWAP_ITEM);
+                    List<SwapItem> offerItems = swapItemsDAO.Query(GET_OFFER_ITEM);
 
                     if (swapItems.Count > 0 && offerItems.Count > 0)
                     {

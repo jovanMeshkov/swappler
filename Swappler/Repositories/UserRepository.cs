@@ -16,27 +16,27 @@ namespace Swappler.Repositories
 
         Boolean IUserRepository.addUser(User user)
         {
-            return usersDAO.addUser(user);
+            return usersDAO.AddUser(user);
         }
 
         Boolean IUserRepository.removeUser(String username)
         {
-            return usersDAO.removeUser(username);
+            return usersDAO.RemoveUser(username);
         }
 
         Boolean IUserRepository.updateUser(User user)
         {
-            return usersDAO.updateUser(user);
+            return usersDAO.UpdateUser(user);
         }
 
         List<User> IUserRepository.query(IUserSpecification specification)
         {
-            return usersDAO.queryUsers(specification.toSqlClause());
+            return usersDAO.QueryUsers(specification.toSqlClause());
         }
 
         List<User> IUserRepository.getAll()
         {
-            return usersDAO.getAllUsers();
+            return usersDAO.GetAllUsers();
         }
     }
 }

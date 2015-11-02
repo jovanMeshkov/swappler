@@ -18,8 +18,16 @@ namespace Swappler.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Register()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(string firstName, string lastName, string displayName, string email, string password, string passwordConfirmation)
+        {
+
             return View();
         }
     }

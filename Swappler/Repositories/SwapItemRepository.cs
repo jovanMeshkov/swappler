@@ -17,12 +17,12 @@ namespace Swappler.Repositories
 
         public Boolean addSwapItem(SwapItem swapItem)
         {
-            return swapItemsDAO.addSwapItem(swapItem);
+            return swapItemsDAO.AddSwapItem(swapItem);
         }
 
         public Boolean removeSwapItem(String swapItemGuid)
         {
-            return swapItemsDAO.removeSwapItem(swapItemGuid);
+            return swapItemsDAO.RemoveSwapItem(swapItemGuid);
         }
 
         public Boolean updateSwapItem(SwapItem swapItem)
@@ -32,7 +32,7 @@ namespace Swappler.Repositories
 
         public List<SwapItem> query(ISwapItemSpecification specification)
         {
-            return swapItemsDAO.query(specification.toSqlClause());
+            return swapItemsDAO.Query(specification.toSqlClause());
         }
    
     }

@@ -15,7 +15,6 @@ namespace Swappler.Controllers
     {
         public ActionResult Index()
         {
-            //return View(listAllItems);
             return View();
         }
         public ActionResult EditProfile()

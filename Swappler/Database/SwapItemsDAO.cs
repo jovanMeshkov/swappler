@@ -5,25 +5,21 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using Swappler.Models;
+using Swappler.Utilities;
 using System.Diagnostics;
 
 namespace Swappler.Database
 {
     public class SwapItemsDAO
     {
-        private String SwapplerConnectionString;
         private MySqlConnection connection;
 
         public SwapItemsDAO()
         {
-            SwapplerConnectionString = ConfigurationManager.ConnectionStrings["SwapplerMySqlConnection"].ConnectionString;
-            Console.WriteLine(SwapplerConnectionString);
-            connection = new MySqlConnection();
-            connection.ConnectionString = "server=box1021.bluehost.com;user id=kvantumo_adijo;password=adijoIT-Proekt2015;database=kvantumo_swappler;";
-            // TODO: Change hardcoded connection string :D :P
+            connection = ConnectionProvider.MySqlConnection();
         }
 
-        public Boolean addSwapItem(SwapItem swapItem)
+        public Boolean AddSwapItem(SwapItem swapItem)
         {
             int result = 0;
             String GET_ITEM_QUERY = "select * from SwapItem s where s.Guid='" + swapItem.SwapItemGuid + "'"; //TODO: Check this
@@ -76,7 +72,7 @@ namespace Swappler.Database
         }
 
 
-        public Boolean removeSwapItem(String swapItemGuid)
+        public Boolean RemoveSwapItem(String swapItemGuid)
         {
             //TODO: Change to parametrized SQL Queries (Sql injection security) :P 
 
@@ -103,7 +99,7 @@ namespace Swappler.Database
         }
 
 
-        public List<SwapItem> query(String sqlQuery)
+        public List<SwapItem> Query(String sqlQuery)
         {
             List<SwapItem> resultList = new List<SwapItem>();
             MySqlCommand command = new MySqlCommand();
@@ -140,7 +136,7 @@ namespace Swappler.Database
                 {
                     String GET_USER_QUERY = "select * from User u where u.Username='" + swapItem.UserId.Username + "'";
                     UsersDAO usersDAO = new UsersDAO();
-                    List<User> users = usersDAO.queryUsers(GET_USER_QUERY);
+                    List<User> users = usersDAO.QueryUsers(GET_USER_QUERY);
 
                     if (users.Count > 0)
                     {

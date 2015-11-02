@@ -191,13 +191,13 @@
     <Compile Include="Services\SwapItemService.cs" />
     <Compile Include="Services\SwapRequestManagementService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\ConnectionProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Public\Css\bootstrap.css" />
     <Content Include="Public\Css\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Public\Css\font-awesome.css" />
     <Content Include="Public\Css\font-awesome.min.css" />
     <Content Include="Public\Fonts\glyphicons-halflings-regular.svg" />
@@ -207,6 +207,8 @@
     <Content Include="Public\Images\AddPicture.png" />
     <Content Include="Public\Scripts\bootstrap.js" />
     <Content Include="Public\Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\swappler - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\swappler - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

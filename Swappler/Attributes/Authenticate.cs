@@ -13,6 +13,7 @@ namespace Swappler.Attributes
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            Console.WriteLine();
         }
     }
 }
