@@ -1,63 +1,64 @@
-﻿@{
+﻿@using Swappler.ViewModels;
+
+@{
     Layout = "~/Views/Shared/MasterLayout.cshtml";
 }
 
+
+@model IndexViewModel
+
 <div class="container-fluid">
+
     <div class="col-md-3">
         <p class="lead">Shop Name</p>
-        <div class="list-group">
-            <a href="#" class="list-group-item">Category 1</a>
-            <a href="#" class="list-group-item">Category 2</a>
-            <a href="#" class="list-group-item">Category 3</a>
+        <div class="col-lg-4 icon-wrapper">
+            <img class="swap-item-icon img-thumbnail" src="">
         </div>
-    </div>
-    <!-- end col-md-3 -->
-    <div class="col-md-6" >
-        <div class="row" >
-            <div class="col-md-offset-9">
-                <button type="submit" class="btn btn-default">Feed</button>
-                <button type="submit" class="btn btn-default">Profile</button>       
+
+        <div class="col-lg-8">
+            <div class="swap-item-name"></div>
+            <div class="swap-item-owner"></div>
+            <div class="swap-item-creation-date"></div>
+            <div class="swap-item-description">
+
             </div>
         </div>
-
-        <div class="row" id="whitefeed">
-             <div class="row item-news-feed">
-                    <div class="col-md-1">
-                        <img class="logo" id="logoImg" src="~/Public/Images/12.png">
-                    </div>
-                    <div class="col-lg-7">
-                        <h4> Motorka </h4><span> Oliver Oreshvkoski</span>
-                    </div>
-
-                    <div class="col-md-offset-10">
-                        <span>Today 6:00 pm</span>
-                    </div>
-                </div>
-
-                <div class="row item-news-feed">
-                    <div class="col-lg-7">
-                        <h3>
-                            Item Description
-                        </h3>
-                        <span> oasdkaosdkasopdkasdpaoks </span>
-                    </div>
-                    <div class="col-md-offset-8">
-                        <img class="logo" id="pictureFeed" src="~/Public/Images/12.png" >
-                    </div>
-                    <p></p>
-                </div>
-          
-
-        </div>
     </div>
-    <!-- end col-md-3 -->
+
+    <div id="news-feed" class="col-md-6">
+
+        <div id="list-swap-items">
+            @{
+                var swapItems = Model.SwapItems;
+            }
+            @Html.Partial("~/Views/Partials/SwapItemsForFeed.cshtml", swapItems)
+        </div>
+
+
+        <button id="btn-load-more" class="btn btn-block btn-default has-spinner">
+            <span class="spinner"><i class="fa fa-spin fa-refresh"></i></span>
+            Load More
+        </button>
+
+
+    </div>
+
     <div class="col-md-3">
-        <p class="lead">Shop Name</p>
-        <div class="list-group">
-            <a href="#" class="list-group-item">Category 1</a>
-            <a href="#" class="list-group-item">Category 2</a>
-            <a href="#" class="list-group-item">Category 3</a>
+        <p class="lead">Publish item:</p>
+        <div class="col-lg-4 icon-wrapper">
+            <img class="swap-item-icon img-thumbnail" src="">
+        </div>
+
+        <div class="col-lg-8">
+            <div class="swap-item-name"></div>
+            <div class="swap-item-owner"></div>
+            <div class="swap-item-creation-date"></div>
+            <div class="swap-item-description">
+
+            </div>
         </div>
     </div>
-    <!-- end col-md-3 -->
+
+    
+
 </div>

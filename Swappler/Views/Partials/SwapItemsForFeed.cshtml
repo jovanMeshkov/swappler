@@ -1,0 +1,23 @@
+﻿@using Swappler.Utilities
+@using Swappler.Models
+
+@model List<SwapItem>
+
+@foreach (var swapItem in Model)
+{
+    <div class="swap-item row" value="@swapItem.Guid">
+        @* Item Icon *@
+        <div class="col-lg-4 icon-wrapper">
+            <img class="swap-item-icon img-thumbnail" src="@swapItem.PhotoUrl">
+        </div>
+        @* Item Name and Creator*@
+        <div class="col-lg-8">
+            <div class="swap-item-name">@swapItem.Name</div>
+            <div class="swap-item-owner">Published by @swapItem.User.Name @swapItem.User.LastName</div>
+            <div class="swap-item-creation-date">@swapItem.Date.ToSmartDate()</div>
+            <div class="swap-item-description">
+                @swapItem.Description
+            </div>
+        </div>
+    </div>
+}

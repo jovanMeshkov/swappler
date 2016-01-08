@@ -8,7 +8,7 @@
  * files not expressly granted by Microsoft, whether by implication, estoppel
  * or otherwise. Insofar as a script file is dual licensed under GPL,
  * Microsoft neither took the code under GPL nor distributes it thereunder but
- * under the terms set out in this paragraph. All notices and licenses
+ * under the terms set out in this paragraph. AllUsers notices and licenses
  * below are for informational purposes only.
  *
  * NUGET: END LICENSE TEXT */
@@ -17,12 +17,12 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Perform an asynchronous HTTP (Ajax) request.</summary>
     ///   <param name="url" type="String">A string containing the URL to which the request is sent.</param>
-    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with $.ajaxSetup(). See jQuery.ajax( settings ) below for a complete list of all settings.</param>
+    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. AllUsers settings are optional. A default can be set for any option with $.ajaxSetup(). See jQuery.ajax( settings ) below for a complete list of all settings.</param>
     ///   <returns type="jqXHR" />
     /// </signature>
     /// <signature>
     ///   <summary>Perform an asynchronous HTTP (Ajax) request.</summary>
-    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with $.ajaxSetup().</param>
+    ///   <param name="settings" type="PlainObject">A set of key/value pairs that configure the Ajax request. AllUsers settings are optional. A default can be set for any option with $.ajaxSetup().</param>
     ///   <returns type="jqXHR" />
     /// </signature>
   },
@@ -36,7 +36,7 @@ intellisense.annotate(jQuery, {
   'ajaxSetup': function() {
     /// <signature>
     ///   <summary>Set default values for future Ajax requests.</summary>
-    ///   <param name="options" type="PlainObject">A set of key/value pairs that configure the default Ajax request. All options are optional.</param>
+    ///   <param name="options" type="PlainObject">A set of key/value pairs that configure the default Ajax request. AllUsers options are optional.</param>
     /// </signature>
   },
   'ajaxTransport': function() {

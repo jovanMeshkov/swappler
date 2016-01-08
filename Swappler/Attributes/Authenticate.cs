@@ -1,19 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Diagnostics;
-using MySql.Data.MySqlClient;
+﻿using System.Web.Mvc;
+using Swappler.Services;
+using Swappler.Services.Interfaces;
+using Swappler.Utilities;
 
 namespace Swappler.Attributes
 {
     public class AuthenticateAttribute : ActionFilterAttribute
     {
+        private IUserService userService = new UserService();
 
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext actionExecutingContext)
         {
-            Console.WriteLine();
+            var authCookieValue = CookieHelper.AuthCookieValue();
+            var signedUserId = SessionHelper.SignedUserId;
+
+            if (authCookieValue == -1 ||
+                signedUserId == null ||
+                authCookieValue != signedUserId)
+            {
+                actionExecutingContext.Result = new RedirectResult("/Login");
+            }
         }
     }
 }

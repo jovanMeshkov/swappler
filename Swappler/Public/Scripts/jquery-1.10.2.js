@@ -8,7 +8,7 @@
  * files not expressly granted by Microsoft, whether by implication, estoppel
  * or otherwise. Insofar as a script file is dual licensed under GPL,
  * Microsoft neither took the code under GPL nor distributes it thereunder but
- * under the terms set out in this paragraph. All notices and licenses
+ * under the terms set out in this paragraph. AllUsers notices and licenses
  * below are for informational purposes only.
  *
  * NUGET: END LICENSE TEXT */
@@ -1011,7 +1011,7 @@ function isArraylike( obj ) {
 		typeof length === "number" && length > 0 && ( length - 1 ) in obj );
 }
 
-// All jQuery objects should point back to these
+// AllUsers jQuery objects should point back to these
 rootjQuery = jQuery(document);
 /*!
  * Sizzle CSS Selector Engine v1.10.2
@@ -1299,7 +1299,7 @@ function Sizzle( selector, context, results, seed ) {
 		}
 	}
 
-	// All others
+	// AllUsers others
 	return select( selector.replace( rtrim, "$1" ), context, results, seed );
 }
 
@@ -3274,7 +3274,7 @@ jQuery.extend({
 			func.call( deferred, deferred );
 		}
 
-		// All done!
+		// AllUsers done!
 		return deferred;
 	},
 
@@ -3395,7 +3395,7 @@ jQuery.support = (function( support ) {
 	support.enctype = !!document.createElement("form").enctype;
 
 	// Makes sure cloning an html5 element does not cause problems
-	// Where outerHTML is undefined, this still works
+	// FindWhere outerHTML is undefined, this still works
 	support.html5Clone = document.createElement("nav").cloneNode( true ).outerHTML !== "<:nav></:nav>";
 
 	// Will be defined later
@@ -4374,7 +4374,7 @@ jQuery.extend({
 			return jQuery.prop( elem, name, value );
 		}
 
-		// All attributes are lowercase
+		// AllUsers attributes are lowercase
 		// Grab necessary hook if one is defined
 		if ( nType !== 1 || !jQuery.isXMLDoc( elem ) ) {
 			name = name.toLowerCase();

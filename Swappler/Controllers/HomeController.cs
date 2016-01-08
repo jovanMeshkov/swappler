@@ -1,40 +1,109 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Drawing;
 using System.Web.Mvc;
 using Swappler.Models;
 using Swappler.Services;
-using System.Diagnostics;
-using Swappler.Repositories;
-using Swappler.Database;
+using Swappler.Attributes;
+using Swappler.Models.Status;
+using Swappler.Services.Interfaces;
+using Swappler.Utilities;
+using Swappler.ViewModels;
 
 namespace Swappler.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUserService userService = new UserService();
+        private readonly ISwapItemService swapItemService = new SwapItemService(SwapItem.ImagesPath);
+        private readonly ISwapRequestService swapRequestService = new SwapRequestService();
 
-        UserManagementService manageUsersService;
-        SwapItemManagementService swapItemService;
-        SwapRequestManagementService swapRequestManagementService;
-
+        [Authenticate]
         public ActionResult Index()
         {
-            return View();
+            IndexViewModel indexViewModel = new IndexViewModel();
+
+            var swapItems = swapItemService.LoadNewest(2);
+
+            indexViewModel.SwapItems = swapItems;
+
+            if (swapItems == null || swapItems.Count ==0)
+            {
+                indexViewModel.SwapItems = new List<SwapItem>(0);
+                return View(indexViewModel);
+            }
+
+            if (swapItems.Count == 1)
+            {
+                SessionHelper.FirstSwapItemDate = swapItems[0].Date;
+                SessionHelper.LastSwapItemDate = swapItems[0].Date;
+            }
+            else
+            {
+                SessionHelper.FirstSwapItemDate = swapItems[0].Date;
+                SessionHelper.LastSwapItemDate = swapItems[swapItems.Count - 1].Date;
+            }
+            
+            return View(indexViewModel);
         }
+
+        [HttpPost]
+        public ActionResult LoadMoreSwapItems()
+        {
+            var beforeDate = SessionHelper.LastSwapItemDate ?? DateTime.Now;
+
+            var swapItems = swapItemService.LoadMore(beforeDate, 2);
+
+            if (swapItems == null || swapItems.Count == 0)
+            {
+                swapItems = new List<SwapItem>(0);
+                return PartialView("~/Views/Partials/SwapItemsForFeed.cshtml", swapItems);
+            }
+
+            SessionHelper.LastSwapItemDate = swapItems[swapItems.Count - 1].Date;
+
+            return PartialView("~/Views/Partials/SwapItemsForFeed.cshtml", swapItems);
+        }
+
         public ActionResult EditProfile()
         {
             return View();
         }
 
-        public ActionResult Login()
+        [HttpGet]
+        public ActionResult PublishSwapItem()
         {
             return View();
         }
-        
-        public ActionResult Register()
+
+        [HttpPost]
+        public JsonResult PublishSwapItem(PublishSwapItemViewModel publishSwapItemViewModel)
         {
-            return View();
+            // TODO: Implement validation for PublishSwapItemViewModel
+            long? signedUserId = SessionHelper.SignedUserId;
+
+            var name = publishSwapItemViewModel.Name;
+            var description = publishSwapItemViewModel.Description;
+            var photo = publishSwapItemViewModel.Photo;
+            var user = new User { UserId = signedUserId ?? -1 };
+
+            var swapItemStatus = swapItemService.Publish(name, description, Image.FromStream(photo.InputStream), user);
+
+            if (swapItemStatus == SwapItemStatus.Published)
+            {
+                return Json(new
+                {
+                    Success = true,
+                    SuccessMessage = "Successfully published!"
+                });
+            }
+
+            // Assuming error happend
+            return Json(new
+            {
+                Error = true,
+                ErrorMessage = "Error happend.. Try again!"
+            });
         }
 
     }

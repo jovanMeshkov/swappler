@@ -1,19 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-using Swappler.Attributes;
-using System.Diagnostics;
+﻿using System.Web.Mvc;
+using Swappler.Models.Status;
+using Swappler.Services;
+using Swappler.Services.Interfaces;
+using Swappler.Utilities;
+using Swappler.ViewModels;
 
 namespace Swappler.Controllers
 {
     public class AuthController : Controller
     {
-        [Authenticate]
-        public ActionResult Login(String username, String password)
+        private readonly IUserService userService = new UserService();
+
+        [HttpGet]
+        public ActionResult Login()
         {
+            var authCookieValue = CookieHelper.AuthCookieValue();
+            if (authCookieValue == SessionHelper.SignedUserId)
+            {
+                return Redirect("/Home/Index");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel loginViewModel)
+        {
+            if (CookieHelper.AuthCookieValue() == SessionHelper.SignedUserId)
+            {
+                return Json(new
+                {
+                    Redirect = true,
+                    RedirectTo = "/Home/Index"
+                });
+            }
+
+            long userId = -1;
+
+            var userStatus = userService.ValidateCredentials(loginViewModel.EmailOrUsername, loginViewModel.Password, out userId);
+
+            if (userStatus == UserStatus.ValidCredentials)
+            {
+                SessionHelper.SignedUserId = userId;
+
+                var authenticationCookie = CookieHelper.AuthCookie(userId);
+                Response.Cookies.Set(authenticationCookie);
+
+                return Json(new
+                {
+                    Redirect = true,
+                    RedirectTo = "/Home/Index"
+                });
+            }
+
+            if (userStatus == UserStatus.EmailOrUsernameDoesNotExist ||
+                userStatus == UserStatus.InvalidPassword ||
+                userStatus == UserStatus.Error)
+            {
+                return Json(new
+                {
+                    Error = true,
+                    ErrorMessage = userStatus.Description()
+                });
+            }
 
             return View();
         }
@@ -25,10 +74,66 @@ namespace Swappler.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(string firstName, string lastName, string displayName, string email, string password, string passwordConfirmation)
+        [ValidateAntiForgeryToken]
+        public JsonResult Register(UserRegistrationViewModel userRegistration)
         {
+            if (ModelState.IsValid)
+            {
+                UserStatus userStatus = userService
+                                        .Register(userRegistration.FirstName, 
+                                                  userRegistration.LastName, 
+                                                  userRegistration.Username,
+                                                  userRegistration.Email,
+                                                  userRegistration.Password);
 
-            return View();
+                // Successfully registered
+                if (userStatus == UserStatus.Registered)
+                {
+                    return Json(new
+                    {
+                        Success = true,
+                        SuccessMessage = userStatus.Description()
+                    });
+                }
+                
+                // Info messages
+                if (userStatus == UserStatus.EmailAlreadyExist ||
+                    userStatus == UserStatus.UsernameAlreadyExist ||
+                    userStatus == UserStatus.EmailAndUsernameExist)
+                {
+                    return Json(new
+                    {
+                        Info = true,
+                        InfoMessage = userStatus.Description()
+                    });
+                }
+                
+                // Errors
+                if (userStatus == UserStatus.Error)
+                {
+                    return Json(new
+                    {
+                        Error = true,
+                        ErrorMessage = "Error happened, try again!"
+                    });
+                }
+            }
+
+            // Something weird happend, say it is error
+            return Json(new
+            {
+                Error = true,
+                ErrorMessage = "Error happened, try again!"
+            });
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            var redirectToAction = RedirectToAction("Login", "Auth");
+            return redirectToAction;
         }
     }
 }
