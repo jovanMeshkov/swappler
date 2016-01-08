@@ -13,6 +13,7 @@ namespace Swappler.Utilities
     {
         public static readonly string RootDirectory;
         private static readonly string NewLine = Environment.NewLine;
+
         static Logger()
         {
             RootDirectory = ConfigurationManager.AppSettings["Logger.RootDirectory"];
