@@ -9,11 +9,11 @@ namespace UnitTest
     [TestClass]
     public class UserServiceTests
     {
-        readonly UserService userService = new UserService();
+        readonly UserService userService = new UserService(User.ImagesPath);
 
         public UserServiceTests()
         {
-            userService = new UserService();
+            userService = new UserService(User.ImagesPath);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace UnitTest
                 Password = "bit01",
                 Username = "dawd",
                 Phone = "078218192",
-                PhotoUrl = null,
+                PhotoFilename = null,
                 AddressId = null
             });
             
@@ -59,7 +59,7 @@ namespace UnitTest
                 Password = "dawdwad",
                 Username = "bit011",
                 Phone = "1",
-                PhotoUrl = null,
+                PhotoFilename = null,
                 AddressId = null
             });
 

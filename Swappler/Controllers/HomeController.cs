@@ -14,7 +14,7 @@ namespace Swappler.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUserService userService = new UserService();
+        private readonly IUserService userService = new UserService(Models.User.ImagesPath);
         private readonly ISwapItemService swapItemService = new SwapItemService(SwapItem.ImagesPath);
         private readonly ISwapRequestService swapRequestService = new SwapRequestService();
 
@@ -77,12 +77,44 @@ namespace Swappler.Controllers
         
         [Authenticate]
         [HttpPost]
-        public JsonResult SaveProfile(SaveProfileViewModel saveProfileViewModel)
+        public JsonResult SaveProfile(UserUpdateViewModel userUpdateViewModel)
         {
+            if (!ModelState.IsValid || !userUpdateViewModel.DataAvailable)
+            {
+                return Json(new
+                {
+                    Error = true,
+                    ErrorMessage = "Input errors, fix it!"
+                });
+            }
+
+            if (userUpdateViewModel.UserId != SessionHelper.SignedUser.UserId)
+            {
+                return Json(new
+                {
+                    Error = true,
+                    ErrorMessage = "Error happend, try again."
+                });
+            }
+
+            UserStatus userStatus = userService.Update(userUpdateViewModel);
+
+            if (userStatus == UserStatus.Updated)
+            {
+                SessionHelper.SignedUser = userService.FindUserById(userUpdateViewModel.UserId);
+
+                return Json(new
+                {
+                    Success = true,
+                    SuccessMessage = userStatus.Description()
+                });
+            }
+
+            
             return Json(new
             {
-                Success = true,
-                SuccessMessage = "Changes applied"
+                Error = true,
+                ErrorMessage = userStatus.Description()
             });
         }
 
