@@ -10,9 +10,9 @@ using Swappler.Utilities;
 
 namespace Swappler.Services
 {
-    ///
-    ///<summary>Service for users.</summary>
-    ///
+    /// <summary>
+    /// Service for users.
+    /// </summary>
     public class UserService : Service<User, SwapplerSqliteContext>, IUserService
     {
         public UserStatus Add(User user)
@@ -129,9 +129,10 @@ namespace Swappler.Services
             
             return userStatus;
         }
-
-        ///
-        /// <summary>Remove user with given username.</summary>
+        
+        /// <summary>
+        /// Remove user with given username.
+        /// </summary>
         /// <param name="username"></param>
         /// <returns>True if user with specified username existed and its removed, false otherwise</returns>
         public bool Remove(string username)
@@ -209,27 +210,47 @@ namespace Swappler.Services
         }
 
         /// <summary>
+        /// Find user by its unique id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>User</returns>
+        public User FindUserById(long id)
+        {
+            try
+            {
+                var users = from user in Context.Users
+                            where user.UserId == id
+                            select user;
+
+                return users.FirstOrDefault();
+            }
+            catch (Exception exception)
+            {
+                Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Validate entered email or username against the password
         /// </summary>
         /// <param name="emailOrUsername"></param>
         /// <param name="password"></param>
-        /// <param name="userId"></param>
+        /// <param name="user"></param>
         /// <returns>UserStatus</returns>
-        public UserStatus ValidateCredentials(string emailOrUsername, string password, out long userId)
+        public UserStatus ValidateCredentials(string emailOrUsername, string password, out User user)
         {
-            userId = -1;
+            user = null;
             try
             {
                 var users =
-                    (from user in Context.Users
-                    where user.Email == emailOrUsername || user.Username == emailOrUsername
-                    select user).ToList();
+                    (from tUser in Context.Users
+                     where tUser.Email == emailOrUsername || tUser.Username == emailOrUsername
+                     select tUser).ToList();
                 if (users.Count == 1)
                 {
-                    var user = users.FirstOrDefault();
-
-                    userId = user.UserId;
-
+                    user = users.FirstOrDefault();
+                    
                     if (HashHelper.VerifyPassword(password, user.Password))
                     {
                         return UserStatus.ValidCredentials;

@@ -30,8 +30,8 @@ namespace Swappler.Models
         public string Password { get; set; }
         public string Username { get; set; }
         public string Phone { get; set; }
-        public string PhotoUrl { get; set; }
         public Nullable<long> AddressId { get; set; }
+        public string PhotoFilename { get; set; }
     
         public virtual Address Address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.SessionState;
+using Swappler.Models;
 
 namespace Swappler.Utilities
 {
@@ -11,9 +12,9 @@ namespace Swappler.Utilities
             get { return HttpContext.Current.Session; }
         }
 
-        public static long? SignedUserId
+        public static User SignedUser
         {
-            get { return (long?)Session["SignedUser"]; }
+            get { return (User)Session["SignedUser"]; }
             set { Session["SignedUser"] = value; }
         }
 

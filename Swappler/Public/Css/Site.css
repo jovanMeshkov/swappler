@@ -160,10 +160,6 @@ label {
     border-radius: 0px;
 }
 
-#ep-change-image {
-    border-left: 5px solid #fcac45;
-}
-
 #search-form {
     margin-left: 35%;
 }
@@ -221,6 +217,12 @@ label {
 
 .has-spinner.btn-large.spin .spinner {
     width: 19px;
+}
+
+.form-label {
+    font-size: 17px;
+    color: #555555;
+    padding: 0 10px;
 }
 
 #news-feed {
@@ -298,4 +300,29 @@ label {
 #swap-item-choosen-photo {
     width: 100%;
     height: auto;
+}
+
+#edit-user-photo-wrapper {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#edit-user-photo {
+    max-width:100%;
+    max-height:100%;
+        
+}
+
+#btn-edit-user-change-photo {
+    margin: 15px auto 0 auto;
+    width: 140px;
+}
+
+#btn-edit-user-save-changes {
+    
+}
+
+.left-hr-stripe {
+    border-left: 5px solid #fcac45;
 }

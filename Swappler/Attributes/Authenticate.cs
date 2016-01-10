@@ -12,11 +12,11 @@ namespace Swappler.Attributes
         public override void OnActionExecuting(ActionExecutingContext actionExecutingContext)
         {
             var authCookieValue = CookieHelper.AuthCookieValue();
-            var signedUserId = SessionHelper.SignedUserId;
+            var signedUser = SessionHelper.SignedUser;
 
             if (authCookieValue == -1 ||
-                signedUserId == null ||
-                authCookieValue != signedUserId)
+                signedUser == null ||
+                authCookieValue != signedUser.UserId)
             {
                 actionExecutingContext.Result = new RedirectResult("/Login");
             }

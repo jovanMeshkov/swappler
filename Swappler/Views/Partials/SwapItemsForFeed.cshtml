@@ -5,7 +5,7 @@
 
 @foreach (var swapItem in Model)
 {
-    <div class="swap-item row" value="@swapItem.Guid">
+    <div class="swap-item row" data-id="@swapItem.Guid">
         @* Item Icon *@
         <div class="col-lg-4 icon-wrapper">
             <img class="swap-item-icon img-thumbnail" src="@swapItem.PhotoUrl">

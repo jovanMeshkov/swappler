@@ -1,71 +1,141 @@
-﻿@{
-    Layout = "~/Views/Shared/MasterLayout.cshtml"; 
+﻿@using Swappler.Utilities
+@using Swappler.Models
+
+@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
 }
 
+@{
+    var signedUser = SessionHelper.SignedUser;
+}
+
+@model User
+
 <div class="container-fluid">
-    
-    <div class="col-md-3 " style="margin-top: 1%;">
-        <div id="userphoto">
-            <div class="gravatar-wrapper-128"><img id="image" src="https://scontent-fra3-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/1003077_10202730761697354_638351439_n.jpg?oh=0745b59a29b6efd8e502d33dac2f2b30&oe=574587F1" alt="" class="logo" width="120" height="120"><span>Oliver Oreshkovski</span></div>
-            <div class="change-picture-slide" style="top: 30px;">
-                <input accept="image/*" type="file" id="upload" name="upload" onchange="readURL(this);" style="visibility: hidden;"/>
-                <a href="" onclick="changePicture(); return false">Change Picture</a>
+
+    <form id="form-edit-profile">
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+            <div id="edit-user-photo-wrapper">
+                @* Photo *@
+                <img id="edit-user-photo"
+                     src="@Model.PhotoUrl"
+                     alt=""
+                     class="" />
+
+                <div id="upload">
+                    <input id="edit-user-photo-input" name="Photo"
+                           class="hidden" accept="image/*" type="file" />
+
+                    <button id="btn-edit-user-change-photo"
+                            class="btn btn-block btn-default" type="button">
+                        Change Photo
+                    </button>
+                </div>
+
             </div>
         </div>
-    </div>
 
-    <!-- end col-md-3 -->
-    <div class="col-md-8" id="ep-change-image">
-        <div class="container">
+        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 left-hr-stripe">
+
+            <h2 style="padding: 15px 0;">Edit Profile</h2>
+
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-md-9">
-                    <form role="form">
-                        <h2>Edit Profile</h2>
-                        <br>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Current Password" tabindex="4">
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="New Password" tabindex="5">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <button type="submit" class="btn tf-btn btn-default" style="margin-right: 2.5%;">Save Changes</button>
-                        </div>
-                    </form>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="edit-user-first-name">
+                            First name:
+                        </label>
+                        <input id="edit-user-first-name" type="text" name="FirstName"
+                               class="form-control input-lg" placeholder="@Model.Name" tabindex="1">
+                        <label class="control-label status-message" for="edit-user-first-name"></label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="edit-user-last-name">
+                            Last name:
+                        </label>
+                        <input id="edit-user-last-name" type="text" name="LastName"
+                               class="form-control input-lg" placeholder="@Model.LastName" tabindex="2">
+                        <label class="control-label status-message" for="edit-user-last-name"></label>
+                    </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="form-label" for="edit-user-username">
+                            Username:
+                        </label>
+                        <input id="edit-user-username" type="text" name="Username"
+                               class="form-control input-lg" placeholder="@Model.Username" tabindex="3">
+                        <label class="control-label status-message" for="edit-user-username"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="form-label" for="edit-user-email">
+                            Email address:
+                        </label>
+                        <input id="edit-user-email" type="email" name="Email"
+                               class="form-control input-lg" placeholder="@Model.Email" tabindex="4">
+                        <label class="control-label status-message" for="edit-user-email"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <input id="edit-user-current-password" type="password" name="CurrentPassword"
+                               class="form-control input-lg" placeholder="Current Password" tabindex="4">
+                        <label class="control-label status-message" for="edit-user-current-password"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input id="edit-user-new-password" type="password" name="NewPassword"
+                               class="form-control input-lg" placeholder="New Password" tabindex="5">
+                        <label class="control-label status-message" for="edit-user-new-password"></label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input id="edit-user-password-confirmation" type="password" name="PasswordConfirmation"
+                               class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+                        <label class="control-label status-message" for="edit-user-password-confirmation"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-6">
+                    <div class="control-label save-changes-status alert" role="alert"></div>
+                </div>
+
+                <div class="col-xs-6">
+                    <button id="btn-edit-user-save-changes" type="button"
+                            class="btn tf-btn btn-default has-spinner">
+                        <span class="spinner"><i class="fa fa-spin fa-refresh"></i></span>
+                        <b>Save Changes</b>
+                    </button>
+                </div>
+
+            </div>
         </div>
-        <!-- end col-md-3 -->
-    </div>
-    <!-- end col-md-3 -->
+
+    </form>
+
 </div>
 
 

@@ -187,6 +187,7 @@
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\UserRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\SaveProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generators\GenerateDatabase.Context.tt">
@@ -240,11 +241,13 @@
     <Content Include="Public\Scripts\modernizr-2.6.2.js" />
     <Content Include="Public\Scripts\respond.js" />
     <Content Include="Public\Scripts\respond.min.js" />
+    <Content Include="Public\Scripts\swappler.editprofile.js" />
     <Content Include="Public\Scripts\swappler.publishitem.js" />
     <Content Include="Public\Scripts\swappler.index.js" />
     <Content Include="Public\Scripts\swappler.js" />
     <Content Include="Public\Scripts\swappler.login.js" />
     <Content Include="Public\Scripts\swappler.register.js" />
+    <Content Include="Public\Scripts\swappler.utils.js" />
     <Content Include="Public\Scripts\_references.js" />
     <Compile Include="ViewModels\PublishSwapItemViewModel.cs" />
     <Content Include="Web.config">

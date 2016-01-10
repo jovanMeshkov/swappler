@@ -51,7 +51,7 @@
           <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="25" />
-          <Property Name="PhotoUrl" Type="varchar" MaxLength="500" />
+          <Property Name="PhotoFilename" Type="varchar" MaxLength="500" />
           <Property Name="AddressId" Type="integer" />
         </EntityType>
         <Association Name="FK_SwapItem_0_0">
@@ -165,11 +165,11 @@
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="PhotoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="AddressId" Type="Int64" />
           <NavigationProperty Name="Address" Relationship="Self.FK_User_0_0" FromRole="User" ToRole="Address" />
           <NavigationProperty Name="SwapItems" Relationship="Swappler.Database.FK_SwapItem_0_0" FromRole="User" ToRole="SwapItem" />
           <NavigationProperty Name="SwapRequests" Relationship="Swappler.Database.FK_SwapRequest_2_0" FromRole="User" ToRole="SwapRequest" />
+          <Property Name="PhotoFilename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_User_0_0">
           <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
@@ -308,6 +308,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Swappler.Database.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="PhotoFilename" ColumnName="PhotoFilename" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -315,7 +316,6 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
               </MappingFragment>
             </EntityTypeMapping>

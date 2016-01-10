@@ -15,6 +15,8 @@ namespace Swappler.Services.Interfaces
 
         User FindUserByUsername(string username);
 
+        User FindUserById(long id);
+
         /// <summary>
         /// Add and register new user.
         /// </summary>
@@ -33,6 +35,6 @@ namespace Swappler.Services.Interfaces
         /// <param name="password"></param>
         /// <param name="userId"></param>
         /// <returns>UserStatus</returns>
-        UserStatus ValidateCredentials(string emailOrUsername, string password, out long userId);
+        UserStatus ValidateCredentials(string emailOrUsername, string password, out User user);
     }
 }

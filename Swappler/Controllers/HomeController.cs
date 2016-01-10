@@ -19,6 +19,7 @@ namespace Swappler.Controllers
         private readonly ISwapRequestService swapRequestService = new SwapRequestService();
 
         [Authenticate]
+        [HttpGet]
         public ActionResult Index()
         {
             IndexViewModel indexViewModel = new IndexViewModel();
@@ -64,10 +65,25 @@ namespace Swappler.Controllers
 
             return PartialView("~/Views/Partials/SwapItemsForFeed.cshtml", swapItems);
         }
-
+        
+        [Authenticate]
+        [HttpGet]
         public ActionResult EditProfile()
         {
-            return View();
+            User user = userService.FindUserById(SessionHelper.SignedUser.UserId);
+
+            return View(user);
+        }
+        
+        [Authenticate]
+        [HttpPost]
+        public JsonResult SaveProfile(SaveProfileViewModel saveProfileViewModel)
+        {
+            return Json(new
+            {
+                Success = true,
+                SuccessMessage = "Changes applied"
+            });
         }
 
         [HttpGet]
@@ -80,12 +96,12 @@ namespace Swappler.Controllers
         public JsonResult PublishSwapItem(PublishSwapItemViewModel publishSwapItemViewModel)
         {
             // TODO: Implement validation for PublishSwapItemViewModel
-            long? signedUserId = SessionHelper.SignedUserId;
+            var signedUser = SessionHelper.SignedUser;
 
             var name = publishSwapItemViewModel.Name;
             var description = publishSwapItemViewModel.Description;
             var photo = publishSwapItemViewModel.Photo;
-            var user = new User { UserId = signedUserId ?? -1 };
+            var user = signedUser;
 
             var swapItemStatus = swapItemService.Publish(name, description, Image.FromStream(photo.InputStream), user);
 

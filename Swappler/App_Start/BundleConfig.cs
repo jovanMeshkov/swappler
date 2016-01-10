@@ -15,10 +15,12 @@ namespace Swappler
             bundles.Add(new ScriptBundle("~/bundles/swappler")
                 .Include(
                     "~/Public/Scripts/swappler.js",
+                    "~/Public/Scripts/swappler.utils.js",
                     "~/Public/Scripts/swappler.register.js",
                     "~/Public/Scripts/swappler.login.js",
                     "~/Public/Scripts/swappler.index.js",
-                    "~/Public/Scripts/swappler.publishitem.js"
+                    "~/Public/Scripts/swappler.publishitem.js",
+                    "~/Public/Scripts/swappler.editprofile.js"
                 ));
 
             // JQuery

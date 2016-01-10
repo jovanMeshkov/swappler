@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Swappler.Models;
 using Swappler.Models.Status;
 using Swappler.Services;
 using Swappler.Services.Interfaces;
@@ -15,9 +16,14 @@ namespace Swappler.Controllers
         public ActionResult Login()
         {
             var authCookieValue = CookieHelper.AuthCookieValue();
-            if (authCookieValue == SessionHelper.SignedUserId)
+            var signedUser = SessionHelper.SignedUser;
+
+            if (signedUser != null)
             {
-                return Redirect("/Home/Index");
+                if (authCookieValue == signedUser.UserId)
+                {
+                    return Redirect("/Home/Index");
+                }
             }
             return View();
         }
@@ -26,24 +32,16 @@ namespace Swappler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel loginViewModel)
         {
-            if (CookieHelper.AuthCookieValue() == SessionHelper.SignedUserId)
-            {
-                return Json(new
-                {
-                    Redirect = true,
-                    RedirectTo = "/Home/Index"
-                });
-            }
+            User signedUser;
 
-            long userId = -1;
-
-            var userStatus = userService.ValidateCredentials(loginViewModel.EmailOrUsername, loginViewModel.Password, out userId);
+            var userStatus = userService
+                             .ValidateCredentials(loginViewModel.EmailOrUsername, loginViewModel.Password, out signedUser);
 
             if (userStatus == UserStatus.ValidCredentials)
             {
-                SessionHelper.SignedUserId = userId;
+                SessionHelper.SignedUser = signedUser;
 
-                var authenticationCookie = CookieHelper.AuthCookie(userId);
+                var authenticationCookie = CookieHelper.AuthCookie(signedUser.UserId);
                 Response.Cookies.Set(authenticationCookie);
 
                 return Json(new
