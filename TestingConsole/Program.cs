@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using Swappler.Database;
+using Swappler.Models;
+using Swappler.Services;
 
 namespace TestingConsole
 {
@@ -90,17 +93,19 @@ namespace TestingConsole
             //    }
             //}
         }
-        
-       
 
+
+        static void t(int? money)
+        {
+            Console.WriteLine(money);
+        }
         static void Main(string[] args)
         {
-            var context = new SwapplerSqliteContext();
+            var s = new SwapRequestService();
 
-            var query = from swapItem in context.SwapItems
-                        select swapItem;
+            int? money = 2;
 
-            var test = query.ToList();
+            t(money);
 
             return;
         }
