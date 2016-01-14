@@ -9,11 +9,11 @@ namespace UnitTest
     [TestClass]
     public class UserServiceTests
     {
-        readonly UserService userService = new UserService();
+        readonly UserService userService = new UserService(User.ImagesPath);
 
         public UserServiceTests()
         {
-            userService = new UserService();
+            userService = new UserService(User.ImagesPath);
         }
 
         [TestMethod]

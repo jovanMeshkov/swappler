@@ -54,10 +54,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/Home/Profile">
                             <i class="fa fa-user fa-fw "></i>
                             @{ var signedUser = SessionHelper.SignedUser; }
-                            @signedUser.Name
+                            <span id="master-user-profile">@signedUser.Name</span>
                         </a>
                     </li>
                     <li class="dropdown">
