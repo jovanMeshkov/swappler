@@ -154,5 +154,43 @@ namespace Swappler.Controllers
             });
         }
 
+        // Na klik na kopceto SWAP se povikuva via handler, treba da vrate View: CreateSwapRequest.html so izbraniot item
+        [HttpGet]
+        public ActionResult CreateSwapRequest(Guid requestedSwapItemGuid)
+        {
+            Console.WriteLine(" asda  Ajax call came..! ");
+            List<SwapItem> resultItems = swapItemService.FindWhere(x => x.Guid == requestedSwapItemGuid);
+            return View(resultItems[0]);
+        }
+
+        // ne e voopsto testiran
+        // vo CreateSwapRequest ima kopce SEND, na klik se povikuva via handler i treba da prate 2 itemi i ako ima doplata: money
+        [HttpPost]
+        public ActionResult SendSwapRequest(Guid requestedSwapItemGuid, Guid offeredSwapItemGuid, int moneyOffered)
+        {
+            List<SwapItem> resultItems = swapItemService.FindWhere(x => x.Guid == requestedSwapItemGuid);
+            List<SwapItem> resultItems2 = swapItemService.FindWhere(x => x.Guid == offeredSwapItemGuid);
+
+            if (resultItems.Capacity == 1 && resultItems2.Capacity == 1) {
+                
+                SwapItem requestedSwapItem = resultItems[0];
+                SwapItem offeredSwapItem = resultItems2[0];
+                User signedUser = SessionHelper.SignedUser;
+
+                SwapRequest swapRequest = swapRequestService.SendRequest(requestedSwapItem, signedUser, offeredSwapItem, new DateTime(), moneyOffered);
+                return Index();
+            } else {
+                // TODO: Return json ?
+                return Index();
+            }
+        }
+
+        // prebaruvanje po del od ime, dodadena e skripta swappler.search.js
+        [HttpGet] 
+        public ActionResult SearchSwapItems(string partOfSwapItemName)
+        {
+            List<SwapItem> searchResults = swapItemService.FindWhere(x => x.Name.Contains(partOfSwapItemName));
+            return PartialView("~/Views/Partials/SwapItemsForFeed.cshtml", searchResults);
+        }
     }
 }

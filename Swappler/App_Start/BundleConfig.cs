@@ -20,7 +20,9 @@ namespace Swappler
                     "~/Public/Scripts/swappler.login.js",
                     "~/Public/Scripts/swappler.index.js",
                     "~/Public/Scripts/swappler.publishitem.js",
-                    "~/Public/Scripts/swappler.editprofile.js"
+                    "~/Public/Scripts/swappler.editprofile.js",
+                    "~/Public/Scripts/swappler.search.js"
+
                 ));
 
             // JQuery
