@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="swappler" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Faculty\\Swappler\\Swappler\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Faculty\\Swappler\\Swappler\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="swappler/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Faculty\\Swappler\\Swappler\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="SwapplerSqliteContext-Web.config Connection String" description="SwapplerSqliteContext Connection String used in web.config by the application to access the database." value="metadata=res://*/Database.SwapplerEntityDataModel.csdl|res://*/Database.SwapplerEntityDataModel.ssdl|res://*/Database.SwapplerEntityDataModel.msl;provider=System.Data.SQLite.EF6;provider connection string=&quot;data source=|DataDirectory|SwapplerDatabase.db&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Faculty\\Swappler\\Swappler\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SwapplerSqliteContext']/@connectionString" />
+  </parameter>
+</parameters>

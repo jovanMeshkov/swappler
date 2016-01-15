@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SwapplerDatabaseStoreContainer" CdmEntityContainer="SwapplerSqliteContext">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="Swappler.Database.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Swappler.Database.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="PhotoFilename" ColumnName="PhotoFilename" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SwapItems">
+      <EntityTypeMapping TypeName="Swappler.Database.SwapItem">
+        <MappingFragment StoreEntitySet="SwapItem">
+          <ScalarProperty Name="PhotoFilename" ColumnName="PhotoFilename" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="SwapItemId" ColumnName="SwapItemId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Swapped" ColumnName="Swapped" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SwapRequests">
+      <EntityTypeMapping TypeName="Swappler.Database.SwapRequest">
+        <MappingFragment StoreEntitySet="SwapRequest">
+          <ScalarProperty Name="SwapRequestId" ColumnName="SwapRequestId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="SwapItemOfferId" ColumnName="SwapItemOfferId" />
+          <ScalarProperty Name="SwapItemId" ColumnName="SwapItemId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="MoneyOffer" ColumnName="MoneyOffer" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

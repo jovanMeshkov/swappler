@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAatO8fNsEfU+tIxxdmX2dDgAAAAACAAAAAAAQZgAAAAEAACAAAACvetj0uzMyoxMuCIgFg+efC3G3XXp4pJkn3BnL6rTaDwAAAAAOgAAAAAIAACAAAACs8TEbtZK0FChMRSnh4+lvKjMwRTpg2CMJfrm8fyVBC4AAAABfnI97Br24svo2I8YC8Ft9pGZBJRx171c0yJI7QqdGz9W4RA87G00/eEt2B9+gMpQrYRpIXw5M8Xnsd2/82paJgUju0Mo6S3Y1NutsYEhW2/kh6W8VVcBRcTP8WtbhXi/ewYEVgli1UhxOeGgKCsxHRTSeOYFT/Ah+0L6QUenbPUAAAACNi8EHli1JWiFrkmQu20Q+TzGZPvu0IwTH/I/MSyG77aBZfziaHBcU+iwK2dQrpKmEEVXEFsXid1d5kKasqNND</EncryptedPassword>
+    <_PublishTargetUrl>ftp://waws-prod-bay-039.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/SwapplerDatabase.db">
+      <publishTime>01/10/2016 04:40:53</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>01/10/2016 16:06:13</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>01/10/2016 16:06:13</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>01/08/2016 02:05:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>01/08/2016 02:06:06</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>01/08/2016 02:07:38</publishTime>
+    </File>
+    <File Include="bin/Swappler.dll">
+      <publishTime>01/10/2016 16:06:00</publishTime>
+    </File>
+    <File Include="bin/System.Data.SQLite.dll">
+      <publishTime>01/08/2016 02:05:18</publishTime>
+    </File>
+    <File Include="bin/System.Data.SQLite.EF6.dll">
+      <publishTime>01/08/2016 02:05:20</publishTime>
+    </File>
+    <File Include="bin/System.Data.SQLite.Linq.dll">
+      <publishTime>01/08/2016 02:05:21</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/08/2016 02:58:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/08/2016 02:58:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>01/08/2016 04:37:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/08/2016 02:58:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/08/2016 02:58:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/08/2016 02:58:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>01/08/2016 02:58:14</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>01/08/2016 02:07:43</publishTime>
+    </File>
+    <File Include="bin/x64/SQLite.Interop.dll">
+      <publishTime>01/08/2016 02:05:18</publishTime>
+    </File>
+    <File Include="bin/x86/SQLite.Interop.dll">
+      <publishTime>01/08/2016 02:05:18</publishTime>
+    </File>
+    <File Include="Database/SwapplerEntityDataModel.edmx.diagram">
+      <publishTime>01/09/2016 17:23:20</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/08/2016 04:35:05</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>01/10/2016 16:06:09</publishTime>
+    </File>
+    <File Include="Public/Css/bootstrap.css">
+      <publishTime>09/24/2015 19:16:18</publishTime>
+    </File>
+    <File Include="Public/Css/bootstrap.min.css">
+      <publishTime>09/24/2015 19:16:18</publishTime>
+    </File>
+    <File Include="Public/Css/font-awesome.css">
+      <publishTime>12/30/2015 16:26:11</publishTime>
+    </File>
+    <File Include="Public/Css/font-awesome.min.css">
+      <publishTime>09/29/2015 20:08:07</publishTime>
+    </File>
+    <File Include="Public/Css/Site.css">
+      <publishTime>01/09/2016 22:24:45</publishTime>
+    </File>
+    <File Include="Public/Fonts/fontawesome-webfont.eot">
+      <publishTime>09/29/2015 20:08:07</publishTime>
+    </File>
+    <File Include="Public/Fonts/fontawesome-webfont.svg">
+      <publishTime>09/29/2015 20:08:07</publishTime>
+    </File>
+    <File Include="Public/Fonts/fontawesome-webfont.ttf">
+      <publishTime>09/29/2015 20:08:07</publishTime>
+    </File>
+    <File Include="Public/Fonts/fontawesome-webfont.woff">
+      <publishTime>09/29/2015 20:08:07</publishTime>
+    </File>
+    <File Include="Public/Fonts/fontawesome-webfont.woff2">
+      <publishTime>09/29/2015 20:08:07</publishTime>
+    </File>
+    <File Include="Public/Fonts/FontAwesome.otf">
+      <publishTime>09/29/2015 20:08:07</publishTime>
+    </File>
+    <File Include="Public/Fonts/glyphicons-halflings-regular.eot">
+      <publishTime>09/24/2015 19:16:18</publishTime>
+    </File>
+    <File Include="Public/Fonts/glyphicons-halflings-regular.svg">
+      <publishTime>09/24/2015 19:16:18</publishTime>
+    </File>
+    <File Include="Public/Fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>09/24/2015 19:16:18</publishTime>
+    </File>
+    <File Include="Public/Fonts/glyphicons-halflings-regular.woff">
+      <publishTime>09/24/2015 19:16:18</publishTime>
+    </File>
+    <File Include="Public/Images/12.png">
+      <publishTime>09/29/2015 20:08:07</publishTime>
+    </File>
+    <File Include="Public/Images/AddPhoto.png">
+      <publishTime>10/19/2015 20:57:57</publishTime>
+    </File>
+    <File Include="Public/Scripts/additional-methods.js">
+      <publishTime>01/02/2016 18:33:31</publishTime>
+    </File>
+    <File Include="Public/Scripts/additional-methods.min.js">
+      <publishTime>01/02/2016 18:33:31</publishTime>
+    </File>
+    <File Include="Public/Scripts/bootstrap.js">
+      <publishTime>12/13/2015 22:29:59</publishTime>
+    </File>
+    <File Include="Public/Scripts/bootstrap.min.js">
+      <publishTime>12/13/2015 22:29:59</publishTime>
+    </File>
+    <File Include="Public/Scripts/jquery-1.10.2.js">
+      <publishTime>12/13/2015 22:29:59</publishTime>
+    </File>
+    <File Include="Public/Scripts/jquery-1.10.2.min.js">
+      <publishTime>12/13/2015 22:29:59</publishTime>
+    </File>
+    <File Include="Public/Scripts/jquery.validate.js">
+      <publishTime>01/02/2016 12:11:02</publishTime>
+    </File>
+    <File Include="Public/Scripts/jquery.validate.min.js">
+      <publishTime>01/02/2016 12:11:02</publishTime>
+    </File>
+    <File Include="Public/Scripts/modernizr-2.6.2.js">
+      <publishTime>12/13/2015 22:29:59</publishTime>
+    </File>
+    <File Include="Public/Scripts/respond.js">
+      <publishTime>12/13/2015 22:29:59</publishTime>
+    </File>
+    <File Include="Public/Scripts/respond.min.js">
+      <publishTime>12/13/2015 22:29:59</publishTime>
+    </File>
+    <File Include="Public/Scripts/swappler.editprofile.js">
+      <publishTime>01/10/2016 04:34:57</publishTime>
+    </File>
+    <File Include="Public/Scripts/swappler.index.js">
+      <publishTime>01/06/2016 13:38:16</publishTime>
+    </File>
+    <File Include="Public/Scripts/swappler.js">
+      <publishTime>01/02/2016 01:49:27</publishTime>
+    </File>
+    <File Include="Public/Scripts/swappler.login.js">
+      <publishTime>01/03/2016 14:35:56</publishTime>
+    </File>
+    <File Include="Public/Scripts/swappler.publishitem.js">
+      <publishTime>01/08/2016 20:45:46</publishTime>
+    </File>
+    <File Include="Public/Scripts/swappler.register.js">
+      <publishTime>01/10/2016 04:09:57</publishTime>
+    </File>
+    <File Include="Public/Scripts/swappler.utils.js">
+      <publishTime>01/10/2016 04:10:13</publishTime>
+    </File>
+    <File Include="Public/Scripts/_references.js">
+      <publishTime>01/06/2016 00:23:43</publishTime>
+    </File>
+    <File Include="Views/Auth/Login.cshtml">
+      <publishTime>01/09/2016 16:08:16</publishTime>
+    </File>
+    <File Include="Views/Auth/Register.cshtml">
+      <publishTime>01/10/2016 00:12:15</publishTime>
+    </File>
+    <File Include="Views/Home/EditProfile.cshtml">
+      <publishTime>01/10/2016 04:18:14</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>01/09/2016 21:26:19</publishTime>
+    </File>
+    <File Include="Views/Home/PublishSwapItem.cshtml">
+      <publishTime>01/08/2016 20:38:29</publishTime>
+    </File>
+    <File Include="Views/Partials/SwapItemsForFeed.cshtml">
+      <publishTime>01/10/2016 01:25:39</publishTime>
+    </File>
+    <File Include="Views/Shared/AuthLayout.cshtml">
+      <publishTime>01/03/2016 00:58:06</publishTime>
+    </File>
+    <File Include="Views/Shared/MasterLayout.cshtml">
+      <publishTime>01/10/2016 04:26:41</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>01/05/2016 03:40:35</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/10/2016 16:06:07</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

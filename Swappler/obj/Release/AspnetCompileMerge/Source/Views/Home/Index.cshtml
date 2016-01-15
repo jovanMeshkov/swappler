@@ -1,0 +1,63 @@
+﻿@using Swappler.ViewModels
+
+@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+@model IndexViewModel
+
+<div class="container-fluid">
+
+    <div class="col-md-3">
+        <p class="lead">Shop Name</p>
+        <div class="col-lg-4 icon-wrapper">
+            <img class="swap-item-icon img-thumbnail" src="">
+        </div>
+
+        <div class="col-lg-8">
+            <div class="swap-item-name"></div>
+            <div class="swap-item-owner"></div>
+            <div class="swap-item-creation-date"></div>
+            <div class="swap-item-description">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="news-feed" class="col-md-6">
+
+        <div id="list-swap-items">
+            @{
+                var swapItems = Model.SwapItems;
+            }
+            @Html.Partial("~/Views/Partials/SwapItemsForFeed.cshtml", swapItems)
+        </div>
+
+
+        <button id="btn-load-more" class="btn btn-block btn-default has-spinner">
+            <span class="spinner"><i class="fa fa-spin fa-refresh"></i></span>
+            Load More
+        </button>
+
+
+    </div>
+
+    <div class="col-md-3">
+        <p class="lead">Publish item:</p>
+        <div class="col-lg-4 icon-wrapper">
+            <img class="swap-item-icon img-thumbnail" src="">
+        </div>
+
+        <div class="col-lg-8">
+            <div class="swap-item-name"></div>
+            <div class="swap-item-owner"></div>
+            <div class="swap-item-creation-date"></div>
+            <div class="swap-item-description">
+
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>
