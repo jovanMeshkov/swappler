@@ -220,9 +220,7 @@ namespace Swappler.Services
         {
             try
             {
-                var swapItems = from swapItem in Context.SwapItems
-                                where swapItem.Guid == guid
-                                select swapItem;
+                var swapItems = FindWhere(si => si.Guid == guid);
 
                 return swapItems.FirstOrDefault();
             }
@@ -232,6 +230,23 @@ namespace Swappler.Services
                 return null;
             }
         }
+
+        public List<SwapItem> FindByUser(User user)
+        {
+            try
+            {
+                var swapItems = from swapItem in Context.SwapItems
+                                where swapItem.UserId == user.UserId
+                                select swapItem;
+
+                return swapItems.ToList();
+            }
+            catch (Exception exception)
+            {
+                Logger.Write(LogType.Exception, exception.Message);
+                return null;
+            }
+        } 
 
         public List<SwapItem> LoadNewest(int takeCount)
         {

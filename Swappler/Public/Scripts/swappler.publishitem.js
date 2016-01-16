@@ -35,7 +35,7 @@ $(document).ready(function() {
 
         $.ajax({
             method: "POST",
-            url: "/Home/PublishSwapItem",
+            url: "/SwapItem/Publish",
             data: formSwapItemPublishData,
             processData: false,
             contentType: false,
@@ -45,7 +45,7 @@ $(document).ready(function() {
                 if (result.Redirect) {
                     window.location.replace(result.RedirectTo);
                 }
-
+                // TODO: Put response status
                 if (result.Error) {
                     loginStatus(MessageTypes.Error, result.ErrorMessage);
                 }

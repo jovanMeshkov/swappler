@@ -30,7 +30,7 @@ namespace Swappler.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel loginViewModel)
+        public ActionResult Login(UserLoginViewModel loginViewModel)
         {
             User signedUser;
 

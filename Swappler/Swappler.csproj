@@ -116,8 +116,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\Authenticate.cs" />
+    <Compile Include="Controllers\SwapItemController.cs" />
+    <Compile Include="Controllers\SwapRequestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Database\SwapplerEntityDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -184,10 +187,12 @@
     <Compile Include="Utilities\Logger.cs" />
     <Compile Include="Utilities\RegexPattern.cs" />
     <Compile Include="Utilities\SessionHelper.cs" />
+    <Compile Include="ViewModels\CreateSwapRequestViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\SaveProfileViewModel.cs" />
+    <Compile Include="ViewModels\SwapItemViewModel.cs" />
+    <Compile Include="ViewModels\UserLoginViewModel.cs" />
     <Compile Include="ViewModels\UserRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\UserUpdateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generators\GenerateDatabase.Context.tt">
@@ -247,6 +252,7 @@
     <Content Include="Public\Scripts\swappler.js" />
     <Content Include="Public\Scripts\swappler.login.js" />
     <Content Include="Public\Scripts\swappler.register.js" />
+    <Content Include="Public\Scripts\swappler.search.js" />
     <Content Include="Public\Scripts\swappler.utils.js" />
     <Content Include="Public\Scripts\_references.js" />
     <Compile Include="ViewModels\PublishSwapItemViewModel.cs" />
@@ -262,16 +268,17 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\MasterLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\User\EditProfile.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Shared\AuthLayout.cshtml" />
-    <Content Include="Views\Home\PublishSwapItem.cshtml" />
+    <Content Include="Views\SwapItem\Publish.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
     <Content Include="Views\Partials\SwapItemsForFeed.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\CreateSwapRequest.cshtml" />
-    <Content Include="Views\Home\SwapItem.cshtml" />
+    <Content Include="Views\SwapRequest\Create.cshtml" />
+    <Content Include="Views\SwapItem\Show.cshtml" />
+    <Content Include="Views\Partials\SwapItemsForSwapRequest.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />

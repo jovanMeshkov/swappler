@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using Swappler.Database;
 using Swappler.Models;
 using Swappler.Models.Status;
 using Swappler.Services.Interfaces;
 using Swappler.Utilities;
+using Swappler.ViewModels;
 
 namespace Swappler.Services
 {
@@ -279,6 +281,86 @@ namespace Swappler.Services
                 Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
                 return UserStatus.Error;
             }
+        }
+
+        public UserStatus Update(UserUpdateViewModel userUpdateViewModel)
+        {
+            User currentUser = FindUserById(userUpdateViewModel.UserId);
+            
+            if (currentUser == null)
+            {
+                return UserStatus.Error;
+            }
+
+            List<string> fieldsToUpdate = new List<string>();
+
+            currentUser.UserId = userUpdateViewModel.UserId;
+
+            if (userUpdateViewModel.Photo != null)
+            {
+                Image photo = Image.FromStream(userUpdateViewModel.Photo.InputStream);
+                
+                var photoGuid = Guid.NewGuid();
+                var photoName = "u-" + photoGuid.ToString("D") + photo.RawFormat.ExtensionName();
+                var photoFullFilename = ImagesFullPath + photoName;
+
+                photo.Save(photoFullFilename);
+
+                currentUser.PhotoFilename = photoName;
+
+                fieldsToUpdate.Add("PhotoFilename");
+            }
+
+            if (userUpdateViewModel.FirstName != null)
+            {
+                if (userUpdateViewModel.FirstName.Trim() != "")
+                {
+                    currentUser.Name = userUpdateViewModel.FirstName;
+                    fieldsToUpdate.Add("Name");
+                }
+            }
+
+            if (userUpdateViewModel.LastName != null)
+            {
+                if (userUpdateViewModel.LastName.Trim() != "")
+                {
+                    currentUser.LastName = userUpdateViewModel.LastName;
+                    fieldsToUpdate.Add("LastName");
+                }
+            }
+
+            if (userUpdateViewModel.Username != null)
+            {
+                if (userUpdateViewModel.Username.Trim() != "")
+                {
+                    currentUser.Username = userUpdateViewModel.Username;
+                    fieldsToUpdate.Add("Username");
+                }
+            }
+
+            if (userUpdateViewModel.Email != null) 
+            {
+                if (userUpdateViewModel.Email.Trim() != "")
+                {
+                    currentUser.Email = userUpdateViewModel.Email;
+                    fieldsToUpdate.Add("Email");
+                }
+            }
+
+            if (userUpdateViewModel.NewPassword != null)
+            {
+                if (HashHelper.VerifyPassword(userUpdateViewModel.CurrentPassword, currentUser.Password) == false ||
+                    userUpdateViewModel.NewPassword != userUpdateViewModel.PasswordConfirmation)
+                {
+                    return UserStatus.InvalidPassword;
+                }
+
+                currentUser.Password = HashHelper.HashPassword(userUpdateViewModel.NewPassword);
+
+                fieldsToUpdate.Add("Password");
+            }
+
+            return Update(currentUser, fieldsToUpdate.ToArray());
         }
     }
 }

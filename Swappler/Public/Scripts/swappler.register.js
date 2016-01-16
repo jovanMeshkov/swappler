@@ -6,7 +6,7 @@ $(document).ready(function () {
         var $signUpStatus = $(".sign-up-status").eq(0);
         
         $signUpStatus.removeClass("alert-warning");
-        $signUpStatus.removeClass("alert-error");
+        $signUpStatus.removeClass("alert-danger");
         $signUpStatus.removeClass("alert-info");
         $signUpStatus.removeClass("alert-success");
 

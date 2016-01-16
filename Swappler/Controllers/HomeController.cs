@@ -65,110 +65,14 @@ namespace Swappler.Controllers
 
             return PartialView("~/Views/Partials/SwapItemsForFeed.cshtml", swapItems);
         }
-        
-        [Authenticate]
-        [HttpGet]
-        public ActionResult EditProfile()
-        {
-            User user = userService.FindUserById(SessionHelper.SignedUser.UserId);
-
-            return View(user);
-        }
-        
-        [Authenticate]
-        [HttpPost]
-        public JsonResult SaveProfile(SaveProfileViewModel saveProfileViewModel)
-        {
-            return Json(new
-            {
-                Success = true,
-                SuccessMessage = "Changes applied"
-            });
-        }
-
-        [HttpGet]
-        public ActionResult PublishSwapItem()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public JsonResult PublishSwapItem(PublishSwapItemViewModel publishSwapItemViewModel)
-        {
-            // TODO: Implement validation for PublishSwapItemViewModel
-            var signedUser = SessionHelper.SignedUser;
-
-            var name = publishSwapItemViewModel.Name;
-            var description = publishSwapItemViewModel.Description;
-            var photo = publishSwapItemViewModel.Photo;
-            var user = signedUser;
-
-            var swapItemStatus = swapItemService.Publish(name, description, Image.FromStream(photo.InputStream), user);
-
-            if (swapItemStatus == SwapItemStatus.Published)
-            {
-                return Json(new
-                {
-                    Success = true,
-                    SuccessMessage = "Successfully published!"
-                });
-            }
-
-            // Assuming error happend
-            return Json(new
-            {
-                Error = true,
-                ErrorMessage = "Error happend.. Try again!"
-            });
-        }
-
-        // Na klik na kopceto SWAP se povikuva via handler, treba da vrate View: CreateSwapRequest.html so izbraniot item
-        [HttpGet]
-        public ActionResult CreateSwapRequest(Guid requestedSwapItemGuid)
-        {
-            Console.WriteLine(" asda  Ajax call came..! ");
-            List<SwapItem> resultItems = swapItemService.FindWhere(x => x.Guid == requestedSwapItemGuid);
-            return View(resultItems[0]);
-        }
-
-        // TODO: Pishi na angliski... mi gi bode ochte nogu!
-        // ne e voopsto testiran
-        // vo CreateSwapRequest ima kopce SEND, na klik se povikuva via handler i treba da prate 2 itemi i ako ima doplata: money
-        [HttpPost]
-        public ActionResult SendSwapRequest(Guid requestedSwapItemGuid, Guid offeredSwapItemGuid, int moneyOffered)
-        {
-            List<SwapItem> resultItems = swapItemService.FindWhere(x => x.Guid == requestedSwapItemGuid);
-            List<SwapItem> resultItems2 = swapItemService.FindWhere(x => x.Guid == offeredSwapItemGuid);
-
-            if (resultItems.Capacity == 1 && resultItems2.Capacity == 1) {
-                
-                SwapItem requestedSwapItem = resultItems[0];
-                SwapItem offeredSwapItem = resultItems2[0];
-                User signedUser = SessionHelper.SignedUser;
-
-                SwapRequest swapRequest = swapRequestService.SendRequest(requestedSwapItem, signedUser, offeredSwapItem, new DateTime(), moneyOffered);
-                return Index();
-            } else {
-                // TODO: Return json ?
-                return Index();
-            }
-        }
 
         // TODO: Pishi na angliski i tua... mi gi bode ochte nogu!
         // prebaruvanje po del od ime, dodadena e skripta swappler.search.js
-        [HttpGet] 
+        [HttpGet]
         public ActionResult SearchSwapItems(string partOfSwapItemName)
         {
             List<SwapItem> searchResults = swapItemService.FindWhere(x => x.Name.Contains(partOfSwapItemName));
             return PartialView("~/Views/Partials/SwapItemsForFeed.cshtml", searchResults);
-        }
-
-        [Authenticate]
-        [HttpGet]
-        public ActionResult SwapItem(Guid guid)
-        {
-            var swapItem = swapItemService.FindByGuid(guid);
-            return View(swapItem);
         }
     }
 }

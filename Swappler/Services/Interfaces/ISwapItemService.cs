@@ -21,6 +21,8 @@ namespace Swappler.Services.Interfaces
 
         SwapItem FindByGuid(Guid guid);
 
+        List<SwapItem> FindByUser(User user);
+
         List<SwapItem> LoadNewest(int takeCount);
 
         List<SwapItem> LoadNewest(DateTime afterDate);
