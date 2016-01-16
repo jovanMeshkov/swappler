@@ -34,11 +34,9 @@
 
                 <form class="navbar-form navbar-left" role="search" id="search-form">
                     <div class="form-group">
-                        <input id="area-input-search" type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <button id="btn-search-submit" type="button" class="btn btn-default">Submit</button>
-                    <script src="~/Public/Scripts/swappler.search.js">
-                    </script>
+                    <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -54,10 +52,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/Home/Profile">
+                        <a href="#">
                             <i class="fa fa-user fa-fw "></i>
                             @{ var signedUser = SessionHelper.SignedUser; }
-                            <span id="master-user-profile">@signedUser.Name</span>
+                            @signedUser.Name
                         </a>
                     </li>
                     <li class="dropdown">
