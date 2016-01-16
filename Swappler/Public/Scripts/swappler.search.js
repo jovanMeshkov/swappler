@@ -19,13 +19,4 @@ $(document).ready(function() {
 		});
 	});
 
-	$(".swap-item-icon").on("click", function () {
-		window.open($(this).attr("src"), "_blank");
-	});
-
-	$(".create-swap-request").on("click", function (event) {
-		var guid = $(this).parent().data("id") + "";
-		window.location.replace("/Home/CreateSwapRequest?requestedSwapItemGuid=" + guid)
-	});
-
 });

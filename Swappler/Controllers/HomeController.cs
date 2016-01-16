@@ -15,7 +15,7 @@ namespace Swappler.Controllers
     public class HomeController : Controller
     {
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
-        private readonly ISwapItemService swapItemService = new SwapItemService(SwapItem.ImagesPath);
+        private readonly ISwapItemService swapItemService = new SwapItemService(Models.SwapItem.ImagesPath);
         private readonly ISwapRequestService swapRequestService = new SwapRequestService();
 
         [Authenticate]
@@ -163,6 +163,7 @@ namespace Swappler.Controllers
             return View(resultItems[0]);
         }
 
+        // TODO: Pishi na angliski... mi gi bode ochte nogu!
         // ne e voopsto testiran
         // vo CreateSwapRequest ima kopce SEND, na klik se povikuva via handler i treba da prate 2 itemi i ako ima doplata: money
         [HttpPost]
@@ -185,12 +186,21 @@ namespace Swappler.Controllers
             }
         }
 
+        // TODO: Pishi na angliski i tua... mi gi bode ochte nogu!
         // prebaruvanje po del od ime, dodadena e skripta swappler.search.js
         [HttpGet] 
         public ActionResult SearchSwapItems(string partOfSwapItemName)
         {
             List<SwapItem> searchResults = swapItemService.FindWhere(x => x.Name.Contains(partOfSwapItemName));
             return PartialView("~/Views/Partials/SwapItemsForFeed.cshtml", searchResults);
+        }
+
+        [Authenticate]
+        [HttpGet]
+        public ActionResult SwapItem(Guid guid)
+        {
+            var swapItem = swapItemService.FindByGuid(guid);
+            return View(swapItem);
         }
     }
 }

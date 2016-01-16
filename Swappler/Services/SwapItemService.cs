@@ -63,7 +63,7 @@ namespace Swappler.Services
 
             return SwapItemStatus.Removed;
         }
-
+        
         public SwapItemStatus Update(SwapItem swapItem, params string[] updateFields)
         {
             try
@@ -106,15 +106,30 @@ namespace Swappler.Services
             }
         }
 
+        /// <summary>
+        /// Remove swap item from database.
+        /// </summary>
+        /// <param name="swapItemGuid"></param>
+        /// <returns></returns>
         /// 
-        /// <summary>Add new swap item to database.</summary>
-        /// <param name="guid"></param>
+        public bool Remove(Guid swapItemGuid)
+        {
+            SwapItem swapItem = new SwapItem
+            {
+                Guid = swapItemGuid
+            };
+
+            return Remove(swapItem) == SwapItemStatus.Removed;
+        }
+
+        /// <summary>
+        /// Add new swap item to database.
+        /// </summary>
         /// <param name="name"></param>
         /// <param name="description"></param>
-        /// <param name="photoUrl"></param>
+        /// <param name="photo"></param>
         /// <param name="user"></param>
         /// <returns></returns>
-        ///  
         public SwapItemStatus Publish(string name, string description, Image photo, User user)
         {
             var guid = Guid.NewGuid();
@@ -146,21 +161,12 @@ namespace Swappler.Services
             return swapItemStatus;
         }
 
-        ///
-        /// <summary>Remove swap item from database.</summary>
-        /// <param name="swapItemGuid"></param>
+        /// <summary>
+        /// Find items by descending order on date, with skipping and taking desired count
+        /// </summary>
+        /// <param name="offset"></param>
+        /// <param name="max"></param>
         /// <returns></returns>
-        /// 
-        public bool Remove(Guid swapItemGuid)
-        {
-            SwapItem swapItem = new SwapItem
-            {
-                Guid = swapItemGuid
-            };
-
-            return Remove(swapItem) == SwapItemStatus.Removed;
-        }
-
         public List<SwapItem> FindRange(int offset, int max)
         {
             try
@@ -174,23 +180,20 @@ namespace Swappler.Services
             }
             catch (Exception exception)
             {
-                Logger.Write(LogType.Exception, exception.Message);
+                Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
                 return null;
             }
         }
 
-        ///
         /// <summary>
         /// Get swap items based on popularity measure.
         /// </summary>
         /// <returns></returns>
-        ///  
         public List<SwapItem> FindMostPopularSwapItems()
         {
             throw new NotImplementedException(); //TODO: Implement popularity search.
         }
 
-        ///
         /// <summary>
         /// Search swap items by name or part of name.
         /// </summary>
@@ -205,6 +208,23 @@ namespace Swappler.Services
                                 select swapItem;
 
                 return swapItems.ToList();
+            }
+            catch (Exception exception)
+            {
+                Logger.Write(LogType.Exception, exception.Message);
+                return null;
+            }
+        }
+
+        public SwapItem FindByGuid(Guid guid)
+        {
+            try
+            {
+                var swapItems = from swapItem in Context.SwapItems
+                                where swapItem.Guid == guid
+                                select swapItem;
+
+                return swapItems.FirstOrDefault();
             }
             catch (Exception exception)
             {
@@ -244,6 +264,5 @@ namespace Swappler.Services
                 .OrderByDescending(item => item.Date);
             return swapItems.ToList();
         }
-
     }
 }

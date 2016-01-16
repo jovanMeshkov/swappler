@@ -31,6 +31,22 @@ $(document).ready(function() {
 
     $(".create-swap-request").on("click", function (event) {
         var guid = $(this).parent().data("id") + "";
-        window.location.replace("/Home/CreateSwapRequest?requestedSwapItemGuid=" + guid)
+        window.location.replace("/Home/CreateSwapRequest?requestedSwapItemGuid=" + guid);
     });
+
+    // Handling toggling
+    $("#btn-notifications-toggle").on("click", function() {
+        var toggle = $(this).data("toggle");
+        if (toggle == 0) {
+            $(this).removeClass("fa-chevron-down");
+            $(this).addClass("fa-chevron-up");
+            $(this).data("toggle", 1);
+        }
+        else {
+            $(this).removeClass("fa-chevron-up");
+            $(this).addClass("fa-chevron-down");
+            $(this).data("toggle", 0);
+        }
+    });
+
 });

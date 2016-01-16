@@ -59,7 +59,7 @@ namespace Swappler
                     "~/Public/Css/font-awesome.css"
                 ));
 
-
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

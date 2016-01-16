@@ -9,7 +9,17 @@ namespace Swappler.Services.Interfaces
 {
     public interface ISwapItemService : IService<SwapItem, SwapItemStatus>
     {
+        bool Remove(Guid swapItemGuid);
+
         SwapItemStatus Publish(string name, string description, Image photo, User user);
+
+        List<SwapItem> FindRange(int offset, int max);
+
+        List<SwapItem> FindMostPopularSwapItems();
+
+        List<SwapItem> FindByName(string name);
+
+        SwapItem FindByGuid(Guid guid);
 
         List<SwapItem> LoadNewest(int takeCount);
 

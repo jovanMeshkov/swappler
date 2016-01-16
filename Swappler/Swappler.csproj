@@ -227,10 +227,10 @@
     <Compile Include="Utilities\RegexPattern.cs" />
     <Compile Include="Utilities\SessionHelper.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\SwapItemViewModel.cs" />
+    <Compile Include="ViewModels\UserLoginViewModel.cs" />
     <Compile Include="ViewModels\UserRegistrationViewModel.cs" />
-    <Compile Include="ViewModels\SaveProfileViewModel.cs" />
+    <Compile Include="ViewModels\UserUpdateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -345,6 +345,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\CreateSwapRequest.cshtml" />
+    <Content Include="Views\Home\SwapItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />

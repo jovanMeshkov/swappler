@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Swappler.Database.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Faculty\Swappler\Swappler\App_Data\SwapplerDatabase.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Swappler.Database.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Schenock\Documents\swappler\Swappler\App_Data\SwapplerDatabase.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Address">
     <Key>
       <PropertyRef Name="AddressId" />

@@ -9,7 +9,7 @@
     <WebStackScaffolding_IsLayoutPageSelected>True</WebStackScaffolding_IsLayoutPageSelected>
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
-    <WebStackScaffolding_LayoutPageFile />
+    <WebStackScaffolding_LayoutPageFile>~/Views/Shared/MasterLayout.cshtml</WebStackScaffolding_LayoutPageFile>
     <UseGlobalApplicationHostFile />
     <NameOfLastUsedPublishProfile>swappler - FTP</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
