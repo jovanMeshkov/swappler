@@ -14,8 +14,13 @@ namespace Swappler.Controllers
 {
     public class HomeController : Controller
     {
+<<<<<<< HEAD
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
         private readonly ISwapItemService swapItemService = new SwapItemService(Models.SwapItem.ImagesPath);
+=======
+        private readonly IUserService userService = new UserService();
+        private readonly ISwapItemService swapItemService = new SwapItemService(SwapItem.ImagesPath);
+>>>>>>> 036b0fe9577f081abc24d435bfc49a2b7f047a72
         private readonly ISwapRequestService swapRequestService = new SwapRequestService();
 
         [Authenticate]
@@ -77,44 +82,12 @@ namespace Swappler.Controllers
         
         [Authenticate]
         [HttpPost]
-        public JsonResult SaveProfile(UserUpdateViewModel userUpdateViewModel)
+        public JsonResult SaveProfile(SaveProfileViewModel saveProfileViewModel)
         {
-            if (!ModelState.IsValid || !userUpdateViewModel.DataAvailable)
-            {
-                return Json(new
-                {
-                    Error = true,
-                    ErrorMessage = "Input errors, fix it!"
-                });
-            }
-
-            if (userUpdateViewModel.UserId != SessionHelper.SignedUser.UserId)
-            {
-                return Json(new
-                {
-                    Error = true,
-                    ErrorMessage = "Error happend, try again."
-                });
-            }
-
-            UserStatus userStatus = userService.Update(userUpdateViewModel);
-
-            if (userStatus == UserStatus.Updated)
-            {
-                SessionHelper.SignedUser = userService.FindUserById(userUpdateViewModel.UserId);
-
-                return Json(new
-                {
-                    Success = true,
-                    SuccessMessage = userStatus.Description()
-                });
-            }
-
-            
             return Json(new
             {
-                Error = true,
-                ErrorMessage = userStatus.Description()
+                Success = true,
+                SuccessMessage = "Changes applied"
             });
         }
 
@@ -154,6 +127,7 @@ namespace Swappler.Controllers
             });
         }
 
+<<<<<<< HEAD
         // Na klik na kopceto SWAP se povikuva via handler, treba da vrate View: CreateSwapRequest.html so izbraniot item
         [HttpGet]
         public ActionResult CreateSwapRequest(Guid requestedSwapItemGuid)
@@ -202,5 +176,7 @@ namespace Swappler.Controllers
             var swapItem = swapItemService.FindByGuid(guid);
             return View(swapItem);
         }
+=======
+>>>>>>> 036b0fe9577f081abc24d435bfc49a2b7f047a72
     }
 }

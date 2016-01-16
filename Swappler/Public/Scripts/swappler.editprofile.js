@@ -26,15 +26,10 @@ $(document).ready(function() {
         }
     });
 
-    $.validator.addMethod("requiredOnChange", function (value, element, param) {
-        if ($("#edit-user-new-password").val() != "" &&
-            $("#edit-user-current-password").val() == "") {
-            return false;
-        }
-        return true;
-    }, "");
-
-
+    //$.validator.addMethod("requiredOnChange", function (value, element) {
+    //    if ($(""))
+    //    return this.optional(element) || /^\w+$/i.test(value);
+    //}, "Letters, numbers, and underscores only please");
 
     $("#form-edit-profile").validate({
         ignore: [],
@@ -60,8 +55,7 @@ $(document).ready(function() {
             "CurrentPassword": {
                 minlength: 3,
                 maxlength: 100,
-                pattern: RegexPattern.Password,
-                requiredOnChange: true
+                pattern: RegexPattern.Password
             },
             "NewPassword": {
                 minlength: 3,
@@ -69,7 +63,7 @@ $(document).ready(function() {
                 pattern: RegexPattern.Password
             },
             "PasswordConfirmation": {
-                equalTo: "#edit-user-new-password"
+                equalTo: "#password"
             }
         },
         messages: {
@@ -92,7 +86,6 @@ $(document).ready(function() {
                 pattern: "Please enter a valid email."
             },
             "CurrentPassword": {
-                requiredOnChange: "Enter your current password to create new password!",
                 minlength: "Password must be between 3 - 100 characters long.",
                 maxlength: "Password must be between 3 - 100 characters long.",
                 pattern: "Please enter valid password!"
@@ -129,7 +122,7 @@ $(document).ready(function() {
     function saveChangesStatus(messageType, statusMessage) {
         
         $saveChangesStatus.removeClass("alert-warning");
-        $saveChangesStatus.removeClass("alert-danger");
+        $saveChangesStatus.removeClass("alert-error");
         $saveChangesStatus.removeClass("alert-info");
         $saveChangesStatus.removeClass("alert-success");
 
@@ -152,12 +145,8 @@ $(document).ready(function() {
         $saveChangesStatus.text(statusMessage);
     }
 
-    $btnSaveChanges.on("click", function (event) {
+    $btnSaveChanges.on("click", function(event) {
         var formEditProfile = $("#form-edit-profile")[0];
-
-        if ($(formEditProfile).valid() == false) {
-            return;
-        }
 
         var formEditProfileData = new FormData(formEditProfile);
 
@@ -189,7 +178,6 @@ $(document).ready(function() {
                 }
 
                 if (result.Success) {
-                    applyChanges();
                     saveChangesStatus(MessageTypes.Success, result.SuccessMessage);
                 }
             },
@@ -202,59 +190,5 @@ $(document).ready(function() {
             }
         });
     });
-
-    function applyChanges() {
-        var formEditProfileElements = [
-            {
-                element: $("#edit-user-first-name"),
-                update: true
-            },
-            {
-                element: $("#edit-user-last-name"),
-                update: true
-            },
-            {
-                element: $("#edit-user-username"),
-                update: true
-            },
-            {
-                element: $("#edit-user-email"),
-                update: true
-            },
-            {
-                element: $("#edit-user-current-password"),
-                update: false
-            },
-            {
-                element: $("#edit-user-new-password"),
-                update: false
-            },
-            {
-                element: $("#edit-user-password-confirmation"),
-                update: false
-            }
-        ];
-
-        $firstName = formEditProfileElements[0].element;
-
-        if ($firstName.val() != null) {
-            if ($firstName.val() != "") {
-                $("#master-user-profile").text($firstName.val());
-            }
-        }
-
-        for (var i = 0; i < formEditProfileElements.length;i++) {
-            var entry = formEditProfileElements[i];
-
-            if (entry.element.val() != null) {
-                if (entry.element.val() != "") {
-                    if (entry.update) {
-                        entry.element.attr("placeholder", entry.element.val());
-                    }
-                    entry.element.val("");
-                }
-            }
-        }
-    }
 
 });

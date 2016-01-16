@@ -29,6 +29,7 @@ $(document).ready(function() {
         window.open($(this).attr("src"), "_blank");
     });
 
+<<<<<<< HEAD
     $(".create-swap-request").on("click", function (event) {
         var guid = $(this).parent().data("id") + "";
         window.location.replace("/Home/CreateSwapRequest?requestedSwapItemGuid=" + guid);
@@ -49,4 +50,6 @@ $(document).ready(function() {
         }
     });
 
+=======
+>>>>>>> 036b0fe9577f081abc24d435bfc49a2b7f047a72
 });
