@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Swappler.Models;
 using Swappler.Models.Status;
-using Swappler.ViewModels;
 
 namespace Swappler.Services.Interfaces
 {
@@ -37,7 +36,5 @@ namespace Swappler.Services.Interfaces
         /// <param name="userId"></param>
         /// <returns>UserStatus</returns>
         UserStatus ValidateCredentials(string emailOrUsername, string password, out User user);
-
-        UserStatus Update(UserUpdateViewModel userUpdateViewModel);
     }
 }

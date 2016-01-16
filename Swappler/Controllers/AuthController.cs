@@ -10,7 +10,7 @@ namespace Swappler.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly IUserService userService = new UserService(Models.User.ImagesPath);
+        private readonly IUserService userService = new UserService();
 
         [HttpGet]
         public ActionResult Login()
@@ -30,7 +30,7 @@ namespace Swappler.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(UserLoginViewModel loginViewModel)
+        public ActionResult Login(LoginViewModel loginViewModel)
         {
             User signedUser;
 
