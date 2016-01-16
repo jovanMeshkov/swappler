@@ -37,6 +37,7 @@ C:\Users\Schenock\Documents\swappler\UnitTest\bin\Debug\System.Web.WebPages.Razo
 C:\Users\Schenock\Documents\swappler\UnitTest\bin\Debug\Microsoft.Owin.xml
 C:\Users\Schenock\Documents\swappler\UnitTest\obj\Debug\UnitTest.dll
 C:\Users\Schenock\Documents\swappler\UnitTest\obj\Debug\UnitTest.pdb
+D:\Faculty\Swappler\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
 D:\Faculty\Swappler\UnitTest\bin\Debug\UnitTest.dll.config
 D:\Faculty\Swappler\UnitTest\bin\Debug\UnitTest.dll
 D:\Faculty\Swappler\UnitTest\bin\Debug\UnitTest.pdb
@@ -73,6 +74,5 @@ D:\Faculty\Swappler\UnitTest\bin\Debug\System.Web.WebPages.xml
 D:\Faculty\Swappler\UnitTest\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Faculty\Swappler\UnitTest\bin\Debug\System.Web.WebPages.Razor.xml
 D:\Faculty\Swappler\UnitTest\bin\Debug\Microsoft.Owin.xml
-D:\Faculty\Swappler\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
 D:\Faculty\Swappler\UnitTest\obj\Debug\UnitTest.dll
 D:\Faculty\Swappler\UnitTest\obj\Debug\UnitTest.pdb

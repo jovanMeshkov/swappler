@@ -77,44 +77,12 @@ namespace Swappler.Controllers
         
         [Authenticate]
         [HttpPost]
-        public JsonResult SaveProfile(UserUpdateViewModel userUpdateViewModel)
+        public JsonResult SaveProfile(SaveProfileViewModel saveProfileViewModel)
         {
-            if (!ModelState.IsValid || !userUpdateViewModel.DataAvailable)
-            {
-                return Json(new
-                {
-                    Error = true,
-                    ErrorMessage = "Input errors, fix it!"
-                });
-            }
-
-            if (userUpdateViewModel.UserId != SessionHelper.SignedUser.UserId)
-            {
-                return Json(new
-                {
-                    Error = true,
-                    ErrorMessage = "Error happend, try again."
-                });
-            }
-
-            UserStatus userStatus = userService.Update(userUpdateViewModel);
-
-            if (userStatus == UserStatus.Updated)
-            {
-                SessionHelper.SignedUser = userService.FindUserById(userUpdateViewModel.UserId);
-
-                return Json(new
-                {
-                    Success = true,
-                    SuccessMessage = userStatus.Description()
-                });
-            }
-
-            
             return Json(new
             {
-                Error = true,
-                ErrorMessage = userStatus.Description()
+                Success = true,
+                SuccessMessage = "Changes applied"
             });
         }
 
