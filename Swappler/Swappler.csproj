@@ -188,7 +188,6 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\SaveProfileViewModel.cs" />
     <Compile Include="ViewModels\UserRegistrationViewModel.cs" />
-    <Compile Include="ViewModels\UserUpdateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generators\GenerateDatabase.Context.tt">

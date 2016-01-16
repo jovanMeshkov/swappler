@@ -9,6 +9,7 @@ namespace UnitTest
     [TestClass]
     public class UserServiceTests
     {
+
         private readonly UserService userService;
 
         public UserServiceTests()
