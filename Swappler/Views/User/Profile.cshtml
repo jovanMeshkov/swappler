@@ -8,42 +8,31 @@
 <div class="container-fluid">
     <div class="col-md-3 " style="margin-top:1%;">
         <div id="userphoto">
-            <div class="gravatar-wrapper-128"><img id="image" src="body-img.jpg" alt="" class="logo" width="120" height="120"><span>Oliver Oreshkovski</span></div>
-
+            <div class="gravatar-wrapper-128" ><img id="image" style=" margin-bottom:15px; border: 10px solid white; border-radius:10px" src="@Model.PhotoUrl" alt="" class="logo" width="425" height="425"></div>
+            
+            <div id="user-data" style="background-color:white; padding:10px; border-radius:10px">
+                <h2 style="font-family:Roboto">@Model.Name @Model.LastName </h2>
+                <h3 style="font-family:Roboto; color:grey">@Model.Username</h3>
+                <h4 style="font-family:Roboto; color:orange">@Model.Email</h4>
+                <h4 style="font-family:Roboto; color:grey">@Model.Phone</h4>
+            </div>
         </div>
     </div>
 
     <!-- end col-md-3 -->
     <div class="col-md-8" id="ep-change-image">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-8 col-md-6">
-                    <form role="form">
-                        <h2>Profile</h2>
-                        <br>
-                        <div class="form-group">
-                            <p id="first_name"> @Model.Name <p>
-                        </div>
-
-                        <div class="form-group">
-                            <p id="last_name"> @Model.LastName <p>
-                        </div>
-
-                        <div class="form-group">
-                            <p id="display_name"> @Model.Username <p>
-                        </div>
-                        <div class="form-group">
-                            <p id="email"> @Model.Email <p>
-                        </div>
-                
-                <hr>
-               </form>
-            </div>
-        </div>
+        <h1 style="float:left">My items</h1>
+        <br />
+        <br />
     </div>
-    <!-- end col-md-3 -->
-
-</div>
 <!-- end col-md-3 -->
+        
+  
+    <div class="col-md-9" id="list-swap-items-of-user">
+            @{
+                List<SwapItem> swapItems = Model.SwapItems.ToList();
+            }
+            @Html.Partial("~/Views/Partials/SwapItemsForProfileView.cshtml", swapItems)  
+        </div>
 </div>
 
