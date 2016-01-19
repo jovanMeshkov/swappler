@@ -9,11 +9,11 @@
         <EntityTypeShape EntityType="Swappler.Database.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="Swappler.Database.FK_User_0_0" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Swappler.Database.SwapItem" Width="1.5" PointX="5.25" PointY="1.125" />
-        <EntityTypeShape EntityType="Swappler.Database.SwapRequest" Width="1.5" PointX="7.5" PointY="1.125" />
         <AssociationConnector Association="Swappler.Database.FK_SwapItem_0_0" />
-        <AssociationConnector Association="Swappler.Database.FK_SwapRequest_0_0" />
+        <EntityTypeShape EntityType="Swappler.Database.SwapRequest" Width="1.5" PointX="7.5" PointY="0.875" />
         <AssociationConnector Association="Swappler.Database.FK_SwapRequest_1_0" />
         <AssociationConnector Association="Swappler.Database.FK_SwapRequest_2_0" />
+        <AssociationConnector Association="Swappler.Database.FK_SwapRequest_0_0" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

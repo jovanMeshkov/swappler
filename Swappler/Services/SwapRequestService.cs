@@ -91,20 +91,24 @@ namespace Swappler.Services
             }
         }
 
-        public SwapRequest SendRequest(SwapItem requestedSwapItem, User requestorUser, SwapItem swapItemOffer, DateTime dateCreated, int? moneyOffer)
+        public SwapRequest SendRequest(SwapItem requestedSwapItem, User requestorUser, SwapItem swapItemOffer, int? moneyOffer, DateTime dateCreated)
         {
             SwapRequest swapRequest = new SwapRequest
             {
                 Guid = Guid.NewGuid(),
-                Active = true,
                 Date = dateCreated,
-                UserId = requestorUser.UserId,
-                MoneyOffer = moneyOffer,
                 SwapItemId = requestedSwapItem.SwapItemId,
-                SwapItemOfferId = (swapItemOffer == null ? (long?)null : swapItemOffer.SwapItemId)
+                RequestorUserId = requestorUser.UserId,
+                SwapItemOfferId = (swapItemOffer == null ? (long?)null : swapItemOffer.SwapItemId),
+                MoneyOffer = moneyOffer,
+                Accepted = false,
+                Declined = false,
+                Read = false
             };
 
-            if (Add(swapRequest)==SwapRequestStatus.Added)
+            var swapRequestStatus = Add(swapRequest);
+
+            if (swapRequestStatus ==SwapRequestStatus.Added)
             {
                 // TODO: Notify through parse framework
                 return swapRequest;
@@ -117,6 +121,12 @@ namespace Swappler.Services
         {
             try
             {
+                // Mark swap request as accepted
+                Context.SwapRequests.Attach(swapRequest);
+                swapRequest.Accepted = true;
+                Context.Entry(swapRequest).Property("Accepted").IsModified = true;
+
+                // Mark swap item as swapped
                 SwapItem requestedSwapItem = new SwapItem()
                 {
                     SwapItemId = swapRequest.SwapItemId
@@ -127,8 +137,6 @@ namespace Swappler.Services
                 Context.Entry(requestedSwapItem).Property("Swapped").IsModified = true;
 
                 Context.SaveChanges();
-
-                // TODO: Notify through parse framework
             }
             catch (Exception exception)
             {
@@ -141,12 +149,10 @@ namespace Swappler.Services
             try
             {
                 Context.SwapRequests.Attach(swapRequest);
-                swapRequest.Active = false;
-                Context.Entry(swapRequest).Property("Active").IsModified = true;
+                swapRequest.Declined = true;
+                Context.Entry(swapRequest).Property("Declined").IsModified = true;
 
                 Context.SaveChanges();
-
-                // TODO: Notify through parse framework
             }
             catch (Exception exception)
             {
@@ -159,7 +165,7 @@ namespace Swappler.Services
             try
             {
                 var swapRequests = from swapRequest in Context.SwapRequests
-                    join user in Context.Users on swapRequest.UserId equals user.UserId
+                    join user in Context.Users on swapRequest.RequestorUserId equals user.UserId
                     where user.Username == username
                     select swapRequest;
 
@@ -171,5 +177,23 @@ namespace Swappler.Services
                 return null;
             }
         }
+
+        public List<SwapRequest> FindUnreadByUser(User user)
+        {
+            try
+            {
+                var swapRequests = from swapRequest in Context.SwapRequests
+                                   where swapRequest.SwapItem.UserId == user.UserId &&
+                                         swapRequest.Read == false 
+                                   select swapRequest;
+
+                return swapRequests.ToList();
+            }
+            catch (Exception exception)
+            {
+                Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
+                return null;
+            }
+        } 
     }
 }

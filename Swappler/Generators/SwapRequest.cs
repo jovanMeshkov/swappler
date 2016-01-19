@@ -16,17 +16,19 @@ namespace Swappler.Models
     
     public partial class SwapRequest
     {
-        public System.DateTime Date { get; set; }
-        public Nullable<long> MoneyOffer { get; set; }
-        public bool Active { get; set; }
-        public long SwapItemId { get; set; }
-        public Nullable<long> SwapItemOfferId { get; set; }
-        public System.Guid Guid { get; set; }
-        public long UserId { get; set; }
         public long SwapRequestId { get; set; }
+        public System.Guid Guid { get; set; }
+        public System.DateTime Date { get; set; }
+        public long SwapItemId { get; set; }
+        public long RequestorUserId { get; set; }
+        public Nullable<long> SwapItemOfferId { get; set; }
+        public Nullable<long> MoneyOffer { get; set; }
+        public bool Accepted { get; set; }
+        public bool Declined { get; set; }
+        public bool Read { get; set; }
     
+        public virtual SwapItem SwapItemOffer { get; set; }
         public virtual SwapItem SwapItem { get; set; }
-        public virtual SwapItem SwapItem1 { get; set; }
-        public virtual User User { get; set; }
+        public virtual User RequestorUser { get; set; }
     }
 }

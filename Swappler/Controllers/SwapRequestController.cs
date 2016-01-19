@@ -27,12 +27,11 @@ namespace Swappler.Controllers
 
             if (resultItems.Capacity == 1 && resultItems2.Capacity == 1)
             {
-
                 SwapItem requestedSwapItem = resultItems[0];
                 SwapItem offeredSwapItem = resultItems2[0];
                 User signedUser = SessionHelper.SignedUser;
 
-                SwapRequest swapRequest = swapRequestService.SendRequest(requestedSwapItem, signedUser, offeredSwapItem, new DateTime(), moneyOffered);
+                SwapRequest swapRequest = swapRequestService.SendRequest(requestedSwapItem, signedUser, offeredSwapItem, moneyOffered, new DateTime());
                 return Redirect("/Home/Index");
             }
             else

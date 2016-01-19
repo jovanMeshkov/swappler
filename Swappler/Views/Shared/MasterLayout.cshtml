@@ -4,13 +4,22 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Swappler</title>
+    <title>
+        @ViewBag.Title
+        @(ViewBag.Title != null ? " - " : "")
+        Swappler
+    </title>
 
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/swappler")
+    @Scripts.Render("~/bundles/react")
+    @Scripts.Render("~/bundles/babel")
+    @Scripts.Render("~/bundles/swappler.jsx")
+
+    @RenderSection("HeadScripts", required: false)
   
 </head>
 <body>
@@ -53,7 +62,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/User/Profile">
+                        <a href="/User/@SessionHelper.SignedUser.Username">
                             <i class="fa fa-user fa-fw "></i>
                             @{ var signedUser = SessionHelper.SignedUser; }
                             <span id="master-user-profile">@signedUser.Name</span>
@@ -101,6 +110,7 @@
         </footer>
     </div>
 
-    @RenderSection("scripts", required: false)
+    @RenderSection("BottomScripts", required: false)
+    @Html.ReactInitJavaScript()
 </body>
 </html>

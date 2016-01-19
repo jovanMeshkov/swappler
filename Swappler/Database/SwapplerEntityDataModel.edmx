@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Swappler.Database.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Faculty\Swappler\Swappler\App_Data\SwapplerDatabase.db;Binary GUID=True" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Swappler.Database.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Faculty\Swappler\Swappler\App_Data\SwapplerDatabase.db;binary guid=True" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -31,14 +31,16 @@
           <Key>
             <PropertyRef Name="SwapRequestId" />
           </Key>
-          <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="MoneyOffer" Type="integer" />
-          <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="SwapItemId" Type="integer" Nullable="false" />
-          <Property Name="SwapItemOfferId" Type="integer" />
-          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserId" Type="integer" Nullable="false" />
           <Property Name="SwapRequestId" Type="integer" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="SwapItemId" Type="integer" Nullable="false" />
+          <Property Name="RequestorUserId" Type="integer" Nullable="false" />
+          <Property Name="SwapItemOfferId" Type="integer" />
+          <Property Name="MoneyOffer" Type="integer" />
+          <Property Name="Accepted" Type="bit" Nullable="false" />
+          <Property Name="Declined" Type="bit" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -67,14 +69,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SwapRequest_0_0">
-          <End Role="SwapItem" Type="Self.SwapItem" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="SwapRequest" Type="Self.SwapRequest" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SwapItem">
-              <PropertyRef Name="SwapItemId" />
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="SwapRequest">
-              <PropertyRef Name="SwapItemId" />
+              <PropertyRef Name="RequestorUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -91,14 +93,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SwapRequest_2_0">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="SwapItem" Type="Self.SwapItem" Multiplicity="1" />
           <End Role="SwapRequest" Type="Self.SwapRequest" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
+            <Principal Role="SwapItem">
+              <PropertyRef Name="SwapItemId" />
             </Principal>
             <Dependent Role="SwapRequest">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="SwapItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -124,7 +126,7 @@
             <End Role="SwapItem" EntitySet="SwapItem" />
           </AssociationSet>
           <AssociationSet Name="FK_SwapRequest_0_0" Association="Self.FK_SwapRequest_0_0">
-            <End Role="SwapItem" EntitySet="SwapItem" />
+            <End Role="User" EntitySet="User" />
             <End Role="SwapRequest" EntitySet="SwapRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_SwapRequest_1_0" Association="Self.FK_SwapRequest_1_0">
@@ -132,7 +134,7 @@
             <End Role="SwapRequest" EntitySet="SwapRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_SwapRequest_2_0" Association="Self.FK_SwapRequest_2_0">
-            <End Role="User" EntitySet="User" />
+            <End Role="SwapItem" EntitySet="SwapItem" />
             <End Role="SwapRequest" EntitySet="SwapRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_User_0_0" Association="Self.FK_User_0_0">
@@ -168,8 +170,8 @@
           <Property Name="AddressId" Type="Int64" />
           <NavigationProperty Name="Address" Relationship="Self.FK_User_0_0" FromRole="User" ToRole="Address" />
           <NavigationProperty Name="SwapItems" Relationship="Swappler.Database.FK_SwapItem_0_0" FromRole="User" ToRole="SwapItem" />
-          <NavigationProperty Name="SwapRequests" Relationship="Swappler.Database.FK_SwapRequest_2_0" FromRole="User" ToRole="SwapRequest" />
           <Property Name="PhotoFilename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SwapRequests" Relationship="Swappler.Database.FK_SwapRequest_0_0" FromRole="User" ToRole="SwapRequest" />
         </EntityType>
         <Association Name="FK_User_0_0">
           <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
@@ -191,20 +193,20 @@
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <EntitySet Name="SwapItems" EntityType="Swappler.Database.SwapItem" />
-          <EntitySet Name="SwapRequests" EntityType="Swappler.Database.SwapRequest" />
           <AssociationSet Name="FK_SwapItem_0_0" Association="Swappler.Database.FK_SwapItem_0_0">
             <End Role="User" EntitySet="Users" />
             <End Role="SwapItem" EntitySet="SwapItems" />
           </AssociationSet>
-          <AssociationSet Name="FK_SwapRequest_0_0" Association="Swappler.Database.FK_SwapRequest_0_0">
-            <End Role="SwapItem" EntitySet="SwapItems" />
-            <End Role="SwapRequest" EntitySet="SwapRequests" />
-          </AssociationSet>
+          <EntitySet Name="SwapRequests" EntityType="Swappler.Database.SwapRequest" />
           <AssociationSet Name="FK_SwapRequest_1_0" Association="Swappler.Database.FK_SwapRequest_1_0">
             <End Role="SwapItem" EntitySet="SwapItems" />
             <End Role="SwapRequest" EntitySet="SwapRequests" />
           </AssociationSet>
           <AssociationSet Name="FK_SwapRequest_2_0" Association="Swappler.Database.FK_SwapRequest_2_0">
+            <End Role="SwapItem" EntitySet="SwapItems" />
+            <End Role="SwapRequest" EntitySet="SwapRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SwapRequest_0_0" Association="Swappler.Database.FK_SwapRequest_0_0">
             <End Role="User" EntitySet="Users" />
             <End Role="SwapRequest" EntitySet="SwapRequests" />
           </AssociationSet>
@@ -221,26 +223,10 @@
           <Property Name="SwapItemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Guid" Type="Guid" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Swappler.Database.FK_SwapItem_0_0" FromRole="SwapItem" ToRole="User" />
-          <NavigationProperty Name="SwapRequests" Relationship="Swappler.Database.FK_SwapRequest_0_0" FromRole="SwapItem" ToRole="SwapRequest" />
-          <NavigationProperty Name="SwapRequests1" Relationship="Swappler.Database.FK_SwapRequest_1_0" FromRole="SwapItem" ToRole="SwapRequest" />
           <Property Name="PhotoFilename" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="SwapRequest">
-          <Key>
-            <PropertyRef Name="SwapRequestId" />
-          </Key>
-          <Property Name="Date" Type="DateTime" Nullable="false" />
-          <Property Name="MoneyOffer" Type="Int64" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="SwapItemId" Type="Int64" Nullable="false" />
-          <Property Name="SwapItemOfferId" Type="Int64" />
-          <Property Name="Guid" Type="Guid" Nullable="false" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="SwapRequestId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="SwapItem" Relationship="Swappler.Database.FK_SwapRequest_0_0" FromRole="SwapRequest" ToRole="SwapItem" />
-          <NavigationProperty Name="SwapItem1" Relationship="Swappler.Database.FK_SwapRequest_1_0" FromRole="SwapRequest" ToRole="SwapItem" />
-          <NavigationProperty Name="User" Relationship="Swappler.Database.FK_SwapRequest_2_0" FromRole="SwapRequest" ToRole="User" />
-        </EntityType>
+          <NavigationProperty Name="SwapRequests" Relationship="Swappler.Database.FK_SwapRequest_1_0" FromRole="SwapItem" ToRole="SwapRequest" />
+          <NavigationProperty Name="SwapRequests1" Relationship="Swappler.Database.FK_SwapRequest_2_0" FromRole="SwapItem" ToRole="SwapRequest" />
+          </EntityType>
         <Association Name="FK_SwapItem_0_0">
           <End Type="Swappler.Database.User" Role="User" Multiplicity="1" />
           <End Type="Swappler.Database.SwapItem" Role="SwapItem" Multiplicity="*" />
@@ -253,18 +239,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SwapRequest_0_0">
-          <End Type="Swappler.Database.SwapItem" Role="SwapItem" Multiplicity="1" />
-          <End Type="Swappler.Database.SwapRequest" Role="SwapRequest" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SwapItem">
-              <PropertyRef Name="SwapItemId" />
-            </Principal>
-            <Dependent Role="SwapRequest">
-              <PropertyRef Name="SwapItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="SwapRequest">
+          <Key>
+            <PropertyRef Name="SwapRequestId" />
+          </Key>
+          <Property Name="SwapRequestId" Type="Int64" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="SwapItemId" Type="Int64" Nullable="false" />
+          <Property Name="RequestorUserId" Type="Int64" Nullable="false" />
+          <Property Name="SwapItemOfferId" Type="Int64" />
+          <Property Name="MoneyOffer" Type="Int64" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+          <Property Name="Declined" Type="Boolean" Nullable="false" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SwapItemOffer" Relationship="Swappler.Database.FK_SwapRequest_1_0" FromRole="SwapRequest" ToRole="SwapItem" />
+          <NavigationProperty Name="SwapItem" Relationship="Swappler.Database.FK_SwapRequest_2_0" FromRole="SwapRequest" ToRole="SwapItem" />
+          <NavigationProperty Name="RequestorUser" Relationship="Swappler.Database.FK_SwapRequest_0_0" FromRole="SwapRequest" ToRole="User" />
+        </EntityType>
         <Association Name="FK_SwapRequest_1_0">
           <End Type="Swappler.Database.SwapItem" Role="SwapItem" Multiplicity="0..1" />
           <End Type="Swappler.Database.SwapRequest" Role="SwapRequest" Multiplicity="*" />
@@ -278,6 +270,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SwapRequest_2_0">
+          <End Type="Swappler.Database.SwapItem" Role="SwapItem" Multiplicity="1" />
+          <End Type="Swappler.Database.SwapRequest" Role="SwapRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SwapItem">
+              <PropertyRef Name="SwapItemId" />
+            </Principal>
+            <Dependent Role="SwapRequest">
+              <PropertyRef Name="SwapItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SwapRequest_0_0">
           <End Type="Swappler.Database.User" Role="User" Multiplicity="1" />
           <End Type="Swappler.Database.SwapRequest" Role="SwapRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -285,7 +289,7 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="SwapRequest">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="RequestorUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -337,14 +341,16 @@
           <EntitySetMapping Name="SwapRequests">
             <EntityTypeMapping TypeName="Swappler.Database.SwapRequest">
               <MappingFragment StoreEntitySet="SwapRequest">
-                <ScalarProperty Name="SwapRequestId" ColumnName="SwapRequestId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Guid" ColumnName="Guid" />
-                <ScalarProperty Name="SwapItemOfferId" ColumnName="SwapItemOfferId" />
-                <ScalarProperty Name="SwapItemId" ColumnName="SwapItemId" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="Declined" ColumnName="Declined" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
                 <ScalarProperty Name="MoneyOffer" ColumnName="MoneyOffer" />
+                <ScalarProperty Name="SwapItemOfferId" ColumnName="SwapItemOfferId" />
+                <ScalarProperty Name="RequestorUserId" ColumnName="RequestorUserId" />
+                <ScalarProperty Name="SwapItemId" ColumnName="SwapItemId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="SwapRequestId" ColumnName="SwapRequestId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -366,6 +372,7 @@
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

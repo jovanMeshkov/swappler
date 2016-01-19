@@ -25,8 +25,10 @@ namespace Swappler.Controllers
             IndexViewModel indexViewModel = new IndexViewModel();
 
             var swapItems = swapItemService.LoadNewest(2);
+            var swapRequests = swapRequestService.FindUnreadByUser(SessionHelper.SignedUser);
 
             indexViewModel.SwapItems = swapItems;
+            indexViewModel.SwapRequests = swapRequests;
 
             if (swapItems == null || swapItems.Count ==0)
             {

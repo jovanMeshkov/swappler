@@ -1,5 +1,9 @@
 ﻿
-$(document).ready(function() {
+$(document).ready(function () {
+    
+    //if ($notificationsBody != null) {
+    //    $notificationsBody.animateCss("fadeOutUp", "fadeInDown");
+    //}
 
     $btnLoadMoreItems = $("#btn-load-more").eq(0);
     $listSwapItems = $("#list-swap-items").eq(0);
@@ -34,19 +38,11 @@ $(document).ready(function() {
         window.location.replace("/SwapRequest/Create?requestedSwapItemGuid=" + guid);
     });
 
-    // Handling toggling
-    $("#btn-notifications-toggle").on("click", function() {
-        var toggle = $(this).data("toggle");
-        if (toggle == 0) {
-            $(this).removeClass("fa-chevron-down");
-            $(this).addClass("fa-chevron-up");
-            $(this).data("toggle", 1);
+    function showNotification(notificationData) {
+        var $notificationsBody = $("#notifications-body").eq(0);
+        if (notificationData.Type == NotificationTypes.SwapRequest) {
+            
         }
-        else {
-            $(this).removeClass("fa-chevron-up");
-            $(this).addClass("fa-chevron-down");
-            $(this).data("toggle", 0);
-        }
-    });
+    }
 
 });
