@@ -7,15 +7,23 @@ var MessageTypes = Object.freeze({
     Success: 3
 });
 
+var NotificationTypes = Object.freeze({
+    SwapRequest: 0
+});
+
 var RegexPattern = Object.freeze({
     Email: /.*@.*\..*/,
     Username: /^[a-zA-Z][a-zA-Z0-9]*[!@#$%^&*()_+-/.:]?[a-zA-Z0-9]+$/,
     Password: /^.*$/
 });
 
+function htmlSwapRequestNotification() {
+    
+}
+
 $.fn.extend({
 
-    // Status Message Method
+    // statusMessage - show status message on element
     statusMessage: function (messageType, message) {
 
         var $fieldParent = $(this).parent();
@@ -39,7 +47,21 @@ $.fn.extend({
 
         $statusMessage.text(message);
 
-    }
+    },
 
+    // animateCss - animate element with animate.css styles, with done callback
+    animateCss: function (animationClass, removeClass, start, completed) {
+        start();
+        var $this = $(this);
+        $this.removeClass(removeClass);
+        var animationClasses = "animated " + animationClass;
+        $this.addClass(animationClasses);
+        $this.one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+            
+            if (completed) {
+                completed();
+            }
+        });
+    }
 });
 

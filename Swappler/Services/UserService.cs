@@ -212,7 +212,7 @@ namespace Swappler.Services
             try
             {
                 var users = from user in Context.Users
-                            where user.Name == username || user.LastName == username
+                            where user.Username == username
                             select user;
 
                 return users.FirstOrDefault();

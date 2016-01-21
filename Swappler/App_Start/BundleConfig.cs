@@ -1,4 +1,5 @@
 ﻿using System.Web.Optimization;
+using System.Web.Optimization.React;
 
 namespace Swappler
 {
@@ -22,7 +23,6 @@ namespace Swappler
                     "~/Public/Scripts/swappler.publishitem.js",
                     "~/Public/Scripts/swappler.editprofile.js",
                     "~/Public/Scripts/swappler.search.js"
-
                 ));
 
             // JQuery
@@ -32,7 +32,7 @@ namespace Swappler
                     "~/Public/Scripts/jquery.validate.js",
                     "~/Public/Scripts/additional-methods.js"
                 ));
-            
+
             // Modernizr
             //
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -48,7 +48,25 @@ namespace Swappler
                     "~/Public/Scripts/bootstrap.js",
                     "~/Public/Scripts/respond.js"
                 ));
-            
+
+            // React JS
+            bundles.Add(new ScriptBundle("~/bundles/react")
+                .Include(
+                    "~/Public/Scripts/react/react-{version}.js",
+                    "~/Public/Scripts/react/react-dom-{version}.js",
+                    "~/Public/Scripts/react/react-with-addons-{version}.js"
+                ));
+
+            // Buble Browser
+            bundles.Add(new ScriptBundle("~/bundles/babel")
+                .Include(
+                    "~/Public/Scripts/Babel/browser.js"
+                ));
+
+            bundles.Add(new BabelBundle("~/bundles/swappler.jsx")
+                .Include("~/Public/Scripts/Swappler.UI.jsx")
+                );
+
             //
             // Css Bundles
             //
@@ -56,7 +74,8 @@ namespace Swappler
                 .Include(
                     "~/Public/Css/bootstrap.css",
                     "~/Public/Css/site.css",
-                    "~/Public/Css/font-awesome.css"
+                    "~/Public/Css/font-awesome.css",
+                    "~/Public/Css/animate.css"
                 ));
 
             //BundleTable.EnableOptimizations = true;

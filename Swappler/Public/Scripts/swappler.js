@@ -1,5 +1,7 @@
 ﻿
 
+
+
 $(document).ready(function() {
     var urlPathName = window.location.pathname;
     if (urlPathName == "/" || urlPathName == "/Home/Index") {

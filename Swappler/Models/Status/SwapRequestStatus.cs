@@ -6,6 +6,9 @@
         Added,
         Removed,
         Updated,
-        Error
+        Error,
+        MarkedAsRead,
+        Accepted,
+        Declined
     }
 }

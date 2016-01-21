@@ -184,6 +184,10 @@ label {
     margin-bottom: 5%;
 }
 
+
+/* 
+    Spinner 
+*/
 .spinner {
     display: inline-block;
     opacity: 0;
@@ -225,13 +229,34 @@ label {
     padding: 0 10px;
 }
 
+/*
+    Tooltip
+*/
+.sw-tooltip {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    top: 120%;
+    padding: 5px;
+    background-color: #e1e1e1;
+    color: black;
+    font-size: 12px;
+    font-family: Arial;
+    display: none;
+}
+
 #news-feed {
     padding: 10px;
 }
 
-.swap-item {
+/*
+    Feed Swap Item
+*/
+.feed-swap-item {
+    position: relative;
     margin: 15px;
-    padding: 15px 0 15px 0;
+    padding: 10px;
     display: block;
     background-color: #ffffff;
     -webkit-box-shadow: 0px 0px 20px -10px rgba(0,0,0,0.75);
@@ -240,45 +265,80 @@ label {
     font-family: Arial;
 }
 
-.swap-item-icon-wrapper {
-    padding-right: 0;
-}
+    .feed-swap-item .icon-wrapper {
+        padding: 7.5px;
+        height: 200px;
+        text-align: center;
+        overflow: hidden;
+    }
 
-.swap-item-icon {
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
-    -webkit-box-shadow: 0px 0px 30px -25px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 30px -25px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 30px -25px rgba(0,0,0,0.75);
-    cursor: pointer;
-}
+    .feed-swap-item .icon {
+        max-width: 100%;
+        max-height: 100%;
+        vertical-align: middle;
+        -webkit-box-shadow: 0px 0px 30px -25px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 30px -25px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 30px -25px rgba(0,0,0,0.75);
+        cursor: pointer;
+    }
 
-.swap-item-name {
-    font-size: 26px;
-    font-family: Arial;
-}
+    .feed-swap-item .content-wrapper {
+        padding: 7.5px;   
+    }
 
-.swap-item-owner {
-    font-size: 12px;
-    font-weight: bold;
-    color: #afafaf;
-    font-family: Arial;
-}
+    .feed-swap-item .name {
+        font-size: 26px;
+        font-family: Arial;
+        margin-bottom: 5px;
+    }
 
-.swap-item-creation-date {
-    font-size: 12px;
-    color: #A7A7A7;
-    margin: 2px 0;
-    font-family: Arial;
-}
+    .feed-swap-item .owner {
+        font-size: 12px;
+        font-weight: bold;
+        color: #afafaf;
+        font-family: Arial;
+    }
 
-.swap-item-description {
-    font-size: 12px;
-    line-height: 16.0833px;
-    margin: 10px 0 5px 0;
-    font-family: Arial;
-}
+    .feed-swap-item .creation-date {
+        font-size: 12px;
+        color: #A7A7A7;
+        margin: 2px 0;
+        font-family: Arial;
+    }
+
+    .feed-swap-item .description {
+        font-size: 12px;
+        line-height: 16.0833px;
+        margin: 10px 0 5px 0;
+        font-family: Arial;
+    }
+
+    .feed-swap-item .btn-swap-request {
+        height: 36px;
+        display: inline;
+        padding: 7.5px 0;
+        border: none;
+        margin: 10px 0 0 0;
+        outline: none;
+        opacity: 0.5;
+        background-color: transparent;
+    }
+
+    .feed-swap-item .btn-swap-request img {
+        width: auto;
+        height: 20px;    
+    }
+
+    .feed-swap-item .btn-swap-request .text {
+        font-size: 12px;
+        font-family: Arial;
+        color: #000000;    
+    }
+
+        .feed-swap-item .btn-swap-request:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
 
 #btn-load-more {
     width: 140px;
@@ -294,7 +354,6 @@ label {
 }
 
 #swap-item-choose-photo {
-    
 }
 
 #swap-item-choosen-photo {
@@ -309,9 +368,8 @@ label {
 }
 
 #edit-user-photo {
-    max-width:100%;
-    max-height:100%;
-        
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #btn-edit-user-change-photo {
@@ -320,37 +378,103 @@ label {
 }
 
 #btn-edit-user-save-changes {
-    
 }
 
 .left-hr-stripe {
     border-left: 5px solid #fcac45;
 }
 
+/*
+    Notifications
+*/
 #notifications {
-    background-color: #F8F8F8;
 }
 
 #notifications-header {
-    height: 30px;
+    height: auto;
+    background-color: #F8F8F8;
+    padding: 15px;
+    font-size: 12px;
 }
 
 #notifications-title {
-    margin: 15px 0;
     color: #777777;
+    margin: 0;
 }
-    #notifications-title .badge {
-        background-color: #428BCA;
+
+#notifications-count {
+    background-color: #428BCA;
+    margin: 0 5px;
+}
+
+#notifications-see-all {
+    cursor: pointer;
+}
+
+.notification-entry {
+    background-color: #F8F8F8;
+    margin: 10px 0 0 0;
+    padding: 0px 15px 10px 15px;
+}
+
+/*
+    Swap Request Notification
+*/
+.swap-request-notification {
+    position: relative;
+}
+
+    .swap-request-notification .title {
+        padding: 10px 0 10px 0;
+        font-size: 12px;
+        color: #afafaf;
+        border-bottom: 1px solid #E1E1E1;
     }
 
-#btn-notifications-toggle {
-    margin: 15px 0;
-    border: 0;
-    background-color: transparent;
-    color: #333333;
-    padding: 5px;
-}
+    .swap-request-notification .message {
+        padding: 10px 5px;
+        font-size: 12px;
+    }
 
-#btn-notifications-toggle:hover {
-    background-color: #E7E7E7;
-}
+    .swap-request-notification .requestor {
+    }
+
+    .swap-request-notification .swap-item-offer {
+    }
+
+    .swap-request-notification .money-offer {
+    }
+
+    .swap-request-notification .swap-item {
+    }
+
+    .swap-request-notification .swap-request-close {
+        position: absolute;
+        right: 20px;
+        top: 8px;
+        cursor: pointer;
+    }
+
+    .swap-request-notification .swap-request-actions {
+        border-top: 1px solid #E1E1E1;
+        text-align: center;
+    }
+
+    .swap-request-notification .btn-swap-request-action {
+        border: none;
+        outline: none;
+        font-size: 11px;
+        color: #777;
+        font-weight: bold;
+        padding: 0;
+        margin: 10px 0 0 0;
+        background-color: transparent;
+    }
+
+    .swap-request-notification.btn-swap-request-accept-action {
+        margin-right: 5px;
+    }
+
+    .swap-request-notification .btn-swap-request-decline-action {
+        margin-left: 5px;
+    }

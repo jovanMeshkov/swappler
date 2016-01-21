@@ -1,5 +1,5 @@
 ﻿@using Swappler.ViewModels
-
+@using React.Web.Mvc;
 @{
     Layout = "~/Views/Shared/MasterLayout.cshtml";
 }
@@ -43,40 +43,39 @@
     </div>
 
     <div id="notifications" class="col-md-3">
-        <div id="notifications-header" class="row">
+        <div class="row">
             <div class="col-lg-12">
-                <h4 id="notifications-title" class="pull-left">
-                    Notifications
+                <div id="notifications-header">
+                    <h4 id="notifications-title" class="pull-left">
+                        Notifications
+                    </h4>
                     <span id="notifications-count" class="badge">
                         2
                     </span>
-                </h4>
-                <button id="btn-notifications-toggle" type="button" data-toggle="0"
-                        class="pull-right fa fa-chevron-down"></button>
-            </div>
-
-        </div>
-        <div class="row">
-            <hr />
-        </div>
-        <div id="notifications-body" class="row">
-            <div class="col-lg-12">
-                <div class="notification-entry">
-                    <div class="swap-request-notification">
-                        <span class="swap-request-requestor">Jovan Meshkov want to offer you</span>
-                        <div class="swap-request-item-offer">his Finki Trap Card</div>
-                        <div class="swap-request-money-offer">and additional 200 dollars</div>
-                        <div class="swap-request-item">for your Madu</div>
-                    </div>
+                    <a id="notifications-see-all" class="pull-right"
+                       href="/Home/Notifications">
+                        See all
+                    </a>
                 </div>
-                <hr />
-                <div class="notification-entry">
-                    <div class="swap-request-notification">
-                        <span class="swap-request-requestor">Jovan Meshkov want to offer you</span>
-                        <div class="swap-request-item-offer">his Finki Trap Card</div>
-                        <div class="swap-request-money-offer">and additional 200 dollars</div>
-                        <div class="swap-request-item">for your Madu</div>
-                    </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="notifications-body">
+                    @foreach(var swapRequest in Model.SwapRequests)
+                    {
+                        @Html.React("SwapRequestNotification", new {
+                            SwapRequestGuid = swapRequest.Guid,
+                            RequestorUsername = swapRequest.RequestorUser.Username,
+                            RequestorFullName = swapRequest.RequestorUser.Name + " " + swapRequest.RequestorUser.LastName,
+                            SwapItemGuid = swapRequest.SwapItem.Guid,
+                            SwapItemName = swapRequest.SwapItem.Name,
+                            MoneyOffer = swapRequest.MoneyOffer,
+                            SwapItemOfferGuid = swapRequest.SwapItemOffer.Guid,
+                            SwapItemOfferName = swapRequest.SwapItemOffer.Name
+                        });
+                    }
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Swappler.Attributes;
 using Swappler.Models;
 using Swappler.Models.Status;
@@ -19,9 +20,19 @@ namespace Swappler.Controllers
         
         [Authenticate]
         [HttpGet]
-        public ActionResult Profile()
+        [Route("User/{username?}")]
+        public ActionResult Profile(string username)
         {
-            User user = userService.FindUserById(SessionHelper.SignedUser.UserId);
+            User user = null;
+            if (username.IsNullOrWhiteSpace())
+            {
+                user = userService.FindUserByUsername(SessionHelper.SignedUser.Username);
+            }
+            else
+            {
+                user = userService.FindUserByUsername(username);    
+            }
+            
 
             return View(user);
         }
