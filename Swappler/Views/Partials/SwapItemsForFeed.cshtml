@@ -5,21 +5,34 @@
 
 @foreach (var swapItem in Model)
 {
-    <div class="swap-item row" data-id="@swapItem.Guid">
+    <div class="feed-swap-item row" data-id="@swapItem.Guid">
         @* Item Icon *@
-        <div class="col-lg-4 icon-wrapper">
-            <img class="swap-item-icon img-thumbnail" src="@swapItem.PhotoUrl">
+        <div class="col-lg-4">
+            <div class="icon-wrapper">
+                <a href="@swapItem.PhotoUrl" target="_blank">
+                    <img class="icon" src="@swapItem.PhotoUrl">
+                </a>
+            </div>
         </div>
-         <img class="create-swap-request" src="~/Public/Images/swap-icon.png" style="float:right; margin-right:13px; margin-top:4px"/>
-
-        @* Item Name and Creator*@
-        <div class="col-lg-8">
-            <div class="swap-item-name">@swapItem.Name</div>
-            <div class="swap-item-owner">Published by @swapItem.User.Name @swapItem.User.LastName</div>
-            <div class="swap-item-creation-date">@swapItem.Date.ToSmartDate()</div>
-            <div class="swap-item-description">
+        
+        @* Item Name and Creator *@
+        <div class="col-lg-8 content-wrapper" >
+           <div class="name">
+                @swapItem.Name
+            </div>
+            <div class="owner">
+                Published by @swapItem.User.Name @swapItem.User.LastName
+            </div>
+            <div class="creation-date">
+                @swapItem.Date.ToSmartDate()
+            </div>
+            <div class="description">
                 @swapItem.Description
             </div>
+            <button class="btn-swap-request">
+                <img src="~/Public/Images/swap-icon.png" />
+                <span class="text">Create swap request</span>
+            </button>
         </div>
     </div>
 }

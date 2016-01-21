@@ -23,8 +23,6 @@ $(document).ready(function () {
             },
             error: function (xhr, status, error) {
                 $btnLoadMoreItems.toggleClass("spin");
-
-                
             }
         });
     });
@@ -33,8 +31,8 @@ $(document).ready(function () {
         window.open($(this).attr("src"), "_blank");
     });
 
-    $(".create-swap-request").on("click", function (event) {
-        var guid = $(this).parent().data("id") + "";
+    $(".feed-swap-item .btn-swap-request").on("click", function (event) {
+        var guid = $(this).parents(".feed-swap-item").eq(0).attr("data-id");
         window.location.replace("/SwapRequest/Create?requestedSwapItemGuid=" + guid);
     });
 

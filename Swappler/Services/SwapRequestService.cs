@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using Swappler.Database;
 using Swappler.Models;
@@ -91,6 +92,59 @@ namespace Swappler.Services
             }
         }
 
+        public SwapRequest FindByGuid(Guid guid)
+        {
+            try
+            {
+                var swapRequests = FindWhere(sr => sr.Guid == guid);
+
+                var swapRequest = swapRequests.FirstOrDefault();
+
+                return swapRequest;
+            }
+            catch (Exception exception)
+            {
+                Logger.Write(LogType.Exception, exception.Message);
+                return null;
+            }
+        }
+
+        public List<SwapRequest> FindRequestsByUser(string username)
+        {
+            try
+            {
+                var swapRequests = from swapRequest in Context.SwapRequests
+                                   join user in Context.Users on swapRequest.RequestorUserId equals user.UserId
+                                   where user.Username == username
+                                   select swapRequest;
+
+                return swapRequests.ToList();
+            }
+            catch (Exception exception)
+            {
+                Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
+                return null;
+            }
+        }
+
+        public List<SwapRequest> FindUnreadByUser(User user)
+        {
+            try
+            {
+                var swapRequests = from swapRequest in Context.SwapRequests
+                                   where swapRequest.SwapItem.UserId == user.UserId &&
+                                         swapRequest.Read == false
+                                   select swapRequest;
+
+                return swapRequests.ToList();
+            }
+            catch (Exception exception)
+            {
+                Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
+                return null;
+            }
+        }
+
         public SwapRequest SendRequest(SwapItem requestedSwapItem, User requestorUser, SwapItem swapItemOffer, int? moneyOffer, DateTime dateCreated)
         {
             SwapRequest swapRequest = new SwapRequest
@@ -117,7 +171,25 @@ namespace Swappler.Services
             return null;
         }
 
-        public void AcceptRequest(SwapRequest swapRequest)
+        public SwapRequestStatus MarkAsRead(SwapRequest swapRequest)
+        {
+            try
+            {
+                Context.SwapRequests.Attach(swapRequest);
+                swapRequest.Read = true;
+                Context.Entry(swapRequest).Property("Read").IsModified = true;
+
+                Context.SaveChanges();
+                return SwapRequestStatus.MarkedAsRead;
+            }
+            catch (Exception exception)
+            {
+                Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
+                return SwapRequestStatus.Error;
+            }
+        }
+
+        public SwapRequestStatus AcceptRequest(SwapRequest swapRequest)
         {
             try
             {
@@ -137,14 +209,16 @@ namespace Swappler.Services
                 Context.Entry(requestedSwapItem).Property("Swapped").IsModified = true;
 
                 Context.SaveChanges();
+                return SwapRequestStatus.Accepted;
             }
             catch (Exception exception)
             {
                 Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
+                return SwapRequestStatus.Error;
             }
         }
 
-        public void DeclineRequest(SwapRequest swapRequest)
+        public SwapRequestStatus DeclineRequest(SwapRequest swapRequest)
         {
             try
             {
@@ -153,47 +227,15 @@ namespace Swappler.Services
                 Context.Entry(swapRequest).Property("Declined").IsModified = true;
 
                 Context.SaveChanges();
+                return SwapRequestStatus.Declined;
             }
             catch (Exception exception)
             {
                 Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
+                return SwapRequestStatus.Error;
             }
         }
 
-        public List<SwapRequest> FindRequestsByUser(string username)
-        {
-            try
-            {
-                var swapRequests = from swapRequest in Context.SwapRequests
-                    join user in Context.Users on swapRequest.RequestorUserId equals user.UserId
-                    where user.Username == username
-                    select swapRequest;
-
-                return swapRequests.ToList();
-            }
-            catch (Exception exception)
-            {
-                Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
-                return null;
-            }
-        }
-
-        public List<SwapRequest> FindUnreadByUser(User user)
-        {
-            try
-            {
-                var swapRequests = from swapRequest in Context.SwapRequests
-                                   where swapRequest.SwapItem.UserId == user.UserId &&
-                                         swapRequest.Read == false 
-                                   select swapRequest;
-
-                return swapRequests.ToList();
-            }
-            catch (Exception exception)
-            {
-                Logger.Write(LogType.Exception, Logger.ExceptionMessage(exception));
-                return null;
-            }
-        } 
+         
     }
 }

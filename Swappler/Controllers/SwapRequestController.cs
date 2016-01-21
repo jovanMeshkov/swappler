@@ -12,11 +12,27 @@ using Swappler.ViewModels;
 
 namespace Swappler.Controllers
 {
+    [Authenticate]
     public class SwapRequestController : Controller
     {
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
         private readonly ISwapItemService swapItemService = new SwapItemService(SwapItem.ImagesPath);
         private readonly ISwapRequestService swapRequestService = new SwapRequestService();
+
+        // Na klik na kopceto SWAP se povikuva via handler, treba da vrate View: CreateSwapRequest.html so izbraniot item
+        [HttpGet]
+        public ActionResult Create(Guid requestedSwapItemGuid)
+        {
+            SwapItem requestedSwapItem = swapItemService.FindByGuid(requestedSwapItemGuid);
+
+            List<SwapItem> userSwapItems = swapItemService.FindByUser(SessionHelper.SignedUser);
+
+            var createSwapRequestViewModel = new CreateSwapRequestViewModel();
+            createSwapRequestViewModel.RequestedSwapItem = requestedSwapItem;
+            createSwapRequestViewModel.UserSwapItems = userSwapItems;
+
+            return View(createSwapRequestViewModel);
+        }
 
         // TODO: To be get or not to be post. Do not touch!
         [HttpPost]
@@ -34,26 +50,101 @@ namespace Swappler.Controllers
                 SwapRequest swapRequest = swapRequestService.SendRequest(requestedSwapItem, signedUser, offeredSwapItem, moneyOffered, new DateTime());
                 return Redirect("/Home/Index");
             }
-            else
-            {
-                // TODO: Return json ?
-                return Redirect("/Home/Index");
-            }
+
+            // TODO: Return json ?
+            return Redirect("/Home/Index");
         }
-        
-        // Na klik na kopceto SWAP se povikuva via handler, treba da vrate View: CreateSwapRequest.html so izbraniot item
-        [HttpGet]
-        public ActionResult Create(Guid requestedSwapItemGuid)
+
+        [HttpPost]
+        public ActionResult MarkAsRead(Guid swapRequestGuid)
         {
-            SwapItem requestedSwapItem = swapItemService.FindByGuid(requestedSwapItemGuid);
-            
-            List<SwapItem> userSwapItems = swapItemService.FindByUser(SessionHelper.SignedUser);
+            var swapRequest = swapRequestService.FindByGuid(swapRequestGuid);
 
-            var createSwapRequestViewModel = new CreateSwapRequestViewModel();
-            createSwapRequestViewModel.RequestedSwapItem = requestedSwapItem;
-            createSwapRequestViewModel.UserSwapItems = userSwapItems;
+            if (swapRequest == null)
+            {
+                return Json(new
+                {
+                    Success = true,
+                });
+            }
 
-            return View(createSwapRequestViewModel);
+            if (swapRequest.SwapItem.UserId != SessionHelper.SignedUser.UserId)
+            {
+                return Json(new
+                {
+                    Success = true,
+                });
+            }
+
+            var swapRequestStatus = swapRequestService.MarkAsRead(swapRequest);
+
+            if (swapRequestStatus == SwapRequestStatus.Error)
+            {
+                return Json(new
+                {
+                    Error = true,
+                    Message = "Error happend, try again!"
+                });
+            }
+
+            return Json(new
+            {
+                Success = true,
+            });
         }
+
+        [HttpPost]
+        public ActionResult Accept(Guid swapRequestGuid)
+        {
+            var swapRequest = swapRequestService.FindByGuid(swapRequestGuid);
+
+            if (swapRequest == null)
+            {
+                return Json(new
+                {
+                    Success = true,
+                });
+            }
+
+            if (swapRequest.SwapItem.UserId != SessionHelper.SignedUser.UserId)
+            {
+                return Json(new
+                {
+                    Success = true,
+                });
+            }
+
+            return Json(new
+            {
+                Success = true,
+            });
+        }
+
+        [HttpPost]
+        public ActionResult Decline(Guid swapRequestGuid)
+        {
+            var swapRequest = swapRequestService.FindByGuid(swapRequestGuid);
+
+            if (swapRequest == null)
+            {
+                return Json(new
+                {
+                    Success = true,
+                });
+            }
+
+            if (swapRequest.SwapItem.UserId != SessionHelper.SignedUser.UserId)
+            {
+                return Json(new
+                {
+                    Success = true,
+                });
+            }
+            return Json(new
+            {
+                Success = true,
+            });
+        }
+
     }
 }

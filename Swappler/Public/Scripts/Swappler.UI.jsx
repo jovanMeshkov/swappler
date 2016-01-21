@@ -33,11 +33,10 @@ var SwapRequestNotification = React.createClass({
                 <div className="title">
                     Swap Request
                 </div>
+                <div className="swap-request-close" onClick={this.btnSwapRequestMarkAsRead}>
+                    <span className="fa fa-close"></span>
+                </div>
                 <div className="message">
-                    <div className="swap-request-close">
-                        <span className="fa fa-close"></span>
-                    </div>
-
                     <a href={"/User/"+this.props.RequestorUsername} className="requestor">
                         {this.props.RequestorFullName}&nbsp;
                     </a>
@@ -71,6 +70,20 @@ var SwapRequestNotification = React.createClass({
             </div>
         );
 	},
+    btnSwapRequestMarkAsRead: function(event) {
+        var swapRequestGuid = $(event.currentTarget).parents(".notification-entry").eq(0).attr("data-id");
+        $.ajax({
+            method: "POST",
+            url: "/SwapRequest/MarkAsRead",
+            data: "swapRequestGuid="+swapRequestGuid,
+            success: function(result, status, xhr) {
+                console.log(result)
+            },
+            error: function(xhr, status, error) {
+                console.log(error)  
+            }
+        });
+    },
     btnSwapRequestAcceptClick: function(event) {
         alert("click on accept in parent: "+$(event.currentTarget).parents(".notification-entry").eq(0).attr("data-id"));
     }
