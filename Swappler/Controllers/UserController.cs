@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
 using Swappler.Attributes;
 using Swappler.Models;
@@ -17,10 +13,10 @@ namespace Swappler.Controllers
     public class UserController : Controller
     {
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
-        
+
         [Authenticate]
         [HttpGet]
-        [Route("User/{username?}")]
+        [Route("User/{username?}/Profile")]
         public ActionResult Profile(string username)
         {
             User user = null;
@@ -30,9 +26,9 @@ namespace Swappler.Controllers
             }
             else
             {
-                user = userService.FindUserByUsername(username);    
+                user = userService.FindUserByUsername(username);
             }
-            
+
 
             return View(user);
         }

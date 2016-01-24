@@ -17,7 +17,7 @@ namespace Swappler.Controllers
         {
             var authCookieValue = CookieHelper.AuthCookieValue();
             var signedUser = SessionHelper.SignedUser;
-
+           
             if (signedUser != null)
             {
                 if (authCookieValue == signedUser.UserId)

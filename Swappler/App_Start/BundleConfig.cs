@@ -78,6 +78,12 @@ namespace Swappler
                     "~/Public/Css/animate.css"
                 ));
 
+            bundles.Add(new ScriptBundle("~/bundles/signalr")
+                .Include(
+                    "~/Public/Scripts/jquery.signalR-2.2.0.js",
+                    "~/signalr/hubs"
+                ));
+
             //BundleTable.EnableOptimizations = true;
         }
     }

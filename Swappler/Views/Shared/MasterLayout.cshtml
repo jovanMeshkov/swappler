@@ -18,6 +18,7 @@
     @Scripts.Render("~/bundles/react")
     @Scripts.Render("~/bundles/babel")
     @Scripts.Render("~/bundles/swappler.jsx")
+    @Scripts.Render("~/bundles/signalr")
 
     @RenderSection("HeadScripts", required: false)
   
@@ -62,7 +63,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/User/@SessionHelper.SignedUser.Username">
+                        <a href="/User/@SessionHelper.SignedUser.Username/Profile">
                             <i class="fa fa-user fa-fw "></i>
                             @{ var signedUser = SessionHelper.SignedUser; }
                             <span id="master-user-profile">@signedUser.Name</span>

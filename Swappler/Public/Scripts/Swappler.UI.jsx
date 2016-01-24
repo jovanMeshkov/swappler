@@ -37,7 +37,7 @@ var SwapRequestNotification = React.createClass({
                     <span className="fa fa-close"></span>
                 </div>
                 <div className="message">
-                    <a href={"/User/"+this.props.RequestorUsername} className="requestor">
+                    <a href={"/User/"+this.props.RequestorUsername+"/Profile"} className="requestor">
                         {this.props.RequestorFullName}&nbsp;
                     </a>
                     <span>
