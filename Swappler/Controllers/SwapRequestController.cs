@@ -34,6 +34,21 @@ namespace Swappler.Controllers
             return View(createSwapRequestViewModel);
         }
 
+        //vraka json od objekt SwapItem no vraka sekogas NULL, da se proveri zosto
+        public string GetSwapItemByGuid()
+        {
+            if (!String.IsNullOrEmpty(Request.QueryString["guid"]))
+            {
+                string guids = Request.QueryString["guid"].ToString();
+                System.Guid guid = System.Guid.Parse(guids);
+                var swapRequest = swapItemService.FindByGuid(guid);
+                return Json(swapRequest).ToString();
+                
+            }
+            return Json("").ToString();
+            
+        }
+
         // TODO: To be get or not to be post. Do not touch!
         [HttpPost]
         public ActionResult SendSwapRequest(Guid requestedSwapItemGuid, Guid offeredSwapItemGuid, int moneyOffered)

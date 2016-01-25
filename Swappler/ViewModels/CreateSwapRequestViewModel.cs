@@ -11,5 +11,6 @@ namespace Swappler.ViewModels
     {
         public SwapItem RequestedSwapItem;
         public List<SwapItem> UserSwapItems;
+        
     }
 }

@@ -6,33 +6,51 @@
 @foreach (var swapItem in Model)
 {
     <div class="feed-swap-item row" data-id="@swapItem.Guid">
-        @* Item Icon *@
-        <div class="col-lg-4">
-            <div class="icon-wrapper">
-                <a href="@swapItem.PhotoUrl" target="_blank">
-                    <img class="icon" src="@swapItem.PhotoUrl">
-                </a>
+       
+      <div class="row">
+            <div class="col-md-2">
+                <div class="profile-icon-wrapper">
+                        <a href="@swapItem.User.PhotoUrl" target="_blank">
+                            <img class="icon" src="@swapItem.User.PhotoUrl" style="width:75px; height:75px; border:1px solid #fcac45">
+                        </a>
+                </div>
             </div>
-        </div>
-        
-        @* Item Name and Creator *@
-        <div class="col-lg-8 content-wrapper" >
-           <div class="name">
-                @swapItem.Name
-            </div>
-            <div class="owner">
-                Published by @swapItem.User.Name @swapItem.User.LastName
-            </div>
-            <div class="creation-date">
-                @swapItem.Date.ToSmartDate()
-            </div>
-            <div class="description">
-                @swapItem.Description
-            </div>
-            <button class="btn-swap-request">
+              <div class="col-md-6" style="margin:0px; padding:0px">
+                <div class="name">
+                    @swapItem.Name
+                </div>
+                <div class="owner">
+                    Published by @swapItem.User.Name @swapItem.User.LastName
+                </div>
+                <div class="creation-date">
+                    @swapItem.Date.ToSmartDate()
+                </div>
+           </div>
+           <div class="col-md-4">
+               <button class="btn-swap-request">
                 <img src="~/Public/Images/swap-icon.png" />
                 <span class="text">Create swap request</span>
             </button>
+           </div>
+       </div>  
+
+        @* Item Name and Creator *@
+        <div class="col-lg-7 content-wrapper" >
+            <p style="font-family:Roboto"><b>Description: </b></p>
+            <div class="description">
+                <p style="font-family:Roboto">
+                @swapItem.Description
+                </p>
+            </div>
+        </div>
+         @* Item Icon *@
+        <div class="col-lg-5">
+            
+            <div class="icon-wrapper">
+                <a href="@swapItem.PhotoUrl" target="_blank">
+                    <img class="icon" src="@swapItem.PhotoUrl" style="border:1px solid #fcac45">
+                </a>
+            </div>
         </div>
     </div>
 }
