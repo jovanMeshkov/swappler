@@ -12,7 +12,7 @@ namespace Swappler.Attributes
 
         public override void OnActionExecuting(ActionExecutingContext actionExecutingContext)
         {
-            var authCookieValue = CookieHelper.AuthCookieValue();
+            var authCookieValue = CookieHelper.UserIdCookieValue();
             var signedUser = SessionHelper.SignedUser;
 
             if (authCookieValue == -1 ||

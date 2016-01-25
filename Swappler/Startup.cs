@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using System.Web.Security;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(Swappler.Startup))]

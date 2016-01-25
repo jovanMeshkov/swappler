@@ -15,7 +15,7 @@ namespace Swappler.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            var authCookieValue = CookieHelper.AuthCookieValue();
+            var authCookieValue = CookieHelper.UserIdCookieValue();
             var signedUser = SessionHelper.SignedUser;
            
             if (signedUser != null)
@@ -41,7 +41,7 @@ namespace Swappler.Controllers
             {
                 SessionHelper.SignedUser = signedUser;
 
-                var authenticationCookie = CookieHelper.AuthCookie(signedUser.UserId);
+                var authenticationCookie = CookieHelper.CreateUserIdCookie(signedUser.UserId);
                 Response.Cookies.Set(authenticationCookie);
 
                 return Json(new
