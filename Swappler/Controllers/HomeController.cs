@@ -12,7 +12,7 @@ using Swappler.ViewModels;
 
 namespace Swappler.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : DefaultController
     {
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
         private readonly ISwapItemService swapItemService = new SwapItemService(Models.SwapItem.ImagesPath);
@@ -24,8 +24,8 @@ namespace Swappler.Controllers
         {
             IndexViewModel indexViewModel = new IndexViewModel();
 
-            var swapItems = swapItemService.LoadNewest(2);
-            var swapRequests = swapRequestService.FindUnreadByUser(SessionHelper.SignedUser);
+            var swapItems = swapItemService.LoadNewest(2) ?? new List<SwapItem>(0);
+            var swapRequests = swapRequestService.FindUnreadByUser(SignedUser) ?? new List<SwapRequest>(0);
 
             indexViewModel.SwapItems = swapItems;
             indexViewModel.SwapRequests = swapRequests;

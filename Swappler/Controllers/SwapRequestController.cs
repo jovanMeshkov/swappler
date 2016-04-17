@@ -13,7 +13,7 @@ using Swappler.ViewModels;
 namespace Swappler.Controllers
 {
     [Authenticate]
-    public class SwapRequestController : Controller
+    public class SwapRequestController : DefaultController
     {
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
         private readonly ISwapItemService swapItemService = new SwapItemService(SwapItem.ImagesPath);
@@ -53,6 +53,7 @@ namespace Swappler.Controllers
         [HttpPost]
         public ActionResult SendSwapRequest(Guid requestedSwapItemGuid, Guid offeredSwapItemGuid, int moneyOffered)
         {
+            Console.WriteLine("dsadasd");
             List<SwapItem> resultItems = swapItemService.FindWhere(x => x.Guid == requestedSwapItemGuid);
             List<SwapItem> resultItems2 = swapItemService.FindWhere(x => x.Guid == offeredSwapItemGuid);
 
@@ -62,8 +63,7 @@ namespace Swappler.Controllers
                 SwapItem offeredSwapItem = resultItems2[0];
                 User signedUser = SessionHelper.SignedUser;
 
-                SwapRequest swapRequest = swapRequestService.SendRequest(requestedSwapItem, signedUser, offeredSwapItem, moneyOffered, new DateTime());
-                return Redirect("/Home/Index");
+                SwapRequest swapRequest = swapRequestService.SendRequest(requestedSwapItem, signedUser, offeredSwapItem, moneyOffered, DateTime.Now);
             }
 
             // TODO: Return json ?
@@ -113,25 +113,22 @@ namespace Swappler.Controllers
         {
             var swapRequest = swapRequestService.FindByGuid(swapRequestGuid);
 
-            if (swapRequest == null)
+            if (swapRequest != null)
             {
-                return Json(new
-                {
-                    Success = true,
-                });
-            }
+                var swapRequestStatus = swapRequestService.AcceptRequest(swapRequest);
 
-            if (swapRequest.SwapItem.UserId != SessionHelper.SignedUser.UserId)
-            {
-                return Json(new
+                if (swapRequestStatus == SwapRequestStatus.Accepted)
                 {
-                    Success = true,
-                });
+                    return Json(new
+                    {
+                        Success = true,
+                    });
+                }
             }
 
             return Json(new
             {
-                Success = true,
+                Error = true,
             });
         }
 
@@ -140,24 +137,22 @@ namespace Swappler.Controllers
         {
             var swapRequest = swapRequestService.FindByGuid(swapRequestGuid);
 
-            if (swapRequest == null)
+            if (swapRequest != null)
             {
-                return Json(new
+                var swapRequestStatus = swapRequestService.DeclineRequest(swapRequest);
+
+                if (swapRequestStatus == SwapRequestStatus.Declined)
                 {
-                    Success = true,
-                });
+                    return Json(new
+                    {
+                        Success = true,
+                    });
+                }
             }
 
-            if (swapRequest.SwapItem.UserId != SessionHelper.SignedUser.UserId)
-            {
-                return Json(new
-                {
-                    Success = true,
-                });
-            }
             return Json(new
             {
-                Success = true,
+                Error = true,
             });
         }
 

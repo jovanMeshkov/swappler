@@ -42,7 +42,7 @@ namespace Swappler.Utilities
                 ? logType + "es"
                 : logType + "s";
 
-            string filePath = Logger.RootDirectory+@"\"+logTypeDirectory+@"\";
+            string filePath = RootDirectory+@"\"+logTypeDirectory+@"\";
 
             string fileExtension = "log";
 

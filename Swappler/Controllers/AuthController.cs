@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Helpers;
+using System.Web.Mvc;
 using Swappler.Models;
 using Swappler.Models.Status;
+using Swappler.Security;
 using Swappler.Services;
 using Swappler.Services.Interfaces;
 using Swappler.Utilities;
@@ -8,28 +10,28 @@ using Swappler.ViewModels;
 
 namespace Swappler.Controllers
 {
-    public class AuthController : Controller
+    public class AuthController : DefaultController
     {
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
 
         [HttpGet]
         public ActionResult Login()
         {
-            var authCookieValue = CookieHelper.UserIdCookieValue();
-            var signedUser = SessionHelper.SignedUser;
-           
-            if (signedUser != null)
+            Principal principal = ControllerContext.RequestContext.HttpContext.User as Principal;
+
+            if (principal != null)
             {
-                if (authCookieValue == signedUser.UserId)
+                if (principal.Identity.IsAuthenticated)
                 {
+                    SessionHelper.SignedUser = SignedUser;
                     return Redirect("/Home/Index");
                 }
             }
+
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Login(UserLoginViewModel loginViewModel)
         {
             User signedUser;
@@ -39,10 +41,11 @@ namespace Swappler.Controllers
 
             if (userStatus == UserStatus.ValidCredentials)
             {
+                SignedUser = signedUser;
                 SessionHelper.SignedUser = signedUser;
 
-                var authenticationCookie = CookieHelper.CreateUserIdCookie(signedUser.UserId);
-                Response.Cookies.Set(authenticationCookie);
+                var authCookie = CookieHelper.CreateAuthCookie(loginViewModel.EmailOrUsername, CurrentSessionId, signedUser.UserId);
+                Response.Cookies.Set(authCookie);
 
                 return Json(new
                 {
@@ -127,6 +130,7 @@ namespace Swappler.Controllers
 
         public ActionResult Logout()
         {
+            HttpContext.Request.Cookies.Clear();
             Session.Clear();
             Session.Abandon();
 

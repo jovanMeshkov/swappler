@@ -20,7 +20,7 @@
     <div class="col-md-offset-2  col-md-3">
 
         @* Requested Swap Item *@
-        <div class="col-item">
+        <div class="col-item swap-request-swap-item-request" data-id="@Model.RequestedSwapItem.Guid">
 
             <div class="photo">
                 <img src="@Model.RequestedSwapItem.PhotoUrl" class="img-responsive" alt="" />
@@ -56,7 +56,8 @@
             @*<label class="control-label">Colorful:</label>*@
             <input id="colorful" class="form-control" type="number" value="1" min="1" max="100000000" />
         </div>
-        <button class="btn btn-success btn-block">Swap this</button>
+        <button id="swap-button" class="btn btn-success btn-block">Swap this</button>
+        
     </div>
     @* Swap Request Swap item offer*@
     <div class="col-md-3">
@@ -148,8 +149,8 @@
                 // remove spins from original
                 clone.prop('type', 'text').keydown(function (e) {
                     if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-                        (e.keyCode == 65 && e.ctrlKey === true) ||
-                        (e.keyCode >= 35 && e.keyCode <= 39)) {
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    (e.keyCode >= 35 && e.keyCode <= 39)) {
                         return;
                     }
                     if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
@@ -200,7 +201,7 @@
 </script>
 <script>
     // Remember set you events before call bootstrapSwitch or they will fire after bootstrapSwitch's events
-    $("[name='checkbox2']").change(function () {
+    $("[name='checkbox2']").change(function() {
         if (!confirm('Do you wanna cancel me!')) {
             this.checked = true;
         }
@@ -210,5 +211,28 @@
     $('#colorful').bootstrapNumber({
         upClass: 'success',
         downClass: 'danger'
+    });
+</script>
+<script>
+    $("#swap-button").on("click", function () {
+        var firstId = $(".swap-request-swap-item-request").attr("data-id");
+        var swapRequestSwapItemOffer = $("#swap-request-swap-item-offer").eq(0).attr("data-id");
+        alert("first item: " + firstId + "   second item: " + swapRequestSwapItemOffer);
+        $.ajax({
+            method: "POST",
+            url: "/SwapRequest/SendSwapRequest",
+            data: {
+                "requestedSwapItemGuid": firstId,
+                "offeredSwapItemGuid": swapRequestSwapItemOffer,
+                "moneyOffered": 150
+            },
+            success: function (result, status, xhr) {
+                alert("success");
+                window.location.replace("/Home/Index");
+            },
+            error: function (xhr, status, error) {
+                alert("err");
+            }
+        });
     });
 </script>

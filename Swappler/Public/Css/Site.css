@@ -340,6 +340,17 @@ label {
             opacity: 1;
         }
 
+    .feed-swap-item .profile-icon-wrapper {
+        width:75px; 
+        height:75px;
+    }
+
+    .feed-swap-item .profile-icon-wrapper img {
+        width: 100%;
+        height: 100%;
+        
+    }
+
 #btn-load-more {
     width: 140px;
     margin: 0 auto;

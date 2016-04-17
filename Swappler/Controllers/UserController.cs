@@ -10,7 +10,7 @@ using Swappler.ViewModels;
 
 namespace Swappler.Controllers
 {
-    public class UserController : Controller
+    public class UserController : DefaultController
     {
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
 

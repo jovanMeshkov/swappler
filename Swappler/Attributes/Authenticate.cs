@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Swappler.Models;
+using Swappler.Security;
 using Swappler.Services;
 using Swappler.Services.Interfaces;
 using Swappler.Utilities;
@@ -10,16 +11,21 @@ namespace Swappler.Attributes
     {
         private IUserService userService = new UserService(User.ImagesPath);
 
-        public override void OnActionExecuting(ActionExecutingContext actionExecutingContext)
+        public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var authCookieValue = CookieHelper.UserIdCookieValue();
-            var signedUser = SessionHelper.SignedUser;
+            Principal principal = context.RequestContext.HttpContext.User as Principal;
 
-            if (authCookieValue == -1 ||
-                signedUser == null ||
-                authCookieValue != signedUser.UserId)
+            if (principal != null)
             {
-                actionExecutingContext.Result = new RedirectResult("/Login");
+                if (principal.Identity.IsAuthenticated == false)
+                {
+                    context.Result = new RedirectResult("/Login");
+                }
+                SessionHelper.SignedUser = userService.FindUserById(principal.UserId);
+            }
+            else
+            {
+                context.Result = new RedirectResult("/Login");
             }
         }
     }

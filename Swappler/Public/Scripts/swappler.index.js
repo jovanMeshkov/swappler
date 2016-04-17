@@ -43,4 +43,15 @@ $(document).ready(function () {
         }
     }
 
+    var swapRequestHub = $.connection.swapRequestHub;
+    
+    swapRequestHub.client.notificationReceived = function (notification) {
+        
+    }
+
+    $.connection.hub.start().done(function () {
+        // Wire up Send button to call NewContosoChatMessage on the server.
+        
+    });
+
 });

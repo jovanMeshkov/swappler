@@ -64,27 +64,60 @@ var SwapRequestNotification = React.createClass({
                             Accept
                         </button>
                         <span>&#8226;</span>
-                        <button className="btn-swap-request-action btn-swap-request-decline-action">Decline</button>
+                        <button className="btn-swap-request-action btn-swap-request-decline-action" onClick={this.btnSwapRequestDeclineClick}>
+                            Decline
+                        </button>
                     </div>
                
             </div>
         );
 	},
-    btnSwapRequestMarkAsRead: function(event) {
-        var swapRequestGuid = $(event.currentTarget).parents(".notification-entry").eq(0).attr("data-id");
+	btnSwapRequestMarkAsRead: function(event) {
+	    var notificationEntry = $(event.currentTarget).parents(".notification-entry").eq(0);
+        var swapRequestGuid = notificationEntry.attr("data-id");
         $.ajax({
             method: "POST",
             url: "/SwapRequest/MarkAsRead",
             data: "swapRequestGuid="+swapRequestGuid,
             success: function(result, status, xhr) {
-                console.log(result)
+                console.log(result);
+                notificationEntry.remove();
             },
             error: function(xhr, status, error) {
-                console.log(error)  
+                console.log(error);
             }
         });
     },
-    btnSwapRequestAcceptClick: function(event) {
-        alert("click on accept in parent: "+$(event.currentTarget).parents(".notification-entry").eq(0).attr("data-id"));
+	btnSwapRequestAcceptClick: function(event) {
+	    var notificationEntry = $(event.currentTarget).parents(".notification-entry").eq(0);
+	    var swapRequestGuid = notificationEntry.attr("data-id");
+        $.ajax({
+            method: "POST",
+            url: "/SwapRequest/Accept",
+            data: "swapRequestGuid="+swapRequestGuid,
+            success: function(result, status, xhr) {
+                console.log(result);
+                //notificationEntry.remove();
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
+    },
+	btnSwapRequestDeclineClick: function(event) {
+	    var notificationEntry = $(event.currentTarget).parents(".notification-entry").eq(0);
+	    var swapRequestGuid = notificationEntry.attr("data-id");
+        $.ajax({
+            method: "POST",
+            url: "/SwapRequest/Decline",
+            data: "swapRequestGuid="+swapRequestGuid,
+            success: function(result, status, xhr) {
+                console.log(result);
+                //notificationEntry.remove();
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
     }
 });

@@ -1,4 +1,6 @@
-﻿namespace Swappler.Models
+﻿using System.Security.Principal;
+
+namespace Swappler.Models
 {
     public partial class User
     {

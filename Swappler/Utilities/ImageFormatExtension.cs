@@ -21,6 +21,7 @@ namespace Swappler.Utilities
             {ImageFormat.Tiff, ".tiff"},
             {ImageFormat.Wmf, ".wmf"}
         };
+
         public static string ExtensionName(this ImageFormat imageFormat)
         {
             return FormatExtensionNameMap[imageFormat].ToString();

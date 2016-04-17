@@ -48,6 +48,7 @@
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\Authenticate.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\SwapItemController.cs" />
     <Compile Include="Controllers\SwapRequestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -100,6 +101,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Security\AuthUserData.cs" />
+    <Compile Include="Security\Identity.cs" />
+    <Compile Include="Security\Principal.cs" />
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Managers\AuthManager.cs" />
     <Compile Include="Services\Interfaces\IAddressService.cs" />

@@ -13,7 +13,7 @@ using Swappler.ViewModels;
 
 namespace Swappler.Controllers
 {
-    public class SwapItemController : Controller
+    public class SwapItemController : DefaultController
     {
         private readonly IUserService userService = new UserService(Models.User.ImagesPath);
         private readonly ISwapItemService swapItemService = new SwapItemService(Models.SwapItem.ImagesPath);
