@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+     
+      <link href="favicon.png" rel="shortcut icon">
+       <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+       <script src="js/modernizr-2.7.1.min.js"></script>
+  <style type="text/css">
+  .section-1{
+    background: url('01.jpg');
+  }
+  .section-2{
+    background: url('02.jpg');
+  }
+  .section-3{
+    background: url('03.jpg');
+  }
+  .section-4{
+    background: url('04.jpg');
+  }
+  </style>
+  
+  </head>
+  <body class="section-1">
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-lg-6" style="margin-top:80px">
+      <h2 id="center">
+        <a href="#">Swapper</a>
+      </h2>
+      <!-- <figure id="center">
+          <a href="pocetna.html">
+            <img class="img-logo" src="exchange.png" alt="" style="height:80px;">
+          </a>
+      </figure> -->
+        <p id="center1" class="lead">
+          Sign in to get started
+        </p>
+      <form class="form-horizontal">
+        <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <!-- <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div> -->
+  <div class="form-group">
+    <div class="row" style="margin:0px">
+    <div class="col-md-3 col-md-offset-3">
+     <a class="btn btn-primary btn-block" href="#" role="button">Sign in</a></div>
+      <div class="col-md-3 col-md-offset-0">
+      <a class="btn btn-success btn-block" href="register.html" role="button">Register</a></div>
+    </div>
+  </div>
+</form>
+    </div>
+    <!-- end first col-lg-6 -->
+    
+  </div>
+  <!-- end row -->
+</div>
+<!-- end container-fluid -->
+    
+
+
+
+
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/customScripts.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("body").hover(function () {
+    $(this).stop().fadeOut("1000", function () {
+        $(this).css("background", "url('01.jpg')").fadeIn(1000);
+    });
+}, function () {
+    $(this).stop().fadeOut("1000", function () {
+        $(this).css("background", "url('03.jpg')").fadeIn(1000);
+    });
+});
+  });
+  </script>
+  </body>
+</html>

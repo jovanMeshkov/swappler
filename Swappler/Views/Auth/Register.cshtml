@@ -1,7 +1,124 @@
-﻿
-@{
-    ViewBag.Title = "Register";
+﻿@{
+    Layout = "~/Views/Shared/AuthLayout.cshtml";
+    ViewBag.Title = "Sign Up";
 }
 
-<h2>Register</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            
+            <h2>Please Sign Up</h2>
+            <hr class="colorgraph">
 
+            <form id="form-register" name="form-register" role="form"
+                  method="post" novalidate="novalidate">
+                @Html.AntiForgeryToken()
+
+                @* Firstname and Lastname row group *@
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            @* First Name field *@
+                            <input id="first-name" name="FirstName"
+                                   class="form-control input-lg" type="text"
+                                   placeholder="First Name" tabindex="1" value="Jovan">
+                            <label class="control-label status-message" for="first-name"></label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            @* Last Name field *@
+                            <input id="last-name" name="LastName"
+                                   class="form-control input-lg" type="text"
+                                   placeholder="Last Name" tabindex="2" value="Meshkov">
+                            <label class="control-label status-message" for="last-name"></label>
+                        </div>
+                    </div>
+                </div>
+
+                @* Username field *@
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <input id="username" name="Username"
+                                   class="form-control input-lg" type="text"
+                                   placeholder="Username" tabindex="3" value="bit01">
+                            <label class="control-label status-message" for="username"></label>
+                        </div>
+                    </div>
+                </div>
+
+                @* Email field *@
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <input id="email" name="Email"
+                                   class="form-control input-lg" type="email"
+                                   placeholder="Email Address" tabindex="4" value="jovanmeshkov@outlook.com">
+                            <label class="control-label status-message" for="email"></label>
+                        </div>
+                    </div>
+                </div>
+
+                @* Password and Confirm Password field *@
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        @* Password field *@
+                        <div class="form-group">
+                            <input id="password" name="Password"
+                                   class="form-control input-lg" type="password"
+                                   placeholder="Password" tabindex="5" value="jovan123">
+                            <label class="control-label status-message" for="password"></label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        @* Confirm Password field *@
+                        <div class="form-group">
+                            <input id="password_confirmation" name="PasswordConfirmation"
+                                   class="form-control input-lg" type="password"
+                                   placeholder="Confirm Password" tabindex="6" value="jovan123">
+                            <label class="control-label status-message" for="password_confirmation"></label>
+                        </div>
+                    </div>
+                </div>
+
+                @* Aggre Terms and Conditions *@
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 ">
+                            By clicking <strong class="label label-primary">I agree</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m"><strong class="label orange">Terms and Conditions</strong></a> set out by this site, including our Cookie Use.
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                @* Sign In *@
+                <div class="row">
+                    <div id="submit" class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            @* I agree *@
+                            <input id="terms-and-conditions" name="TermsAndConditions" 
+                                   type="hidden" value="0"/>
+                            <input id="btn-agree-t-and-c"
+                                   class="btn btn-primary btn-block btn-lg" type="button" 
+                                   tabindex="7" value="I agree"  >
+                            <label class="control-label status-message" for="btn-agree-t-and-c"></label>
+                        </div>
+                    </div>
+                    
+                    @* Sign In *@
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <button id="signup" type="button"
+                                    class="btn btn-warning btn-block btn-lg has-spinner">
+                                <span class="spinner"><i class="fa fa-spin fa-refresh"></i></span>
+                                Sign Up
+                            </button>
+                            <div class="control-label sign-up-status alert" role="alert"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

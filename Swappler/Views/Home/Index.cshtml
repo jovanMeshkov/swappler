@@ -1,33 +1,83 @@
-﻿@{
+﻿@using Swappler.ViewModels
+@using React.Web.Mvc;
+@{
     Layout = "~/Views/Shared/MasterLayout.cshtml";
 }
 
+@model IndexViewModel
+
 <div class="container-fluid">
+
     <div class="col-md-3">
         <p class="lead">Shop Name</p>
-        <div class="list-group">
-            <a href="#" class="list-group-item">Category 1</a>
-            <a href="#" class="list-group-item">Category 2</a>
-            <a href="#" class="list-group-item">Category 3</a>
+        <div class="col-lg-4 icon-wrapper">
+            <img class="swap-item-icon img-thumbnail" src="">
         </div>
-    </div>
-    <!-- end col-md-3 -->
-    <div class="col-md-6">
-        <div class="row">
-            <div class="col-lg-3">
+
+        <div class="col-lg-8">
+            <div class="swap-item-name"></div>
+            <div class="swap-item-owner"></div>
+            <div class="swap-item-creation-date"></div>
+            <div class="swap-item-description">
+
             </div>
         </div>
+    </div>
+
+    <div id="news-feed" class="col-md-6">
+
+        <div id="list-swap-items">
+            @{
+                var swapItems = Model.SwapItems;
+            }
+            @Html.Partial("~/Views/Partials/SwapItemsForFeed.cshtml", swapItems)
+        </div>
+
+
+        <button id="btn-load-more" class="btn btn-block btn-default has-spinner">
+            <span class="spinner"><i class="fa fa-spin fa-refresh"></i></span>
+            Load More
+        </button>
+
+
+    </div>
+
+    <div id="notifications" class="col-md-3">
         <div class="row">
+            <div class="col-lg-12">
+                <div id="notifications-header">
+                    <h4 id="notifications-title" class="pull-left">
+                        Notifications
+                    </h4>
+                    <span id="notifications-count" class="badge">
+                        2
+                    </span>
+                    <a id="notifications-see-all" class="pull-right"
+                       href="/Home/Notifications">
+                        See all
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="notifications-body">
+                    @foreach(var swapRequest in Model.SwapRequests)
+                    {
+                        @Html.React("SwapRequestNotification", new {
+                            SwapRequestGuid = swapRequest.Guid,
+                            RequestorUsername = swapRequest.RequestorUser.Username,
+                            RequestorFullName = swapRequest.RequestorUser.Name + " " + swapRequest.RequestorUser.LastName,
+                            SwapItemGuid = swapRequest.SwapItem.Guid,
+                            SwapItemName = swapRequest.SwapItem.Name,
+                            MoneyOffer = swapRequest.MoneyOffer,
+                            SwapItemOfferGuid = swapRequest.SwapItemOffer.Guid,
+                            SwapItemOfferName = swapRequest.SwapItemOffer.Name
+                        });
+                    }
+                </div>
+            </div>
         </div>
     </div>
-    <!-- end col-md-3 -->
-    <div class="col-md-3">
-        <p class="lead">Shop Name</p>
-        <div class="list-group">
-            <a href="#" class="list-group-item">Category 1</a>
-            <a href="#" class="list-group-item">Category 2</a>
-            <a href="#" class="list-group-item">Category 3</a>
-        </div>
-    </div>
-    <!-- end col-md-3 -->
 </div>

@@ -1,0 +1,43 @@
+﻿@using Swappler.Utilities
+@model Swappler.Models.SwapItem
+
+@{
+    ViewBag.Title = "SwapItem";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<div class="container-fluid">
+    @if (Model == null)
+    {
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="alert-danger">
+                <div>Swap item does not exist</div>
+                <div>
+                    return <a url="/"><b>Home</b></a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-lg-8 col-lg-offset-2"></div>
+        <div class="swap-item row">
+
+            @* Item Icon *@
+            <div class="col-lg-4 icon-wrapper">
+                <img class="swap-item-icon img-thumbnail" src="@Model.PhotoUrl">
+            </div>
+            <img class="swap-icon-img" src="~/Public/Images/swap-icon.png" style="float:right" />
+            @* Item Name and Creator*@
+            <div class="col-lg-8">
+                <div class="swap-item-name">@Model.Name</div>
+                <div class="swap-item-owner">Published by @Model.User.Name @Model.User.LastName</div>
+                <div class="swap-item-creation-date">@Model.Date.ToSmartDate()</div>
+                <div class="swap-item-description">
+                    @Model.Description
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

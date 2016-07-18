@@ -1,0 +1,33 @@
+@using Swappler.Models
+
+@model User
+
+@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="col-md-3">
+        <div id="userphoto">
+            <div class="gravatar-wrapper-128"><img id="image" style=" margin-bottom:15px; border: 10px solid white; border-radius:10px; width:300px; height:340px" src="@Model.PhotoUrl" alt="" class="logo" >
+            </div>
+            <div id="user-data" style="background-color:white; padding:10px; border-radius:10px">
+                <h2 style="font-family:Roboto">@Model.Name @Model.LastName </h2>
+                <h3 style="font-family:Roboto; color:grey">@Model.Username</h3>
+                <h4 style="font-family:Roboto; color:orange">@Model.Email</h4>
+                <h4 style="font-family:Roboto; color:grey">@Model.Phone</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div id="list-swap-items-of-user">
+            <h1>My items</h1>
+            @{
+                List<SwapItem> swapItems = Model.SwapItems.ToList();
+            }
+            @Html.Partial("~/Views/Partials/SwapItemsForProfileView.cshtml", swapItems)
+        </div>
+    </div>
+     
+    </div>
+
