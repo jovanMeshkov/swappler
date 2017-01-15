@@ -143,7 +143,9 @@
     <None Include="ClearScript.V8\v8-x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Public\Scripts\signalR\jquery.signalR-2.2.0.js" />
     <Content Include="Public\Scripts\signalR\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
